@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Why We Keep the Studio Small — Astro Station Journal</title>
+<meta name="description" content="A note on hiring philosophy and the trade-off between scale and craft." />
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  .essay-hero{padding:calc(var(--x9) + 70px) 0 var(--x6);background:var(--paper)}
+  .essay-hero .wrap-narrow{max-width:840px}
+  .essay-kicker{font-family:var(--mono);font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-mute);display:flex;align-items:center;gap:.85rem;margin-bottom:var(--x4)}
+  .essay-kicker::before{content:"";width:32px;height:1px;background:var(--ink-mute)}
+  .essay-title{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,6vw,5.2rem);line-height:.98;letter-spacing:-.018em;text-transform:uppercase;margin-bottom:var(--x4)}
+  .essay-meta{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
+
+  .essay{max-width:840px;margin:0 auto;padding:0 var(--rail) var(--x8)}
+  .essay p{font-family:var(--sans);font-weight:300;font-size:1.13rem;line-height:1.8;color:var(--ink-mid);margin-bottom:1.6rem}
+  .essay p strong{font-weight:600;color:var(--ink)}
+  .essay h2{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,2.6vw,2.1rem);text-transform:uppercase;letter-spacing:-.008em;margin:var(--x6) 0 var(--x3)}
+  .essay .pull{
+    font-family:var(--display);font-weight:300;font-style:italic;
+    font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.25;letter-spacing:-.01em;color:var(--ink);
+    border-left:2px solid var(--ink);padding-left:var(--x4);margin:var(--x6) 0;
+  }
+  .essay-cta{border-top:1px solid var(--ink-rule);margin-top:var(--x6);padding-top:var(--x5)}
+</style>
+</head>
+<body>
+<nav class="nav">
+ <a class="nav__brand" href="../index.html">
+ <img src="../img/brand/wordmark.png" alt="Astro Station" class="nav__logo">
+ </a>
+ <div class="nav__menu">
+ <a href="../about.html">About</a>
+ <a href="../work.html">Work</a>
+ <div class="has-sub">
+ <a href="../services.html">Services <span class="caret">▾</span></a>
+ <div class="nav__sub">
+ <a href="../services/architecture.html"><span>01 — Architecture</span><span class="num">01</span></a>
+ <a href="../services/interiors.html"><span>02 — Interior Design</span><span class="num">02</span></a>
+ <a href="../services/millwork.html"><span>03 — Millwork · Dragon</span><span class="num">03</span></a>
+ <a href="../services/built.html" class="is-built"><span>04 — Construction <img class="brand-star" src="../img/brand/star.png" alt="Astro"> Cósmico</span><span class="num">04</span></a>
+ <a href="../services/landscape.html"><span>05 — Landscape &amp; Pool</span><span class="num">05</span></a>
+ <a href="../services/exterior.html"><span>06 — Exterior Re-facing</span><span class="num">06</span></a>
+ <a href="../services/rendering.html"><span>07 — Visualization</span><span class="num">07</span></a>
+ </div>
+ </div>
+ <a href="../journal.html" class="active">Journal</a>
+ <a href="../contact.html">Contact</a>
+ </div>
+ <div class="nav__util">
+ <span class="nav__clock" id="clock">Miami · Los Angeles</span>
+ <a class="btn" href="../contact.html">Start the Process <span class="arr">→</span></a>
+ <button class="nav__hamburger" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+ </div>
+</nav>
+
+<header class="essay-hero">
+ <div class="wrap-narrow" style="max-width:840px">
+ <div class="essay-kicker">Journal · 06, Practice</div>
+ <h1 class="essay-title">Why We Keep the Studio Small.</h1>
+ <div class="essay-meta">Astro Station · June 2026 · 4-min read</div>
+ </div>
+</header>
+
+<div class="wrap-narrow" style="max-width:840px;padding-bottom:var(--x5)">
+ <p class="lede" style="font-size:clamp(1.25rem,1.9vw,1.6rem)">A note on hiring philosophy and the trade-off between scale and craft.</p>
+</div>
+
+<article class="essay">
+ <p><strong>Every creative studio reaches a crossroads.</strong></p>
+
+ <p>More projects arrive. Demand grows. Opportunities multiply.</p>
+
+ <p>The obvious response is to get bigger.</p>
+
+ <p>Hire more people. Add more layers. Increase capacity. Expand operations.</p>
+
+ <p>On paper, it makes perfect sense.</p>
+
+ <p>But architecture has always had an uncomfortable relationship with scale.</p>
+
+ <p>Because while growth can increase output, it often reduces proximity.</p>
+
+ <p>The larger a studio becomes, the farther decision-making moves from the people who founded it. The designers who once sketched every concept begin reviewing presentations instead of creating them. Conversations become meetings. Craft becomes process.</p>
+
+ <p>Growth solves some problems.<br>It creates others.</p>
+
+ <h2>Point of view, not headcount</h2>
+
+ <p>At Astro Station, we have made a conscious decision to remain selective about how we grow.</p>
+
+ <p>Not because we lack ambition.<br>Because we care deeply about the work.</p>
+
+ <p>We believe clients hire a design studio for its point of view, not its headcount.</p>
+
+ <p>They are not seeking a corporate structure. They are seeking judgment. Creativity. Experience. A team that understands how to translate vision into reality.</p>
+
+ <p>That becomes difficult when projects are passed through too many hands.</p>
+
+ <p>The reality is that great design is often the result of close collaboration. It comes from direct conversations, fast decisions, and a team that remains deeply involved from concept to completion.</p>
+
+ <p>The smaller the studio, the easier it is to preserve that connection.</p>
+
+ <p>Clients work directly with principals.<br>Design intent remains intact.<br>Decisions are made quickly.<br>Communication stays clear.<br>Accountability remains visible.</p>
+
+ <p>Most importantly, the work benefits.</p>
+
+ <p>This does not mean bigger firms cannot produce exceptional architecture. Many do. But large organizations often require layers of management, approvals, and delegation simply to operate efficiently. As firms grow, systems become necessary. Processes become essential.</p>
+
+ <p>Sometimes those systems improve quality.<br>Sometimes they dilute it.</p>
+
+ <h2>A different path</h2>
+
+ <p>We have chosen a different path.</p>
+
+ <p>We would rather take on fewer projects and remain deeply engaged in each one than pursue growth for growth’s sake.</p>
+
+ <p>That means being selective. It means protecting our capacity. It means occasionally saying no.</p>
+
+ <p>Not because we are trying to stay small forever, but because we are committed to preserving the qualities that attracted clients to the studio in the first place.</p>
+
+ <p>The goal is not size.<br>The goal is excellence.</p>
+
+ <p>For us, architecture is still a craft business.</p>
+
+ <p>Every project deserves attention.<br>Every client deserves access.<br>Every detail deserves consideration.</p>
+
+ <p>Those expectations become harder to maintain when volume becomes the primary objective.</p>
+
+ <p>A small studio also creates a different culture. The team remains close. Ideas move freely. Responsibility is shared. Design discussions happen across disciplines rather than through departments. Everyone remains connected to the outcome.</p>
+
+ <p>That connection matters.</p>
+
+ <div class="pull">The best projects are not created by organizational charts. They are created by people who care.</div>
+
+ <p>People who notice details.<br>People who ask difficult questions.<br>People who remain invested long after the drawings are complete.</p>
+
+ <p>As Astro Station grows, our ambition is not to become the biggest studio in the room. It is to become one of the most thoughtful.</p>
+
+ <p>To build a practice where design quality never competes with scale. Where relationships matter as much as renderings. Where clients know exactly who is shaping their project. And where every commission receives the attention it deserves.</p>
+
+ <p>There is always a trade-off between scale and craft.</p>
+
+ <p>Our philosophy is simple:</p>
+
+ <p>When forced to choose, we will choose craft.<br>Every time.</p>
+
+ <div class="essay-cta">
+ <p style="margin-bottom:1rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)">Next in the Journal</p>
+ <p style="margin-bottom:1.6rem"><a class="arr-link" href="when-a-render-misleads.html" style="display:inline-flex">When a Render Misleads →</a></p>
+ <div style="display:flex;gap:1.4rem;flex-wrap:wrap">
+ <a class="btn btn--solid" href="../contact.html">Start the process <span class="arr">→</span></a>
+ <a class="btn" href="../journal.html">All essays <span class="arr">→</span></a>
+ </div>
+ </div>
+</article>
+
+<footer class="foot">
+ <div class="wrap">
+ <div class="foot__top">
+ <div class="foot__brand">
+ <img src="../img/brand/wordmark.png" alt="Astro Station" style="height:36px;width:auto;display:block;margin-bottom:.6rem">
+ <div class="desc">Architecture · Interiors · Millwork · Construction</div>
+ <p>Bespoke homes designed and delivered as one.</p>
+ </div>
+ <div class="foot__col">
+ <h6>Studio</h6>
+ <a href="../about.html">About</a>
+ <a href="../journal.html">Journal</a>
+ <a href="mailto:careers@astrostation.com">Careers</a>
+ </div>
+ <div class="foot__col">
+ <h6>Services</h6>
+ <a href="../services/architecture.html">Architecture</a>
+ <a href="../services/interiors.html">Interior Design</a>
+ <a href="../services/millwork.html">Millwork · Dragon</a>
+ <a href="../services/built.html">Construction · Astro Cósmico</a>
+ <a href="../services/landscape.html">Landscape &amp; Pool</a>
+ <a href="../services/exterior.html">Exterior Re-facing</a>
+ <a href="../services/rendering.html">Visualization</a>
+ </div>
+ <div class="foot__col">
+ <h6>Work</h6>
+ <a href="../work.html#featured">Featured</a>
+ <a href="../work.html#residential">Residential</a>
+ <a href="../work.html#hospitality">Hospitality</a>
+ <a href="../work.html#commercial">Commercial</a>
+ </div>
+ <div class="foot__col">
+ <h6>Contact</h6>
+ <a href="tel:+17869091565">+1 786 909 1565</a>
+ <a href="mailto:info@astrostation.com">info@astrostation.com</a>
+ <a href="https://www.instagram.com/astrostation.co/" target="_blank" rel="noopener">Instagram</a>
+ <a href="https://linkedin.com/company/astrostation" target="_blank" rel="noopener">LinkedIn</a>
+ </div>
+ </div>
+ <div class="foot__bottom">
+ <span>© Astro Station 2026 · All rights reserved</span>
+ <nav class="foot__legal" aria-label="Legal"><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms &amp; Disclaimer</a><a href="#" data-cookie-prefs>Cookie Preferences</a></nav>
+ <span>Miami · Los Angeles</span>
+ </div>
+ </div>
+</footer>
+<script src="../assets/main.js"></script>
+</body>
+</html>

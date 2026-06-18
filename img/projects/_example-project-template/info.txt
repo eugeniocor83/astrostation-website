@@ -1,0 +1,8 @@
+NAME: Example Project Name
+NEIGHBORHOOD: Coconut Grove, FL
+YEAR: 2025
+SERVICE TAGS: architecture, interiors, built
+LED BY: David Castrillón
+STATUS: Built
+SUMMARY: A one-sentence summary that will appear on the project card.
+PUBLISH NAME: Yes

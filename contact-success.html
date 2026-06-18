@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thank you — Astro Station</title>
+<meta name="description" content="Your inquiry has been received. A member of the Astro Station team will respond within one business day." />
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="nav">
+ <a class="nav__brand" href="index.html">
+ <img src="img/brand/wordmark.png" alt="Astro Station" class="nav__logo">
+ </a>
+ <div class="nav__menu">
+ <a href="about.html">About</a>
+ <a href="work.html">Work</a>
+ <div class="has-sub">
+ <a href="services.html">Services <span class="caret">▾</span></a>
+ <div class="nav__sub">
+ <a href="services/architecture.html"><span>01 — Architecture</span><span class="num">01</span></a>
+ <a href="services/interiors.html"><span>02 — Interior Design</span><span class="num">02</span></a>
+ <a href="services/millwork.html"><span>03 — Millwork · Dragon</span><span class="num">03</span></a>
+ <a href="services/built.html" class="is-built"><span>04 — Construction <img class="brand-star" src="img/brand/star.png" alt="Astro"> Cósmico</span><span class="num">04</span></a>
+ <a href="services/landscape.html"><span>05 — Landscape &amp; Pool</span><span class="num">05</span></a>
+ <a href="services/exterior.html"><span>06 — Exterior Re-facing</span><span class="num">06</span></a>
+ <a href="services/rendering.html"><span>07 — Visualization</span><span class="num">07</span></a>
+ </div>
+ </div>
+ <a href="journal.html">Journal</a>
+ <a href="contact.html" class="active">Contact</a>
+ </div>
+ <div class="nav__util">
+ <span class="nav__clock" id="clock">Miami · Los Angeles</span>
+ <a class="btn" href="contact.html">Start the Process <span class="arr">→</span></a>
+ <button class="nav__hamburger" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+ </div>
+</nav>
+
+<section style="min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 var(--rail)">
+ <img src="img/brand/star.png" alt="" aria-hidden="true" class="asterisk-mark--spin" style="width:84px;height:auto;margin-bottom:var(--x5);opacity:.9">
+ <div class="section-num" style="justify-content:center">Inquiry Received</div>
+ <h1 class="h2 serif" style="margin:1.5rem 0;max-width:18ch">Thank you for contacting Astro Station.</h1>
+ <p class="lede center" style="max-width:52ch;margin:0 auto var(--x5)">Your inquiry has been received successfully. A member of our team will respond within one business day with next steps and a proposed agenda for our first call.</p>
+ <div style="display:flex;gap:1.4rem;flex-wrap:wrap;justify-content:center">
+ <a class="btn btn--solid" href="work.html">See the work <span class="arr">→</span></a>
+ <a class="btn" href="index.html">Back to home <span class="arr">→</span></a>
+ </div>
+</section>
+
+<footer class="foot">
+ <div class="wrap">
+ <div class="foot__top">
+ <div class="foot__brand">
+ <img src="img/brand/wordmark.png" alt="Astro Station" style="height:36px;width:auto;display:block;margin-bottom:.6rem">
+ <div class="desc">Architecture · Interiors · Millwork · Construction</div>
+ <p>Bespoke homes designed and delivered as one.</p>
+ </div>
+ <div class="foot__col">
+ <h6>Studio</h6>
+ <a href="about.html">About</a>
+ <a href="journal.html">Journal</a>
+ <a href="mailto:careers@astrostation.com">Careers</a>
+ </div>
+ <div class="foot__col">
+ <h6>Services</h6>
+ <a href="services/architecture.html">Architecture</a>
+ <a href="services/interiors.html">Interior Design</a>
+ <a href="services/millwork.html">Millwork · Dragon</a>
+ <a href="services/built.html">Construction · Astro Cósmico</a>
+ <a href="services/landscape.html">Landscape &amp; Pool</a>
+ <a href="services/exterior.html">Exterior Re-facing</a>
+ <a href="services/rendering.html">Visualization</a>
+ </div>
+ <div class="foot__col">
+ <h6>Work</h6>
+ <a href="work.html#featured">Featured</a>
+ <a href="work.html#residential">Residential</a>
+ <a href="work.html#hospitality">Hospitality</a>
+ <a href="work.html#commercial">Commercial</a>
+ </div>
+ <div class="foot__col">
+ <h6>Contact</h6>
+ <a href="tel:+17869091565">+1 786 909 1565</a>
+ <a href="mailto:info@astrostation.com">info@astrostation.com</a>
+ <a href="https://www.instagram.com/astrostation.co/" target="_blank" rel="noopener">Instagram</a>
+ <a href="https://linkedin.com/company/astrostation" target="_blank" rel="noopener">LinkedIn</a>
+ </div>
+ </div>
+ <div class="foot__bottom">
+ <span>© Astro Station 2026 · All rights reserved</span>
+ <nav class="foot__legal" aria-label="Legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Disclaimer</a><a href="#" data-cookie-prefs>Cookie Preferences</a></nav>
+ <span>Miami · Los Angeles</span>
+ </div>
+ </div>
+</footer>
+<script src="assets/main.js"></script>
+</body>
+</html>

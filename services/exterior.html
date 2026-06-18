@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Astro Station — Exterior Re-facing</title>
+<meta name="description" content="Quiet refinement of an existing home — façade, fencing and front-yard interventions delivered without breaking ground." />
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<nav class="nav">
+ <a class="nav__brand" href="../index.html">
+ <img src="../img/brand/wordmark.png" alt="Astro Station" class="nav__logo">
+ </a>
+ <div class="nav__menu">
+ <a href="../about.html">About</a>
+ <a href="../work.html">Work</a>
+ <div class="has-sub">
+ <a href="../services.html" class="active">Services <span class="caret">▾</span></a>
+ <div class="nav__sub">
+ <a href="../services/architecture.html"><span>01 — Architecture</span><span class="num">01</span></a>
+ <a href="../services/interiors.html"><span>02 — Interior Design</span><span class="num">02</span></a>
+ <a href="../services/millwork.html"><span>03 — Millwork · Dragon</span><span class="num">03</span></a>
+ <a href="../services/built.html" class="is-built"><span>04 — Construction <img class="brand-star" src="../img/brand/star.png" alt="Astro"> Cósmico</span><span class="num">04</span></a>
+ <a href="../services/landscape.html"><span>05 — Landscape &amp; Pool</span><span class="num">05</span></a>
+ <a href="../services/exterior.html"><span>06 — Exterior Re-facing</span><span class="num">06</span></a>
+ <a href="../services/rendering.html"><span>07 — Visualization</span><span class="num">07</span></a>
+ </div>
+ </div>
+ <a href="../journal.html">Journal</a>
+ <a href="../contact.html">Contact</a>
+ </div>
+ <div class="nav__util">
+ <span class="nav__clock" id="clock">Miami · Los Angeles</span>
+ <a class="btn" href="../contact.html">Start the Process <span class="arr">→</span></a>
+ <button class="nav__hamburger" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+ </div>
+</nav>
+
+<header class="hero hero--text">
+ <div class="hero__inner">
+ <div class="eyebrow">06 — Service</div>
+ <h1 class="hero__title">Exterior Re-facing.</h1>
+ <div class="hero__foot">
+ <p class="hero__sub">Quiet refinement of an existing home: façade, fencing and front-yard interventions delivered without breaking ground.</p>
+ <div class="hero__meta"><span>Façade · Front yard</span><span>No groundbreaking</span><span>Construction-ready set</span></div>
+ </div>
+ </div>
+</header>
+
+<section class="section--tight" style="padding-top:0">
+ <div class="cine" data-cine>
+ <img class="cs is-active" src="../img/svc/exterior/slide-01.jpg" alt="Astro Station — exterior" fetchpriority="high">
+ <img class="cs" data-src="../img/svc/exterior/slide-02.jpg" alt="">
+ <img class="cs" data-src="../img/svc/exterior/slide-03.jpg" alt="">
+ <img class="cs" data-src="../img/svc/exterior/slide-04.jpg" alt="">
+ <img class="cs" data-src="../img/svc/exterior/slide-05.jpg" alt="">
+ <img class="cs" data-src="../img/svc/exterior/slide-06.jpg" alt="">
+ <img class="cs" data-src="../img/svc/exterior/slide-07.jpg" alt="">
+ <img class="cs" data-src="../img/svc/exterior/slide-08.jpg" alt="">
+ <div class="cine__cap"><span class="dot"></span>Exterior re-facing · before → after</div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="wrap">
+ <div class="col-2">
+ <div>
+ <div class="section-num">01 — Scope</div>
+ <h2 class="h2 serif">What we deliver.</h2>
+ 
+ </div>
+ <div>
+ <ul style="list-style:none;border-top:1px solid var(--ink-rule)">
+ <li><span>Façade Study</span><span>Materials, color, proportion</span></li>
+ <li><span>Front Yard</span><span>Driveway, fencing, gates</span></li>
+ <li><span>Detail Set</span><span>Construction-ready drawings</span></li>
+ <li><span>Permitting</span><span>Where required</span></li>
+ <li><span>CA</span><span>Light contractor oversight</span></li>
+ </ul>
+ 
+ </div>
+ </div>
+ </div>
+</section>
+
+
+
+<!-- ── BEFORE & AFTER ─────────────────────────────────── -->
+<style>
+  .ba-list{display:grid;gap:var(--x6);margin-top:var(--x5)}
+  .ba-pair{display:grid;grid-template-columns:1fr 1fr;gap:var(--x3)}
+  .ba-cell{margin:0;display:flex;flex-direction:column;gap:.8rem}
+  .ba-cell img{width:100%;display:block;aspect-ratio:3/2;object-fit:cover;background:var(--paper-soft)}
+  .ba-tag{
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:.7rem;color:var(--ink-mute);
+  }
+  .ba-tag::before{content:"";width:24px;height:1px;background:var(--ink-mute)}
+  .ba-tag--after{color:var(--ink);font-weight:600}
+  .ba-tag--after::before{background:var(--ink)}
+  .ba-room{
+    font-family:var(--display);font-weight:700;font-size:.82rem;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--ink);margin-bottom:.4rem;
+  }
+  @media(max-width:720px){.ba-pair{grid-template-columns:1fr;gap:var(--x2)}.ba-list{gap:var(--x5)}}
+</style>
+<section class="section section--cream" id="before-after">
+ <div class="wrap">
+ <div class="section-num">02 — Before &amp; After</div>
+ <h2 class="h2 serif">The transformation.</h2>
+ <p class="lede" style="max-width:52ch;margin-top:var(--x3)">One existing Miami residence, re-faced inside and out: same footprint, new architecture. Original condition on the left; the delivered re-facing on the right.</p>
+
+ <div class="ba-list">
+ <div>
+ <div class="ba-room">Street Façade</div>
+ <div class="ba-pair">
+ <figure class="ba-cell"><img src="../img/exterior/refacing/01-before.jpg" alt="Street façade — before re-facing" loading="lazy"><figcaption class="ba-tag">Before</figcaption></figure>
+ <figure class="ba-cell"><img src="../img/exterior/refacing/01-after.jpg" alt="Street façade — after re-facing" loading="lazy"><figcaption class="ba-tag ba-tag--after">After</figcaption></figure>
+ </div>
+ </div>
+ <div>
+ <div class="ba-room">Backyard &amp; Pool Terrace</div>
+ <div class="ba-pair">
+ <figure class="ba-cell"><img src="../img/exterior/refacing/02-before.jpg" alt="Backyard — before re-facing" loading="lazy"><figcaption class="ba-tag">Before</figcaption></figure>
+ <figure class="ba-cell"><img src="../img/exterior/refacing/02-after.jpg" alt="Backyard with outdoor kitchen and pool — after re-facing" loading="lazy"><figcaption class="ba-tag ba-tag--after">After</figcaption></figure>
+ </div>
+ </div>
+ <div>
+ <div class="ba-room">Terrace</div>
+ <div class="ba-pair">
+ <figure class="ba-cell"><img src="../img/exterior/refacing/03-before.jpg" alt="Terrace — before re-facing" loading="lazy"><figcaption class="ba-tag">Before</figcaption></figure>
+ <figure class="ba-cell"><img src="../img/exterior/refacing/03-after.jpg" alt="Terrace and deck — after re-facing" loading="lazy"><figcaption class="ba-tag ba-tag--after">After</figcaption></figure>
+ </div>
+ </div>
+ <div>
+ <div class="ba-room">Pool &amp; Garden</div>
+ <div class="ba-pair">
+ <figure class="ba-cell"><img src="../img/exterior/refacing/04-before.jpg" alt="Pool enclosure — before re-facing" loading="lazy"><figcaption class="ba-tag">Before</figcaption></figure>
+ <figure class="ba-cell"><img src="../img/exterior/refacing/04-after.jpg" alt="Garden path — after re-facing" loading="lazy"><figcaption class="ba-tag ba-tag--after">After</figcaption></figure>
+ </div>
+ </div>
+ <div>
+ <div class="ba-room">Living Room</div>
+ <div class="ba-pair">
+ <figure class="ba-cell"><img src="../img/exterior/refacing/05-before.jpg" alt="Living room — before" loading="lazy"><figcaption class="ba-tag">Before</figcaption></figure>
+ <figure class="ba-cell"><img src="../img/exterior/refacing/05-after.jpg" alt="Living room — after" loading="lazy"><figcaption class="ba-tag ba-tag--after">After</figcaption></figure>
+ </div>
+ </div>
+ <div>
+ <div class="ba-room">Dining &amp; Kitchen</div>
+ <div class="ba-pair">
+ <figure class="ba-cell"><img src="../img/exterior/refacing/06-before.jpg" alt="Dining room — before" loading="lazy"><figcaption class="ba-tag">Before</figcaption></figure>
+ <figure class="ba-cell"><img src="../img/exterior/refacing/06-after.jpg" alt="Dining and kitchen — after" loading="lazy"><figcaption class="ba-tag ba-tag--after">After</figcaption></figure>
+ </div>
+ </div>
+ <div>
+ <div class="ba-room">Staircase</div>
+ <div class="ba-pair">
+ <figure class="ba-cell"><img src="../img/exterior/refacing/07-before.jpg" alt="Staircase — before" loading="lazy"><figcaption class="ba-tag">Before</figcaption></figure>
+ <figure class="ba-cell"><img src="../img/exterior/refacing/07-after.jpg" alt="Staircase — after" loading="lazy"><figcaption class="ba-tag ba-tag--after">After</figcaption></figure>
+ </div>
+ </div>
+ </div>
+ </div>
+</section>
+
+<section class="section--tight section--cream">
+ <div class="wrap">
+ <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem">
+ <a class="arr-link" href="landscape.html">← Landscape</a>
+ <a class="btn" href="../contact.html">Inquire about Exterior Re-facing <span class="arr">→</span></a>
+ <a class="arr-link" href="rendering.html">Rendering →</a>
+ </div>
+ </div>
+</section>
+
+<footer class="foot">
+ <div class="wrap">
+ <div class="foot__top">
+ <div class="foot__brand">
+ <img src="../img/brand/wordmark.png" alt="Astro Station" style="height:36px;width:auto;display:block;margin-bottom:.6rem">
+ <div class="desc">Architecture · Interiors · Millwork · Construction</div>
+ <p>Bespoke homes designed and delivered as one.</p>
+ </div>
+ <div class="foot__col">
+ <h6>Studio</h6>
+ <a href="../about.html">About</a>
+ <a href="../journal.html">Journal</a>
+ <a href="mailto:careers@astrostation.com">Careers</a>
+ </div>
+ <div class="foot__col">
+ <h6>Services</h6>
+ <a href="../services/architecture.html">Architecture</a>
+ <a href="../services/interiors.html">Interior Design</a>
+ <a href="../services/millwork.html">Millwork · Dragon</a>
+ <a href="../services/built.html">Construction · Astro Cósmico</a>
+ <a href="../services/landscape.html">Landscape &amp; Pool</a>
+ <a href="../services/exterior.html">Exterior Re-facing</a>
+ <a href="../services/rendering.html">Visualization</a>
+ </div>
+ <div class="foot__col">
+ <h6>Work</h6>
+ <a href="../work.html#featured">Featured</a>
+ <a href="../work.html#residential">Residential</a>
+ <a href="../work.html#hospitality">Hospitality</a>
+ <a href="../work.html#commercial">Commercial</a>
+ </div>
+ <div class="foot__col">
+ <h6>Contact</h6>
+ <a href="tel:+17869091565">+1 786 909 1565</a>
+ <a href="mailto:info@astrostation.com">info@astrostation.com</a>
+ <a href="https://www.instagram.com/astrostation.co/" target="_blank" rel="noopener">Instagram</a>
+ <a href="https://linkedin.com/company/astrostation" target="_blank" rel="noopener">LinkedIn</a>
+ </div>
+ </div>
+ <div class="foot__bottom">
+ <span>© Astro Station 2026 · All rights reserved</span>
+ <nav class="foot__legal" aria-label="Legal"><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms &amp; Disclaimer</a><a href="#" data-cookie-prefs>Cookie Preferences</a></nav>
+ <span>Miami · Los Angeles</span>
+ </div>
+ </div>
+</footer>
+<script src="../assets/main.js"></script>
+</body>
+</html>

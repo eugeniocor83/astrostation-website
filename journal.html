@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Astro Station — Journal</title>
+<meta name="description" content="Long-form writing on architecture, residential construction and the craft of building." />
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="nav">
+ <a class="nav__brand" href="index.html">
+ <img src="img/brand/wordmark.png" alt="Astro Station" class="nav__logo">
+ </a>
+ <div class="nav__menu">
+ <a href="about.html">About</a>
+ <a href="work.html">Work</a>
+ <div class="has-sub">
+ <a href="services.html">Services <span class="caret">▾</span></a>
+ <div class="nav__sub">
+ <a href="services/architecture.html"><span>01 — Architecture</span><span class="num">01</span></a>
+ <a href="services/interiors.html"><span>02 — Interior Design</span><span class="num">02</span></a>
+ <a href="services/millwork.html"><span>03 — Millwork · Dragon</span><span class="num">03</span></a>
+ <a href="services/built.html" class="is-built"><span>04 — Construction <img class="brand-star" src="img/brand/star.png" alt="Astro"> Cósmico</span><span class="num">04</span></a>
+ <a href="services/landscape.html"><span>05 — Landscape &amp; Pool</span><span class="num">05</span></a>
+ <a href="services/exterior.html"><span>06 — Exterior Re-facing</span><span class="num">06</span></a>
+ <a href="services/rendering.html"><span>07 — Visualization</span><span class="num">07</span></a>
+ </div>
+ </div>
+ <a href="journal.html" class="active">Journal</a>
+ <a href="contact.html">Contact</a>
+ </div>
+ <div class="nav__util">
+ <span class="nav__clock" id="clock">Miami · Los Angeles</span>
+ <a class="btn" href="contact.html">Start the Process <span class="arr">→</span></a>
+ <button class="nav__hamburger" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+ </div>
+</nav>
+
+<header class="hero hero--text">
+ <div class="hero__inner">
+ <div class="eyebrow">Journal · Perspectives from the studio</div>
+ <h1 class="hero__title">Notes from the practice.</h1>
+ <div class="hero__foot">
+ <p class="hero__sub">Long-form writing on architecture, residential construction, vertical integration and the craft of building homes meant to outlive us.</p>
+ </div>
+ </div>
+</header>
+
+<section class="section">
+ <div class="wrap">
+ <div class="col-2" style="margin-bottom:var(--x5)">
+ <div>
+ <div class="section-num">01 — Featured</div>
+ <h2 class="h2 serif">Why one studio is the new luxury.</h2>
+ <p class="body" style="margin-top:1.2rem">A look at the historical fragmentation of residential design and construction, and the case for stitching it back together. 8-min read.</p>
+ <a class="arr-link" href="journal/why-one-studio.html" style="margin-top:1.6rem">Read full essay →</a>
+ </div>
+ <div>
+ <div style="aspect-ratio:4/3;overflow:hidden">
+ <img src="img/brand/aerial.jpg" alt="Aerial view of a Miami residential neighborhood" style="width:100%;height:100%;object-fit:cover">
+ </div>
+ </div>
+ </div>
+
+ <div class="rule" style="margin:var(--x6) 0"></div>
+
+ <style>
+      .j-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--x5) var(--x4)}
+      .j-card{display:block}
+      .j-card__img{aspect-ratio:4/3;overflow:hidden;background:var(--paper-soft)}
+      .j-card__img img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+      .j-card:hover .j-card__img img{transform:scale(1.04)}
+      .j-card h4{transition:opacity .2s}
+      .j-card:hover h4{opacity:.7}
+      .j-card__meta{margin-top:.9rem;font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+      @media(max-width:980px){.j-grid{grid-template-columns:1fr 1fr}}
+      @media(max-width:640px){.j-grid{grid-template-columns:1fr}}
+    </style>
+ <div class="j-grid">
+ <a class="j-card" href="journal/open-book-budgeting.html">
+ <div class="j-card__img"><img src="img/projects/211-house/constr-framing.jpg" alt="211 under construction — open formwork" loading="lazy"></div>
+ <div class="label" style="margin:1.1rem 0 .6rem">02 · Built</div>
+ <h4 class="serif">The Case for Open-Book Budgeting</h4>
+ <p class="small" style="margin-top:.6rem">Why hidden margins are the contractor’s last bad habit, and how transparent pricing changes the client relationship.</p>
+ <div class="j-card__meta">6-min read · Read the essay →</div>
+ </a>
+ <a class="j-card" href="journal/ffe-design-discipline.html">
+ <div class="j-card__img"><img src="img/featured/jefferson/p-15.jpg" alt="Jefferson House — living room joinery" loading="lazy"></div>
+ <div class="label" style="margin:1.1rem 0 .6rem">03 · Interiors</div>
+ <h4 class="serif">FF&amp;E Is a Design Discipline</h4>
+ <p class="small" style="margin-top:.6rem">A defense of furniture, finishes, and equipment as architecture by another name, not as a finishing layer.</p>
+ <div class="j-card__meta">8-min read · Read the essay →</div>
+ </a>
+ <a class="j-card" href="journal/a-pool-is-a-room.html">
+ <div class="j-card__img"><img src="img/featured/72/p-05.jpg" alt="72 House — pool and garden" loading="lazy"></div>
+ <div class="label" style="margin:1.1rem 0 .6rem">04 · Landscape</div>
+ <h4 class="serif">A Pool Is a Room</h4>
+ <p class="small" style="margin-top:.6rem">On treating outdoor space with the same rigor as the rooms above grade, and why most landscape design fails the test.</p>
+ <div class="j-card__meta">5-min read · Read the essay →</div>
+ </a>
+ <a class="j-card" href="journal/re-facing-without-regret.html">
+ <div class="j-card__img"><img src="img/exterior/refacing/01-after.jpg" alt="Completed re-facing — street façade" loading="lazy"></div>
+ <div class="label" style="margin:1.1rem 0 .6rem">05 · Exterior</div>
+ <h4 class="serif">Re-Facing Without Regret</h4>
+ <p class="small" style="margin-top:.6rem">When a façade refresh is a brilliant move, and when it’s lipstick on a tear-down. A field guide.</p>
+ <div class="j-card__meta">7-min read · Read the essay →</div>
+ </a>
+ <a class="j-card" href="journal/why-we-keep-the-studio-small.html">
+ <div class="j-card__img"><img src="img/astronaut/desk.jpg" alt="The cosmonaut at the drawing desk" loading="lazy"></div>
+ <div class="label" style="margin:1.1rem 0 .6rem">06 · Practice</div>
+ <h4 class="serif">Why We Keep the Studio Small</h4>
+ <p class="small" style="margin-top:.6rem">A note on hiring philosophy and the trade-off between scale and craft.</p>
+ <div class="j-card__meta">4-min read · Read the essay →</div>
+ </a>
+ <a class="j-card" href="journal/when-a-render-misleads.html">
+ <div class="j-card__img"><img src="img/featured/temple-render.jpg" alt="Temple House — the rendering" loading="lazy"></div>
+ <div class="label" style="margin:1.1rem 0 .6rem">07 · Visualization</div>
+ <h4 class="serif">When a Render Misleads</h4>
+ <p class="small" style="margin-top:.6rem">On the ethics of marketing imagery for projects that haven’t yet been built, and how Astro keeps the bar honest.</p>
+ <div class="j-card__meta">6-min read · Read the essay →</div>
+ </a>
+ </div>
+ </div>
+</section>
+
+<footer class="foot">
+ <div class="wrap">
+ <div class="foot__top">
+ <div class="foot__brand">
+ <img src="img/brand/wordmark.png" alt="Astro Station" style="height:36px;width:auto;display:block;margin-bottom:.6rem">
+ <div class="desc">Architecture · Interiors · Millwork · Construction</div>
+ <p>Bespoke homes designed and delivered as one.</p>
+ </div>
+ <div class="foot__col">
+ <h6>Studio</h6>
+ <a href="about.html">About</a>
+ <a href="journal.html">Journal</a>
+ <a href="mailto:careers@astrostation.com">Careers</a>
+ </div>
+ <div class="foot__col">
+ <h6>Services</h6>
+ <a href="services/architecture.html">Architecture</a>
+ <a href="services/interiors.html">Interior Design</a>
+ <a href="services/millwork.html">Millwork · Dragon</a>
+ <a href="services/built.html">Construction · Astro Cósmico</a>
+ <a href="services/landscape.html">Landscape &amp; Pool</a>
+ <a href="services/exterior.html">Exterior Re-facing</a>
+ <a href="services/rendering.html">Visualization</a>
+ </div>
+ <div class="foot__col">
+ <h6>Work</h6>
+ <a href="work.html#featured">Featured</a>
+ <a href="work.html#residential">Residential</a>
+ <a href="work.html#hospitality">Hospitality</a>
+ <a href="work.html#commercial">Commercial</a>
+ </div>
+ <div class="foot__col">
+ <h6>Contact</h6>
+ <a href="tel:+17869091565">+1 786 909 1565</a>
+ <a href="mailto:info@astrostation.com">info@astrostation.com</a>
+ <a href="https://www.instagram.com/astrostation.co/" target="_blank" rel="noopener">Instagram</a>
+ <a href="https://linkedin.com/company/astrostation" target="_blank" rel="noopener">LinkedIn</a>
+ </div>
+ </div>
+ <div class="foot__bottom">
+ <span>© Astro Station 2026 · All rights reserved</span>
+ <nav class="foot__legal" aria-label="Legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Disclaimer</a><a href="#" data-cookie-prefs>Cookie Preferences</a></nav>
+ <span>Miami · Los Angeles</span>
+ </div>
+ </div>
+</footer>
+<script src="assets/main.js"></script>
+</body>
+</html>

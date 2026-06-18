@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sans Souci — Astro Station</title>
+<meta name="description" content="Sans Souci — Private Residence. Strong horizontals, deep overhangs, lifted above the climate." />
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  /* ── Editorial case-study layout ── */
+  .cs-hero{width:100%;display:block;margin:0;padding:0}
+  .cs-hero img{width:100%;height:auto;display:block;background:var(--paper-soft)}
+
+  .cs-intro{
+    max-width:var(--max);margin:0 auto;
+    padding:var(--x8) var(--rail) var(--x6);
+    display:grid;grid-template-columns:1fr 1.4fr;gap:var(--x6);
+  }
+  .cs-intro__left .cs-typology{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--ink-mute);margin-bottom:1.2rem;
+  }
+  .cs-intro__left h1{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(2.8rem,5.6vw,5rem);
+    line-height:.95;letter-spacing:-.02em;text-transform:uppercase;
+    color:var(--ink);margin:0;
+  }
+  .cs-intro__right .cs-num{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--ink-mute);margin-bottom:1rem;
+    display:flex;align-items:center;gap:.85rem;
+  }
+  .cs-intro__right .cs-num::before{content:"";width:32px;height:1px;background:var(--ink-mute)}
+  .cs-intro__right .cs-concept{
+    font-family:var(--sans);font-weight:300;
+    font-size:clamp(1.15rem,1.55vw,1.4rem);line-height:1.55;color:var(--ink);
+    max-width:60ch;
+  }
+  .cs-intro__right .cs-meta{margin-top:var(--x4);border-top:1px solid var(--ink-rule)}
+  .cs-intro__right .cs-meta__row{
+    display:flex;justify-content:space-between;padding:.95rem 0;border-bottom:1px solid var(--ink-rule);
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--ink);
+  }
+  .cs-intro__right .cs-meta__row span:first-child{color:var(--ink-mute);text-transform:uppercase;letter-spacing:.18em;font-size:.66rem}
+  @media(max-width:980px){
+    .cs-intro{grid-template-columns:1fr;gap:var(--x4);padding:var(--x6) var(--rail) var(--x5)}
+  }
+
+  /* Plan + photo split */
+  .cs-split{
+    display:grid;grid-template-columns:1fr 1fr;gap:var(--x4);
+    max-width:var(--max);margin:var(--x5) auto;padding:0 var(--rail);
+  }
+  .cs-split figure{margin:0;display:flex;flex-direction:column;gap:.8rem}
+  .cs-plan img{
+    width:100%;display:block;background:var(--paper);
+    border:1px solid var(--ink-rule);
+    aspect-ratio:1/1;object-fit:contain;padding:1.2rem;
+  }
+  .cs-photo img{
+    width:100%;display:block;background:var(--paper-soft);
+    aspect-ratio:1/1;object-fit:cover;
+  }
+  .cs-split figcaption{
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--ink-mute);
+  }
+  @media(max-width:720px){.cs-split{grid-template-columns:1fr;gap:var(--x3)}}
+
+  /* Paired image grid */
+  .cs-pair{
+    display:grid;grid-template-columns:1fr 1fr;gap:var(--x3);
+    max-width:var(--max);margin:var(--x5) auto;padding:0 var(--rail);
+  }
+  .cs-pair figure{margin:0}
+  .cs-pair img{
+    width:100%;display:block;background:var(--paper-soft);
+    aspect-ratio:4/5;object-fit:cover;
+  }
+  @media(max-width:720px){.cs-pair{grid-template-columns:1fr;gap:var(--x3)}}
+
+  /* Atmospheric full bleed */
+  .cs-bleed{margin:var(--x5) 0;padding:0}
+  .cs-bleed img{width:100%;height:auto;display:block;background:var(--paper-soft)}
+
+  /* Section header for drawings */
+  .cs-section{max-width:var(--max);margin:var(--x7) auto;padding:0 var(--rail)}
+  .cs-section__head{display:grid;grid-template-columns:1fr 1.4fr;gap:var(--x6);margin-bottom:var(--x5)}
+  .cs-section__head .cs-num{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--ink-mute);margin-bottom:1rem;
+    display:flex;align-items:center;gap:.85rem;
+  }
+  .cs-section__head .cs-num::before{content:"";width:32px;height:1px;background:var(--ink-mute)}
+  .cs-section__head .cs-h{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(2rem,3.6vw,3rem);text-transform:uppercase;
+    letter-spacing:-.012em;line-height:1;margin:0;
+  }
+  .cs-section__head .cs-body{
+    font-family:var(--sans);font-weight:300;font-size:1.02rem;line-height:1.65;
+    color:var(--ink-mid);max-width:54ch;align-self:end;
+  }
+  @media(max-width:980px){
+    .cs-section__head{grid-template-columns:1fr;gap:var(--x3)}
+  }
+
+  .plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--x4)}
+  .plan-card{margin:0;display:flex;flex-direction:column;gap:.8rem}
+  .plan-card img{
+    width:100%;display:block;background:var(--paper);
+    border:1px solid var(--ink-rule);aspect-ratio:1/1;object-fit:contain;padding:1.2rem;
+  }
+  .plan-card figcaption{
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--ink-mute);
+  }
+  @media(max-width:980px){.plan-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:720px){.plan-grid{grid-template-columns:1fr}}
+
+  /* Prev/Next nav */
+  .cs-nav{
+    max-width:var(--max);margin:var(--x7) auto var(--x6);
+    padding:var(--x4) var(--rail);
+    border-top:1px solid var(--ink-rule);
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;
+  }
+  .cs-nav__link{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--ink);
+    display:inline-flex;align-items:center;gap:.6rem;
+  }
+  .cs-nav__link:hover{color:var(--ink-mute)}
+</style>
+</head>
+<body>
+<nav class="nav">
+ <a class="nav__brand" href="../index.html">
+ <img src="../img/brand/wordmark.png" alt="Astro Station" class="nav__logo">
+ </a>
+ <div class="nav__menu">
+ <a href="../about.html">About</a>
+ <a href="../work.html" class="active">Work</a>
+ <div class="has-sub">
+ <a href="../services.html">Services <span class="caret">▾</span></a>
+ <div class="nav__sub">
+ <a href="../services/architecture.html"><span>01 — Architecture</span><span class="num">01</span></a>
+ <a href="../services/interiors.html"><span>02 — Interior Design</span><span class="num">02</span></a>
+ <a href="../services/millwork.html"><span>03 — Millwork · Dragon</span><span class="num">03</span></a>
+ <a href="../services/built.html" class="is-built"><span>04 — Construction <img class="brand-star" src="../img/brand/star.png" alt="Astro"> Cósmico</span><span class="num">04</span></a>
+ <a href="../services/landscape.html"><span>05 — Landscape &amp; Pool</span><span class="num">05</span></a>
+ <a href="../services/exterior.html"><span>06 — Exterior Re-facing</span><span class="num">06</span></a>
+ <a href="../services/rendering.html"><span>07 — Visualization</span><span class="num">07</span></a>
+ </div>
+ </div>
+ <a href="../journal.html">Journal</a>
+ <a href="../contact.html">Contact</a>
+ </div>
+ <div class="nav__util">
+ <span class="nav__clock" id="clock">Miami · Los Angeles</span>
+ <a class="btn" href="../contact.html">Start the Process <span class="arr">→</span></a>
+ <button class="nav__hamburger" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+ </div>
+</nav>
+
+<!-- HERO -->
+<section class="cs-hero">
+ <img src="../img/projects/sans-souci/01.jpg" alt="Sans Souci — hero" loading="eager">
+</section>
+
+<!-- INTRO: title + concept + meta -->
+<section class="cs-intro">
+ <div class="cs-intro__left">
+ <div class="cs-typology">Private Residence</div>
+ <h1>Sans Souci</h1>
+ </div>
+ <div class="cs-intro__right">
+ <div class="cs-num">01 — Concept</div>
+ <p class="cs-concept">A house named for the neighborhood and its French translation, without worry. Strong horizontal lines, deep overhangs, and an elevated principal floor lift the architecture above the climate. The composition is unbothered.</p>
+ <div class="cs-meta">
+ <div class="cs-meta__row"><span>Type</span><span>Residential</span></div>
+ <div class="cs-meta__row"><span>Status</span><span>Design Development</span></div>
+ <div class="cs-meta__row"><span>Discipline</span><span>Design · Visualization</span></div>
+ <div class="cs-meta__row"><span>Drawings</span><span>3 sheets</span></div>
+ <div class="cs-meta__row"><span>Documentation</span><span>8 renderings</span></div>
+ </div>
+ </div>
+</section>
+
+
+<section class="cs-split">
+ <figure class="cs-plan">
+ <img src="../img/projects/sans-souci/plan-01.jpg" alt="Sans Souci — Floor Plan">
+ <figcaption>Floor Plan · Level 01</figcaption>
+ </figure>
+ <figure class="cs-photo">
+ <img src="../img/projects/sans-souci/02.jpg" alt="Sans Souci — Interior view">
+ <figcaption>Strong horizontals, deep overhangs, lifted above the climate.</figcaption>
+ </figure>
+</section>
+
+
+<section class="cs-pair">
+ <figure>
+ <img src="../img/projects/sans-souci/03.jpg" alt="Sans Souci — view 03" loading="lazy">
+ </figure>
+ <figure>
+ <img src="../img/projects/sans-souci/09.jpg" alt="Sans Souci — view 09" loading="lazy">
+ </figure>
+</section>
+
+
+<section class="cs-bleed">
+ <img src="../img/projects/sans-souci/05.jpg" alt="Sans Souci — atmospheric view" loading="lazy">
+</section>
+
+
+<section class="cs-section">
+ <div class="cs-section__head">
+ <div class="cs-num">02 — Drawings</div>
+ <h3 class="cs-h">The architectural language.</h3>
+ <p class="cs-body">Plans, sections and elevations produced in-house. The drawings carry the same restraint as the renderings: nothing decorative, nothing surplus.</p>
+ </div>
+ <div class="plan-grid">
+ <figure class="plan-card">
+ <img src="../img/projects/sans-souci/plan-02.jpg" alt="Sans Souci — Floor Plan · Level 02" loading="lazy">
+ <figcaption>Floor Plan · Level 02</figcaption>
+ </figure>
+ <figure class="plan-card">
+ <img src="../img/projects/sans-souci/plan-03.jpg" alt="Sans Souci — Section A" loading="lazy">
+ <figcaption>Section A</figcaption>
+ </figure>
+ </div>
+</section>
+
+
+<section class="cs-pair">
+ <figure>
+ <img src="../img/projects/sans-souci/06.jpg" alt="Sans Souci — view 06" loading="lazy">
+ </figure>
+ <figure>
+ <img src="../img/projects/sans-souci/07.jpg" alt="Sans Souci — view 07" loading="lazy">
+ </figure>
+</section>
+
+
+<section class="cs-bleed">
+ <img src="../img/projects/sans-souci/08.jpg" alt="Sans Souci — closing view" loading="lazy">
+</section>
+
+
+<!-- Prev / Next -->
+<aside class="cs-ethos">
+ <div class="cs-ethos__eyebrow">Astro Station</div>
+ <p class="cs-ethos__line">Architecture, interiors, millwork and construction, <strong>drawn and built under one roof</strong>, as one continuous practice.</p>
+ <div class="cs-ethos__tag">Conceived outside the box · Futurist · Liquid · Melted</div>
+</aside>
+
+<nav class="cs-nav">
+ <a href="la-rampa.html" class="cs-nav__link">← La Rampa</a>
+ <a href="../contact.html" class="btn">Inquire <span class="arr">→</span></a>
+ <a href="nicolas-turbay.html" class="cs-nav__link">Nicolás Turbay →</a>
+</nav>
+
+<footer class="foot">
+ <div class="wrap">
+ <div class="foot__top">
+ <div class="foot__brand">
+ <img src="../img/brand/wordmark.png" alt="Astro Station" style="height:36px;width:auto;display:block;margin-bottom:.6rem">
+ <div class="desc">Architecture · Interiors · Millwork · Construction</div>
+ <p>Bespoke homes designed and delivered as one.</p>
+ </div>
+ <div class="foot__col">
+ <h6>Studio</h6>
+ <a href="../about.html">About</a>
+ <a href="../journal.html">Journal</a>
+ <a href="mailto:careers@astrostation.com">Careers</a>
+ </div>
+ <div class="foot__col">
+ <h6>Services</h6>
+ <a href="../services/architecture.html">Architecture</a>
+ <a href="../services/interiors.html">Interior Design</a>
+ <a href="../services/millwork.html">Millwork · Dragon</a>
+ <a href="../services/built.html">Construction · Astro Cósmico</a>
+ <a href="../services/landscape.html">Landscape &amp; Pool</a>
+ <a href="../services/exterior.html">Exterior Re-facing</a>
+ <a href="../services/rendering.html">Visualization</a>
+ </div>
+ <div class="foot__col">
+ <h6>Work</h6>
+ <a href="../work.html#featured">Featured</a>
+ <a href="../work.html#residential">Residential</a>
+ <a href="../work.html#hospitality">Hospitality</a>
+ <a href="../work.html#commercial">Commercial</a>
+ </div>
+ <div class="foot__col">
+ <h6>Contact</h6>
+ <a href="tel:+17869091565">+1 786 909 1565</a>
+ <a href="mailto:info@astrostation.com">info@astrostation.com</a>
+ <a href="https://www.instagram.com/astrostation.co/" target="_blank" rel="noopener">Instagram</a>
+ <a href="https://linkedin.com/company/astrostation" target="_blank" rel="noopener">LinkedIn</a>
+ </div>
+ </div>
+ <div class="foot__bottom">
+ <span>© Astro Station 2026 · All rights reserved</span>
+ <nav class="foot__legal" aria-label="Legal"><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms &amp; Disclaimer</a><a href="#" data-cookie-prefs>Cookie Preferences</a></nav>
+ <span>Miami · Los Angeles</span>
+ </div>
+ </div>
+</footer>
+<script src="../assets/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Astro Station — Architecture</title>
+<meta name="description" content="End-to-end residential architecture — concept through construction administration. Drawn, coordinated and detailed in-house." />
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<nav class="nav">
+ <a class="nav__brand" href="../index.html">
+ <img src="../img/brand/wordmark.png" alt="Astro Station" class="nav__logo">
+ </a>
+ <div class="nav__menu">
+ <a href="../about.html">About</a>
+ <a href="../work.html">Work</a>
+ <div class="has-sub">
+ <a href="../services.html" class="active">Services <span class="caret">▾</span></a>
+ <div class="nav__sub">
+ <a href="../services/architecture.html"><span>01 — Architecture</span><span class="num">01</span></a>
+ <a href="../services/interiors.html"><span>02 — Interior Design</span><span class="num">02</span></a>
+ <a href="../services/millwork.html"><span>03 — Millwork · Dragon</span><span class="num">03</span></a>
+ <a href="../services/built.html" class="is-built"><span>04 — Construction <img class="brand-star" src="../img/brand/star.png" alt="Astro"> Cósmico</span><span class="num">04</span></a>
+ <a href="../services/landscape.html"><span>05 — Landscape &amp; Pool</span><span class="num">05</span></a>
+ <a href="../services/exterior.html"><span>06 — Exterior Re-facing</span><span class="num">06</span></a>
+ <a href="../services/rendering.html"><span>07 — Visualization</span><span class="num">07</span></a>
+ </div>
+ </div>
+ <a href="../journal.html">Journal</a>
+ <a href="../contact.html">Contact</a>
+ </div>
+ <div class="nav__util">
+ <span class="nav__clock" id="clock">Miami · Los Angeles</span>
+ <a class="btn" href="../contact.html">Start the Process <span class="arr">→</span></a>
+ <button class="nav__hamburger" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+ </div>
+</nav>
+
+<header class="hero hero--text">
+ <div class="hero__inner">
+ <div class="eyebrow">01 — Service</div>
+ <h1 class="hero__title">Architecture &amp; Design.</h1>
+ <div class="hero__foot">
+ <p class="hero__sub">Architecture is our flagship discipline. We design bespoke residences from the first sketch to the final permitted set: concept, code, materials, light, landscape and construction documents, all drawn and coordinated under one roof.</p>
+ <div class="hero__meta"><span>Concept → Permit set</span><span>BIM-coordinated</span><span>Drawn in-house</span></div>
+ </div>
+ </div>
+</header>
+
+<section class="section--tight" style="padding-top:0">
+ <div class="cine" data-cine>
+ <img class="cs is-active" src="../img/svc/architecture/slide-01.jpg" alt="Astro Station — architecture" fetchpriority="high">
+ <img class="cs" data-src="../img/svc/architecture/slide-02.jpg" alt="">
+ <img class="cs" data-src="../img/svc/architecture/slide-03.jpg" alt="">
+ <img class="cs" data-src="../img/svc/architecture/slide-04.jpg" alt="">
+ <img class="cs" data-src="../img/svc/architecture/slide-05.jpg" alt="">
+ <img class="cs" data-src="../img/svc/architecture/slide-06.jpg" alt="">
+ <img class="cs" data-src="../img/svc/architecture/slide-07.jpg" alt="">
+ <img class="cs" data-src="../img/svc/architecture/slide-08.jpg" alt="">
+ <div class="cine__cap"><span class="dot"></span>Architecture · drawn in-house</div>
+ </div>
+</section>
+
+<!-- Flagship intro -->
+<section class="section">
+ <div class="wrap">
+ <div class="col-2">
+ <div>
+ <div class="section-num">01 — The Practice</div>
+ <h2 class="h2 serif">Design intelligence,<br>end to end.</h2>
+ </div>
+ <div>
+ <p class="body" style="font-size:1.1rem">Every Astro Station home begins with a single question: <strong style="font-weight:600;color:var(--ink)">what can this site become?</strong> We answer it across three disciplined phases, from the first conceptual sketch to a fully dimensioned, BIM-coordinated construction set. The house you are shown is the house that gets built.</p>
+ <p class="body" style="font-size:1.1rem;margin-top:1.2rem">Architecture is where the studio is strongest. It sets the geometry, the light and the standard that interiors, millwork, landscape and construction all answer to.</p>
+ </div>
+ </div>
+ <div class="deliver" style="margin-top:var(--x7)">
+ <div class="section-num">What we deliver</div>
+ <ul class="deliver__grid">
+ <li>Concept Design</li>
+ <li>Visualization</li>
+ <li>Full Renderings</li>
+ <li>Plans</li>
+ <li>Permitting Sets</li>
+ <li>Construction Documents</li>
+ <li>Bid Coordination</li>
+ <li>Build Coordination</li>
+ </ul>
+ </div>
+ </div>
+</section>
+
+<!-- The three phases -->
+<section class="section section--cream">
+ <div class="wrap">
+ <div class="section-num">02 — The Process</div>
+ <h2 class="h2 serif" style="margin-bottom:var(--x2)">Three phases, one continuous line.</h2>
+ <p class="lede" style="max-width:56ch">Our work begins with an analysis of the property: what can be built, under local code and zoning. From that foundation the design moves through three phases, each with a defined scope and a clear set of deliverables.</p>
+ <div class="phaseflow">
+ <article class="phase-card">
+ <div class="phase-card__no">Phase 01</div>
+ <h3 class="phase-card__ttl">Basic Idea</h3>
+ <p class="phase-card__body">The conceptualization of the design: references, the spatial program, and the first schematic schemes and sketches. We begin by analyzing the building and zoning code to establish what is possible, then make the idea legible with conceptual imagery. Changes are welcomed at this stage at no additional cost.</p>
+ <ul class="phase-card__list">
+ <li>Zoning &amp; building-code feasibility</li>
+ <li>Spatial program</li>
+ <li>Schematic plans &amp; massing</li>
+ <li>Concept renderings</li>
+ </ul>
+ </article>
+ <article class="phase-card">
+ <div class="phase-card__no">Phase 02</div>
+ <h3 class="phase-card__ttl">Preliminary Design</h3>
+ <p class="phase-card__body">The design resolves. Materials and finishes, measurements, lighting and the details required for construction are defined. Plans, elevations and sections are set, and the first millwork and interior proposals appear alongside photorealistic interior and exterior renderings: so aesthetics, finishes and materials can be seen before they are built.</p>
+ <ul class="phase-card__list">
+ <li>Developed plans, elevations &amp; sections</li>
+ <li>Material &amp; finish palette</li>
+ <li>Lighting design</li>
+ <li>Initial millwork &amp; interior proposals</li>
+ <li>Photorealistic renderings</li>
+ </ul>
+ </article>
+ <article class="phase-card">
+ <div class="phase-card__no">Phase 03</div>
+ <h3 class="phase-card__ttl">Final Project</h3>
+ <p class="phase-card__body">On approval, the project is dimensioned and documented to build. Final renderings, lighting and landscape plans, bathroom and millwork details, and finish and procurement guides are delivered with a Revit/BIM model and a full DWG drawing set, coordinating every discipline in one digital environment so conflicts are resolved before construction begins.</p>
+ <ul class="phase-card__list">
+ <li>Dimensioned construction set</li>
+ <li>Final interior &amp; exterior renderings</li>
+ <li>Lighting &amp; landscape plans</li>
+ <li>Millwork &amp; bathroom details</li>
+ <li>Finish, color &amp; procurement guides</li>
+ <li>Revit/BIM model + DWG drawings</li>
+ </ul>
+ </article>
+ </div>
+ </div>
+</section>
+
+<!-- Project timeline feature -->
+<section class="section--tight">
+ <div class="wrap">
+ <figure class="arch-feature">
+ <img src="../img/svc/architecture/timeline.jpg" alt="Astro Station project timeline — land, architectural design, permits, construction, delivery" loading="lazy">
+ <figcaption>From land to delivery, the Astro Station project timeline.</figcaption>
+ </figure>
+ </div>
+</section>
+
+<style>
+  .arch-projs{margin-top:var(--x6);display:flex;flex-direction:column;gap:var(--x7)}
+  .arch-proj__head{display:flex;align-items:baseline;gap:1rem;border-bottom:1px solid var(--ink-rule);padding-bottom:.9rem;margin-bottom:var(--x3)}
+  .arch-proj__no{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;color:var(--ink-mute)}
+  .arch-proj__name{font-family:var(--display);font-weight:800;font-size:clamp(1.3rem,2.4vw,1.9rem);letter-spacing:-.01em;text-transform:uppercase;line-height:1}
+  .arch-gal{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--x2)}
+  .arch-gal a{display:block;overflow:hidden;background:#fff;border:1px solid var(--ink-rule)}
+  .arch-gal img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover;transition:transform .7s ease}
+  .arch-gal a:hover img{transform:scale(1.04)}
+  .arch-gal a.draw{background:#faf9f6}
+  .arch-gal a.draw img{object-fit:contain;padding:.5rem}
+  @media(max-width:880px){.arch-gal{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.arch-gal{grid-template-columns:1fr 1fr;gap:var(--x1)}.arch-proj__name{font-size:1.15rem}}
+  /* What we deliver — deliverables ledger */
+  .deliver{counter-reset:dl}
+  .deliver__grid{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:0 var(--x4);margin-top:var(--x3);border-top:1px solid var(--ink)}
+  .deliver__grid li{counter-increment:dl;padding:1.15rem 0 1.05rem;border-bottom:1px solid var(--ink-rule);font-family:var(--display);font-weight:600;font-size:1.02rem;letter-spacing:.005em;color:var(--ink)}
+  .deliver__grid li::before{content:counter(dl,decimal-leading-zero);display:block;font-family:var(--mono);font-weight:400;font-size:.6rem;letter-spacing:.18em;color:var(--accent,#9a6a3a);margin-bottom:.5rem}
+  @media(max-width:880px){.deliver__grid{grid-template-columns:repeat(2,1fr);gap:0 var(--x3)}}
+  @media(max-width:460px){.deliver__grid{grid-template-columns:1fr 1fr;gap:0 var(--x2)}.deliver__grid li{font-size:.92rem}}
+</style>
+<!-- Full per-project architecture gallery -->
+<section class="section" id="projects">
+ <div class="wrap">
+ <div class="section-num">03 — Projects</div>
+ <h2 class="h2 serif">Every project, drawn in full.</h2>
+ <p class="lede" style="max-width:54ch;margin-top:var(--x2)">From the first render to the dimensioned set: the complete architectural record for each residence, conceived, modelled and documented in-house.</p>
+ <div class="arch-projs">
+ <article class="arch-proj">
+ <div class="arch-proj__head"><span class="arch-proj__no">01</span><h3 class="arch-proj__name">211</h3></div>
+ <div class="arch-gal" data-lightbox>
+ <a class="render" href="../img/architecture/211/01.jpg"><img src="../img/architecture/211/01.jpg" alt="211 — architecture render" loading="lazy"></a>
+ <a class="render" href="../img/architecture/211/02.jpg"><img src="../img/architecture/211/02.jpg" alt="211 — architecture render" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/211/03.jpg"><img src="../img/architecture/211/03.jpg" alt="211 — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/211/04.jpg"><img src="../img/architecture/211/04.jpg" alt="211 — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/211/05.jpg"><img src="../img/architecture/211/05.jpg" alt="211 — architecture drawing" loading="lazy"></a>
+ </div>
+ </article>
+ <article class="arch-proj">
+ <div class="arch-proj__head"><span class="arch-proj__no">02</span><h3 class="arch-proj__name">Tigertail</h3></div>
+ <div class="arch-gal" data-lightbox>
+ <a class="render" href="../img/architecture/tigertail/01.jpg"><img src="../img/architecture/tigertail/01.jpg" alt="Tigertail — architecture render" loading="lazy"></a>
+ <a class="render" href="../img/architecture/tigertail/02.jpg"><img src="../img/architecture/tigertail/02.jpg" alt="Tigertail — architecture render" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/tigertail/03.jpg"><img src="../img/architecture/tigertail/03.jpg" alt="Tigertail — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/tigertail/04.jpg"><img src="../img/architecture/tigertail/04.jpg" alt="Tigertail — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/tigertail/05.jpg"><img src="../img/architecture/tigertail/05.jpg" alt="Tigertail — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/tigertail/06.jpg"><img src="../img/architecture/tigertail/06.jpg" alt="Tigertail — architecture drawing" loading="lazy"></a>
+ </div>
+ </article>
+ <article class="arch-proj">
+ <div class="arch-proj__head"><span class="arch-proj__no">03</span><h3 class="arch-proj__name">La Rampa</h3></div>
+ <div class="arch-gal" data-lightbox>
+ <a class="render" href="../img/architecture/la-rampa/01.jpg"><img src="../img/architecture/la-rampa/01.jpg" alt="La Rampa — architecture render" loading="lazy"></a>
+ <a class="render" href="../img/architecture/la-rampa/02.jpg"><img src="../img/architecture/la-rampa/02.jpg" alt="La Rampa — architecture render" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/la-rampa/03.jpg"><img src="../img/architecture/la-rampa/03.jpg" alt="La Rampa — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/la-rampa/04.jpg"><img src="../img/architecture/la-rampa/04.jpg" alt="La Rampa — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/la-rampa/05.jpg"><img src="../img/architecture/la-rampa/05.jpg" alt="La Rampa — architecture drawing" loading="lazy"></a>
+ </div>
+ </article>
+ <article class="arch-proj">
+ <div class="arch-proj__head"><span class="arch-proj__no">04</span><h3 class="arch-proj__name">Española</h3></div>
+ <div class="arch-gal" data-lightbox>
+ <a class="render" href="../img/architecture/espanola/01.jpg"><img src="../img/architecture/espanola/01.jpg" alt="Española — architecture render" loading="lazy"></a>
+ <a class="render" href="../img/architecture/espanola/02.jpg"><img src="../img/architecture/espanola/02.jpg" alt="Española — architecture render" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/espanola/03.jpg"><img src="../img/architecture/espanola/03.jpg" alt="Española — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/espanola/04.jpg"><img src="../img/architecture/espanola/04.jpg" alt="Española — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/espanola/05.jpg"><img src="../img/architecture/espanola/05.jpg" alt="Española — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/espanola/06.jpg"><img src="../img/architecture/espanola/06.jpg" alt="Española — architecture drawing" loading="lazy"></a>
+ </div>
+ </article>
+ <article class="arch-proj">
+ <div class="arch-proj__head"><span class="arch-proj__no">05</span><h3 class="arch-proj__name">Hannaford</h3></div>
+ <div class="arch-gal" data-lightbox>
+ <a class="render" href="../img/architecture/hannaford/01.jpg"><img src="../img/architecture/hannaford/01.jpg" alt="Hannaford — architecture render" loading="lazy"></a>
+ <a class="render" href="../img/architecture/hannaford/02.jpg"><img src="../img/architecture/hannaford/02.jpg" alt="Hannaford — architecture render" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/hannaford/03.jpg"><img src="../img/architecture/hannaford/03.jpg" alt="Hannaford — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/hannaford/04.jpg"><img src="../img/architecture/hannaford/04.jpg" alt="Hannaford — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/hannaford/05.jpg"><img src="../img/architecture/hannaford/05.jpg" alt="Hannaford — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/hannaford/06.jpg"><img src="../img/architecture/hannaford/06.jpg" alt="Hannaford — architecture drawing" loading="lazy"></a>
+ </div>
+ </article>
+ <article class="arch-proj">
+ <div class="arch-proj__head"><span class="arch-proj__no">06</span><h3 class="arch-proj__name">Samana</h3></div>
+ <div class="arch-gal" data-lightbox>
+ <a class="render" href="../img/architecture/samana/01.jpg"><img src="../img/architecture/samana/01.jpg" alt="Samana — architecture render" loading="lazy"></a>
+ <a class="render" href="../img/architecture/samana/02.jpg"><img src="../img/architecture/samana/02.jpg" alt="Samana — architecture render" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/samana/03.jpg"><img src="../img/architecture/samana/03.jpg" alt="Samana — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/samana/04.jpg"><img src="../img/architecture/samana/04.jpg" alt="Samana — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/samana/05.jpg"><img src="../img/architecture/samana/05.jpg" alt="Samana — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/samana/06.jpg"><img src="../img/architecture/samana/06.jpg" alt="Samana — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/samana/07.jpg"><img src="../img/architecture/samana/07.jpg" alt="Samana — architecture drawing" loading="lazy"></a>
+ </div>
+ </article>
+ <article class="arch-proj">
+ <div class="arch-proj__head"><span class="arch-proj__no">07</span><h3 class="arch-proj__name">Parallel</h3></div>
+ <div class="arch-gal" data-lightbox>
+ <a class="render" href="../img/architecture/parallel/01.jpg"><img src="../img/architecture/parallel/01.jpg" alt="Parallel — architecture render" loading="lazy"></a>
+ <a class="render" href="../img/architecture/parallel/02.jpg"><img src="../img/architecture/parallel/02.jpg" alt="Parallel — architecture render" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/parallel/03.jpg"><img src="../img/architecture/parallel/03.jpg" alt="Parallel — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/parallel/04.jpg"><img src="../img/architecture/parallel/04.jpg" alt="Parallel — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/parallel/05.jpg"><img src="../img/architecture/parallel/05.jpg" alt="Parallel — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/parallel/06.jpg"><img src="../img/architecture/parallel/06.jpg" alt="Parallel — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/parallel/07.jpg"><img src="../img/architecture/parallel/07.jpg" alt="Parallel — architecture drawing" loading="lazy"></a>
+ </div>
+ </article>
+ <article class="arch-proj">
+ <div class="arch-proj__head"><span class="arch-proj__no">08</span><h3 class="arch-proj__name">233</h3></div>
+ <div class="arch-gal" data-lightbox>
+ <a class="render" href="../img/architecture/233/01.jpg"><img src="../img/architecture/233/01.jpg" alt="233 — architecture render" loading="lazy"></a>
+ <a class="render" href="../img/architecture/233/02.jpg"><img src="../img/architecture/233/02.jpg" alt="233 — architecture render" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/233/03.jpg"><img src="../img/architecture/233/03.jpg" alt="233 — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/233/04.jpg"><img src="../img/architecture/233/04.jpg" alt="233 — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/233/05.jpg"><img src="../img/architecture/233/05.jpg" alt="233 — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/233/06.jpg"><img src="../img/architecture/233/06.jpg" alt="233 — architecture drawing" loading="lazy"></a>
+ </div>
+ </article>
+ <article class="arch-proj">
+ <div class="arch-proj__head"><span class="arch-proj__no">09</span><h3 class="arch-proj__name">285</h3></div>
+ <div class="arch-gal" data-lightbox>
+ <a class="render" href="../img/architecture/285/01.jpg"><img src="../img/architecture/285/01.jpg" alt="285 — architecture render" loading="lazy"></a>
+ <a class="render" href="../img/architecture/285/02.jpg"><img src="../img/architecture/285/02.jpg" alt="285 — architecture render" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/285/03.jpg"><img src="../img/architecture/285/03.jpg" alt="285 — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/285/04.jpg"><img src="../img/architecture/285/04.jpg" alt="285 — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/285/05.jpg"><img src="../img/architecture/285/05.jpg" alt="285 — architecture drawing" loading="lazy"></a>
+ </div>
+ </article>
+ <article class="arch-proj">
+ <div class="arch-proj__head"><span class="arch-proj__no">10</span><h3 class="arch-proj__name">Buddha</h3></div>
+ <div class="arch-gal" data-lightbox>
+ <a class="render" href="../img/architecture/buddha/01.jpg"><img src="../img/architecture/buddha/01.jpg" alt="Buddha — architecture render" loading="lazy"></a>
+ <a class="render" href="../img/architecture/buddha/02.jpg"><img src="../img/architecture/buddha/02.jpg" alt="Buddha — architecture render" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/buddha/03.jpg"><img src="../img/architecture/buddha/03.jpg" alt="Buddha — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/buddha/04.jpg"><img src="../img/architecture/buddha/04.jpg" alt="Buddha — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/buddha/05.jpg"><img src="../img/architecture/buddha/05.jpg" alt="Buddha — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/buddha/06.jpg"><img src="../img/architecture/buddha/06.jpg" alt="Buddha — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/buddha/07.jpg"><img src="../img/architecture/buddha/07.jpg" alt="Buddha — architecture drawing" loading="lazy"></a>
+ </div>
+ </article>
+ <article class="arch-proj">
+ <div class="arch-proj__head"><span class="arch-proj__no">11</span><h3 class="arch-proj__name">84</h3></div>
+ <div class="arch-gal" data-lightbox>
+ <a class="render" href="../img/architecture/84/01.jpg"><img src="../img/architecture/84/01.jpg" alt="84 — architecture render" loading="lazy"></a>
+ <a class="render" href="../img/architecture/84/02.jpg"><img src="../img/architecture/84/02.jpg" alt="84 — architecture render" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/84/03.jpg"><img src="../img/architecture/84/03.jpg" alt="84 — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/84/04.jpg"><img src="../img/architecture/84/04.jpg" alt="84 — architecture drawing" loading="lazy"></a>
+ </div>
+ </article>
+ <article class="arch-proj">
+ <div class="arch-proj__head"><span class="arch-proj__no">12</span><h3 class="arch-proj__name">Nautilius</h3></div>
+ <div class="arch-gal" data-lightbox>
+ <a class="render" href="../img/architecture/nautilius/01.jpg"><img src="../img/architecture/nautilius/01.jpg" alt="Nautilius — architecture render" loading="lazy"></a>
+ <a class="render" href="../img/architecture/nautilius/02.jpg"><img src="../img/architecture/nautilius/02.jpg" alt="Nautilius — architecture render" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/nautilius/03.jpg"><img src="../img/architecture/nautilius/03.jpg" alt="Nautilius — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/nautilius/04.jpg"><img src="../img/architecture/nautilius/04.jpg" alt="Nautilius — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/nautilius/05.jpg"><img src="../img/architecture/nautilius/05.jpg" alt="Nautilius — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/nautilius/06.jpg"><img src="../img/architecture/nautilius/06.jpg" alt="Nautilius — architecture drawing" loading="lazy"></a>
+ </div>
+ </article>
+ <article class="arch-proj">
+ <div class="arch-proj__head"><span class="arch-proj__no">13</span><h3 class="arch-proj__name">Pompano</h3></div>
+ <div class="arch-gal" data-lightbox>
+ <a class="render" href="../img/architecture/pompano/01.jpg"><img src="../img/architecture/pompano/01.jpg" alt="Pompano — architecture render" loading="lazy"></a>
+ <a class="render" href="../img/architecture/pompano/02.jpg"><img src="../img/architecture/pompano/02.jpg" alt="Pompano — architecture render" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/pompano/03.jpg"><img src="../img/architecture/pompano/03.jpg" alt="Pompano — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/pompano/04.jpg"><img src="../img/architecture/pompano/04.jpg" alt="Pompano — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/pompano/05.jpg"><img src="../img/architecture/pompano/05.jpg" alt="Pompano — architecture drawing" loading="lazy"></a>
+ </div>
+ </article>
+ <article class="arch-proj">
+ <div class="arch-proj__head"><span class="arch-proj__no">14</span><h3 class="arch-proj__name">Tigertail Ct</h3></div>
+ <div class="arch-gal" data-lightbox>
+ <a class="render" href="../img/architecture/tigertail-ct/01.jpg"><img src="../img/architecture/tigertail-ct/01.jpg" alt="Tigertail Ct — architecture render" loading="lazy"></a>
+ <a class="render" href="../img/architecture/tigertail-ct/02.jpg"><img src="../img/architecture/tigertail-ct/02.jpg" alt="Tigertail Ct — architecture render" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/tigertail-ct/03.jpg"><img src="../img/architecture/tigertail-ct/03.jpg" alt="Tigertail Ct — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/tigertail-ct/04.jpg"><img src="../img/architecture/tigertail-ct/04.jpg" alt="Tigertail Ct — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/tigertail-ct/05.jpg"><img src="../img/architecture/tigertail-ct/05.jpg" alt="Tigertail Ct — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/tigertail-ct/06.jpg"><img src="../img/architecture/tigertail-ct/06.jpg" alt="Tigertail Ct — architecture drawing" loading="lazy"></a>
+ <a class="draw" href="../img/architecture/tigertail-ct/07.jpg"><img src="../img/architecture/tigertail-ct/07.jpg" alt="Tigertail Ct — architecture drawing" loading="lazy"></a>
+ </div>
+ </article>
+ </div>
+ </div>
+</section>
+
+<section class="section--tight section--cream">
+ <div class="wrap">
+ <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem">
+ <a class="arr-link" href="built.html">← Built, Construction</a>
+ <a class="btn" href="../contact.html">Inquire about Architecture <span class="arr">→</span></a>
+ <a class="arr-link" href="interiors.html">Interior Design →</a>
+ </div>
+ </div>
+</section>
+
+<footer class="foot">
+ <div class="wrap">
+ <div class="foot__top">
+ <div class="foot__brand">
+ <img src="../img/brand/wordmark.png" alt="Astro Station" style="height:36px;width:auto;display:block;margin-bottom:.6rem">
+ <div class="desc">Architecture · Interiors · Millwork · Construction</div>
+ <p>Bespoke homes designed and delivered as one.</p>
+ </div>
+ <div class="foot__col">
+ <h6>Studio</h6>
+ <a href="../about.html">About</a>
+ <a href="../journal.html">Journal</a>
+ <a href="mailto:careers@astrostation.com">Careers</a>
+ </div>
+ <div class="foot__col">
+ <h6>Services</h6>
+ <a href="../services/architecture.html">Architecture</a>
+ <a href="../services/interiors.html">Interior Design</a>
+ <a href="../services/millwork.html">Millwork · Dragon</a>
+ <a href="../services/built.html">Construction · Astro Cósmico</a>
+ <a href="../services/landscape.html">Landscape &amp; Pool</a>
+ <a href="../services/exterior.html">Exterior Re-facing</a>
+ <a href="../services/rendering.html">Visualization</a>
+ </div>
+ <div class="foot__col">
+ <h6>Work</h6>
+ <a href="../work.html#featured">Featured</a>
+ <a href="../work.html#residential">Residential</a>
+ <a href="../work.html#hospitality">Hospitality</a>
+ <a href="../work.html#commercial">Commercial</a>
+ </div>
+ <div class="foot__col">
+ <h6>Contact</h6>
+ <a href="tel:+17869091565">+1 786 909 1565</a>
+ <a href="mailto:info@astrostation.com">info@astrostation.com</a>
+ <a href="https://www.instagram.com/astrostation.co/" target="_blank" rel="noopener">Instagram</a>
+ <a href="https://linkedin.com/company/astrostation" target="_blank" rel="noopener">LinkedIn</a>
+ </div>
+ </div>
+ <div class="foot__bottom">
+ <span>© Astro Station 2026 · All rights reserved</span>
+ <nav class="foot__legal" aria-label="Legal"><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms &amp; Disclaimer</a><a href="#" data-cookie-prefs>Cookie Preferences</a></nav>
+ <span>Miami · Los Angeles</span>
+ </div>
+ </div>
+</footer>
+<script src="../assets/main.js"></script>
+</body>
+</html>

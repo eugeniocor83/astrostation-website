@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Astro Station — Work</title>
+<meta name="description" content="Selected work from Astro Station. Residential homes, townhouses, apartments and hospitality projects across architecture, interior design and built work." />
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="nav">
+ <a class="nav__brand" href="index.html">
+ <img src="img/brand/wordmark.png" alt="Astro Station" class="nav__logo">
+ </a>
+ <div class="nav__menu">
+ <a href="about.html">About</a>
+ <a href="work.html" class="active">Work</a>
+ <div class="has-sub">
+ <a href="services.html">Services <span class="caret">▾</span></a>
+ <div class="nav__sub">
+ <a href="services/architecture.html"><span>01 — Architecture</span><span class="num">01</span></a>
+ <a href="services/interiors.html"><span>02 — Interior Design</span><span class="num">02</span></a>
+ <a href="services/millwork.html"><span>03 — Millwork · Dragon</span><span class="num">03</span></a>
+ <a href="services/built.html" class="is-built"><span>04 — Construction <img class="brand-star" src="img/brand/star.png" alt="Astro"> Cósmico</span><span class="num">04</span></a>
+ <a href="services/landscape.html"><span>05 — Landscape &amp; Pool</span><span class="num">05</span></a>
+ <a href="services/exterior.html"><span>06 — Exterior Re-facing</span><span class="num">06</span></a>
+ <a href="services/rendering.html"><span>07 — Visualization</span><span class="num">07</span></a>
+ </div>
+ </div>
+ <a href="journal.html">Journal</a>
+ <a href="contact.html">Contact</a>
+ </div>
+ <div class="nav__util">
+ <span class="nav__clock" id="clock">Miami · Los Angeles</span>
+ <a class="btn" href="contact.html">Start the Process <span class="arr">→</span></a>
+ <button class="nav__hamburger" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+ </div>
+</nav>
+
+<header class="hero hero--text">
+ <div class="hero__inner">
+ <div class="eyebrow">Work · Astro Station</div>
+ <h1 class="hero__title">A growing archive.</h1>
+ <div class="hero__foot">
+ <p class="hero__sub">A measured selection from the studio: residences, townhouses, apartments and hospitality, drawn and rendered in-house. New work is added quietly, project by project.</p>
+ <span class="scroll-cue"><span class="dot"></span> 23 homes · 1 townhouse · 1 apartment · 12 hospitality · 1 commercial</span>
+ </div>
+ </div>
+</header>
+
+<!-- ── CATEGORY PORTAL ────────────────────────────────── -->
+<section class="section--tight cat-portal" aria-label="Browse by category">
+ <div class="wrap">
+ <div class="cat-portal__grid">
+ <a class="cat-card" href="#residential">
+ <span class="cat-card__num">01</span>
+ <span class="cat-card__name">Residential</span>
+ <span class="cat-card__sub">Homes · Apartments</span>
+ <span class="cat-card__arrow">→</span>
+ </a>
+ <a class="cat-card" href="#hospitality">
+ <span class="cat-card__num">02</span>
+ <span class="cat-card__name">Hospitality</span>
+ <span class="cat-card__sub">Restaurants · Wellness</span>
+ <span class="cat-card__arrow">→</span>
+ </a>
+ <a class="cat-card" href="#commercial">
+ <span class="cat-card__num">03</span>
+ <span class="cat-card__name">Commercial</span>
+ <span class="cat-card__sub">Workplace · Office</span>
+ <span class="cat-card__arrow">→</span>
+ </a>
+ <a class="cat-card" href="#featured">
+ <span class="cat-card__num">04</span>
+ <span class="cat-card__name">Featured</span>
+ <span class="cat-card__sub">Studio Selection</span>
+ <span class="cat-card__arrow">→</span>
+ </a>
+ </div>
+ </div>
+</section>
+
+<!-- ── CURRENT PROJECTS · cinematic showcase ───────────── -->
+<section class="section section--tight" id="current">
+ <div class="wrap">
+ <div class="portfolio-head">
+ <div>
+ <div class="section-num">★ Now, On the Boards &amp; On Site</div>
+ <h2 class="h2 serif">Current projects.</h2>
+ </div>
+ <p class="lede" style="max-width:44ch">Five residences moving through the studio right now: drawn, detailed and built under one roof.</p>
+ </div>
+ </div>
+ <div class="cpx" data-cpx>
+ <div class="cpx__track" id="cpxTrack">
+ <a class="cpx__card" href="work/211-house.html">
+ <div class="cpx__imgs">
+ <img class="cpx__img is-active" src="img/showcase/211-1.jpg" alt="211 — Buena Vista, Miami" loading="lazy">
+ <img class="cpx__img" data-src="img/showcase/211-2.jpg" alt="">
+ </div>
+ <div class="cpx__cap">
+ <span class="cpx__status cpx__status--live">Under Construction</span>
+ <span class="cpx__name">211</span>
+ <span class="cpx__geo">Buena Vista, Miami</span>
+ <span class="cpx__go">View project →</span>
+ </div>
+ </a>
+ <a class="cpx__card" href="work/tigertail.html">
+ <div class="cpx__imgs">
+ <img class="cpx__img is-active" src="img/showcase/tigertail-1.jpg" alt="Tigertail — Coconut Grove, Miami" loading="lazy">
+ <img class="cpx__img" data-src="img/showcase/tigertail-2.jpg" alt="">
+ </div>
+ <div class="cpx__cap">
+ <span class="cpx__status cpx__status--live">Under Construction</span>
+ <span class="cpx__name">Tigertail</span>
+ <span class="cpx__geo">Coconut Grove, Miami</span>
+ <span class="cpx__go">View project →</span>
+ </div>
+ </a>
+ <a class="cpx__card" href="work/285-house.html">
+ <div class="cpx__imgs">
+ <img class="cpx__img is-active" src="img/showcase/285-1.jpg" alt="285 — Coconut Grove, Miami" loading="lazy">
+ <img class="cpx__img" data-src="img/showcase/285-2.jpg" alt="">
+ </div>
+ <div class="cpx__cap">
+ <span class="cpx__status cpx__status--live">Under Construction</span>
+ <span class="cpx__name">285</span>
+ <span class="cpx__geo">Coconut Grove, Miami</span>
+ <span class="cpx__go">View project →</span>
+ </div>
+ </a>
+ <a class="cpx__card" href="work/tigertail-ct.html">
+ <div class="cpx__imgs">
+ <img class="cpx__img is-active" src="img/showcase/tigertail-ct-1.jpg" alt="Tigertail Court — Coconut Grove, Miami" loading="lazy">
+ <img class="cpx__img" data-src="img/showcase/tigertail-ct-2.jpg" alt="">
+ </div>
+ <div class="cpx__cap">
+ <span class="cpx__status cpx__status--live">Under Construction</span>
+ <span class="cpx__name">Tigertail Court</span>
+ <span class="cpx__geo">Coconut Grove, Miami</span>
+ <span class="cpx__go">View project →</span>
+ </div>
+ </a>
+ <a class="cpx__card" href="work/nautilius.html">
+ <div class="cpx__imgs">
+ <img class="cpx__img is-active" src="img/showcase/nautilius-1.jpg" alt="Nautilius — Miami Beach" loading="lazy">
+ <img class="cpx__img" data-src="img/showcase/nautilius-2.jpg" alt="">
+ </div>
+ <div class="cpx__cap">
+ <span class="cpx__status">Design Development</span>
+ <span class="cpx__name">Nautilius</span>
+ <span class="cpx__geo">Miami Beach</span>
+ <span class="cpx__go">View project →</span>
+ </div>
+ </a>
+ </div>
+ <button class="cpx__nav cpx__prev" aria-label="Previous project">←</button>
+ <button class="cpx__nav cpx__next" aria-label="Next project">→</button>
+ <div class="cpx__dots" id="cpxDots" aria-hidden="true"></div>
+ </div>
+</section>
+
+<!-- ── FEATURED ───────────────────────────────────────── -->
+<section class="section section--tight" id="featured">
+ <div class="wrap">
+ <div class="portfolio-head">
+ <div>
+ <div class="section-num">★ Featured Homes</div>
+ <h2 class="h2 serif">From rendering to reality.</h2>
+ </div>
+ <p class="lede" style="max-width:42ch">Four homes shown the way we deliver them, the rendering we drew beside the finished work it became.</p>
+ </div>
+
+ <style>
+      .rp-list{display:grid;gap:var(--x6);margin-top:var(--x5)}
+      .rp-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.6rem;margin-bottom:.9rem}
+      .rp-name{font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:.04em;text-transform:uppercase}
+      .rp-geo{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute)}
+      .rp-pair{display:grid;grid-template-columns:1fr 1fr;gap:var(--x3)}
+      .rp-pair figure{margin:0;display:flex;flex-direction:column;gap:.7rem}
+      .rp-pair img{width:100%;display:block;aspect-ratio:3/2;object-fit:cover;background:var(--paper-soft)}
+      .rp-tag{
+        font-family:var(--mono);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;
+        display:inline-flex;align-items:center;gap:.7rem;color:var(--ink-mute);
+      }
+      .rp-tag::before{content:"";width:24px;height:1px;background:var(--ink-mute)}
+      .rp-tag--built{color:var(--ink);font-weight:600}
+      .rp-tag--built::before{background:var(--ink)}
+      @media(max-width:720px){.rp-pair{grid-template-columns:1fr;gap:var(--x2)}.rp-list{gap:var(--x5)}}
+    </style>
+
+ <div class="rp-list" data-lightbox>
+ <div>
+ <div class="rp-head">
+ <a class="rp-name" href="work/temple-house.html">Temple →</a>
+ <span class="rp-geo">Built</span>
+ </div>
+ <div class="rp-pair">
+ <figure data-gallery="img/featured/temple/r-01.jpg|img/featured/temple/r-02.jpg|img/featured/temple/r-03.jpg" data-gcap="Temple · Rendering"><img src="img/featured/temple-render.jpg" alt="Temple — front façade rendering" loading="lazy"><figcaption class="rp-tag">Rendering · view all 3</figcaption></figure>
+ <figure data-gallery="img/featured/temple/p-01.jpg|img/featured/temple/p-02.jpg|img/featured/temple/p-03.jpg|img/featured/temple/p-04.jpg|img/featured/temple/p-05.jpg|img/featured/temple/p-06.jpg|img/featured/temple/p-07.jpg|img/featured/temple/p-08.jpg|img/featured/temple/p-09.jpg|img/featured/temple/p-10.jpg|img/featured/temple/p-11.jpg|img/featured/temple/p-12.jpg|img/featured/temple/p-13.jpg|img/featured/temple/p-14.jpg|img/featured/temple/p-15.jpg|img/featured/temple/p-16.jpg|img/featured/temple/p-17.jpg|img/featured/temple/p-18.jpg" data-gcap="Temple · Completed"><img src="img/featured/temple-photo.jpg" alt="Temple — completed front façade photograph" loading="lazy"><figcaption class="rp-tag rp-tag--built">Completed · view all 18</figcaption></figure>
+ </div>
+ </div>
+ <div>
+ <div class="rp-head">
+ <a class="rp-name" href="work/72-house.html">72 →</a>
+ <span class="rp-geo">Built</span>
+ </div>
+ <div class="rp-pair">
+ <figure data-gallery="img/featured/72/r-01.jpg|img/featured/72/r-02.jpg|img/featured/72/r-03.jpg|img/featured/72/r-04.jpg|img/featured/72/r-05.jpg|img/featured/72/r-06.jpg|img/featured/72/r-07.jpg|img/featured/72/r-08.jpg|img/featured/72/r-09.jpg|img/featured/72/r-10.jpg|img/featured/72/r-11.jpg|img/featured/72/r-12.jpg|img/featured/72/r-13.jpg|img/featured/72/r-14.jpg|img/featured/72/r-15.jpg|img/featured/72/r-16.jpg|img/featured/72/r-17.jpg|img/featured/72/r-18.jpg|img/featured/72/r-19.jpg|img/featured/72/r-20.jpg|img/featured/72/r-21.jpg|img/featured/72/r-22.jpg" data-gcap="72 · Rendering"><img src="img/featured/72-render.jpg" alt="72 — street elevation rendering" loading="lazy"><figcaption class="rp-tag">Rendering · view all 22</figcaption></figure>
+ <figure data-gallery="img/featured/72/p-01.jpg|img/featured/72/p-02.jpg|img/featured/72/p-03.jpg|img/featured/72/p-04.jpg|img/featured/72/p-05.jpg|img/featured/72/p-06.jpg|img/featured/72/p-07.jpg|img/featured/72/p-08.jpg|img/featured/72/p-09.jpg|img/featured/72/p-10.jpg|img/featured/72/p-11.jpg|img/featured/72/p-12.jpg|img/featured/72/p-13.jpg|img/featured/72/p-14.jpg|img/featured/72/p-15.jpg|img/featured/72/p-16.jpg|img/featured/72/p-17.jpg|img/featured/72/p-18.jpg|img/featured/72/p-19.jpg|img/featured/72/p-20.jpg|img/featured/72/p-21.jpg|img/featured/72/p-22.jpg" data-gcap="72 · Completed"><img src="img/featured/72-photo.jpg" alt="72 — completed street elevation photograph" loading="lazy"><figcaption class="rp-tag rp-tag--built">Completed · view all 22</figcaption></figure>
+ </div>
+ </div>
+ <div>
+ <div class="rp-head">
+ <a class="rp-name" href="work/jefferson.html">Jefferson →</a>
+ <span class="rp-geo">Built</span>
+ </div>
+ <div class="rp-pair">
+ <figure data-gallery="img/featured/jefferson/r-01.jpg|img/featured/jefferson/r-02.jpg|img/featured/jefferson/r-03.jpg|img/featured/jefferson/r-04.jpg|img/featured/jefferson/r-05.jpg|img/featured/jefferson/r-06.jpg|img/featured/jefferson/r-07.jpg|img/featured/jefferson/r-08.jpg|img/featured/jefferson/r-09.jpg|img/featured/jefferson/r-10.jpg|img/featured/jefferson/r-11.jpg|img/featured/jefferson/r-12.jpg|img/featured/jefferson/r-13.jpg|img/featured/jefferson/r-14.jpg|img/featured/jefferson/r-15.jpg|img/featured/jefferson/r-16.jpg|img/featured/jefferson/r-17.jpg|img/featured/jefferson/r-18.jpg|img/featured/jefferson/r-19.jpg|img/featured/jefferson/r-20.jpg|img/featured/jefferson/r-21.jpg|img/featured/jefferson/r-22.jpg" data-gcap="Jefferson · Rendering"><img src="img/featured/jefferson-render.jpg" alt="Jefferson — kitchen rendering" loading="lazy"><figcaption class="rp-tag">Rendering · view all 22</figcaption></figure>
+ <figure data-gallery="img/featured/jefferson/p-01.jpg|img/featured/jefferson/p-02.jpg|img/featured/jefferson/p-03.jpg|img/featured/jefferson/p-04.jpg|img/featured/jefferson/p-05.jpg|img/featured/jefferson/p-06.jpg|img/featured/jefferson/p-07.jpg|img/featured/jefferson/p-08.jpg|img/featured/jefferson/p-09.jpg|img/featured/jefferson/p-10.jpg|img/featured/jefferson/p-11.jpg|img/featured/jefferson/p-12.jpg|img/featured/jefferson/p-13.jpg|img/featured/jefferson/p-14.jpg|img/featured/jefferson/p-15.jpg|img/featured/jefferson/p-16.jpg|img/featured/jefferson/p-17.jpg|img/featured/jefferson/p-18.jpg|img/featured/jefferson/p-19.jpg|img/featured/jefferson/p-20.jpg|img/featured/jefferson/p-21.jpg|img/featured/jefferson/p-22.jpg|img/featured/jefferson/p-23.jpg|img/featured/jefferson/p-24.jpg|img/featured/jefferson/p-25.jpg|img/featured/jefferson/p-26.jpg" data-gcap="Jefferson · Completed"><img src="img/featured/jefferson-photo.jpg" alt="Jefferson — completed kitchen photograph" loading="lazy"><figcaption class="rp-tag rp-tag--built">Completed · view all 26</figcaption></figure>
+ </div>
+ </div>
+ <div>
+ <div class="rp-head">
+ <span class="rp-name">Easterlin</span>
+ <span class="rp-geo">Built</span>
+ </div>
+ <div class="rp-pair">
+ <figure data-gallery="img/featured/easterlin/r-01.jpg|img/featured/easterlin/r-02.jpg|img/featured/easterlin/r-03.jpg|img/featured/easterlin/r-04.jpg|img/featured/easterlin/r-05.jpg|img/featured/easterlin/r-06.jpg|img/featured/easterlin/r-07.jpg|img/featured/easterlin/r-08.jpg|img/featured/easterlin/r-09.jpg|img/featured/easterlin/r-10.jpg|img/featured/easterlin/r-11.jpg|img/featured/easterlin/r-12.jpg|img/featured/easterlin/r-13.jpg|img/featured/easterlin/r-14.jpg|img/featured/easterlin/r-15.jpg|img/featured/easterlin/r-16.jpg|img/featured/easterlin/r-17.jpg|img/featured/easterlin/r-18.jpg|img/featured/easterlin/r-19.jpg" data-gcap="Easterlin · Rendering"><img src="img/featured/easterlin-render.jpg" alt="Easterlin — primary bath rendering" loading="lazy"><figcaption class="rp-tag">Rendering · view all 19</figcaption></figure>
+ <figure data-gallery="img/featured/easterlin/p-01.jpg|img/featured/easterlin/p-02.jpg|img/featured/easterlin/p-03.jpg|img/featured/easterlin/p-04.jpg|img/featured/easterlin/p-05.jpg|img/featured/easterlin/p-06.jpg|img/featured/easterlin/p-07.jpg|img/featured/easterlin/p-08.jpg|img/featured/easterlin/p-09.jpg|img/featured/easterlin/p-10.jpg|img/featured/easterlin/p-11.jpg|img/featured/easterlin/p-12.jpg|img/featured/easterlin/p-13.jpg|img/featured/easterlin/p-14.jpg|img/featured/easterlin/p-15.jpg" data-gcap="Easterlin · Completed"><img src="img/featured/easterlin-photo.jpg" alt="Easterlin — completed primary bath photograph" loading="lazy"><figcaption class="rp-tag rp-tag--built">Completed · view all 15</figcaption></figure>
+ </div>
+ </div>
+ </div>
+</div>
+</section>
+
+<!-- ── RESIDENTIAL (Homes · Townhouses · Apartments) ── -->
+<section class="section section--cream" id="residential">
+ <div class="wrap">
+ <div class="portfolio-head">
+ <div>
+ <div class="section-num">01 — Residential</div>
+ <h2 class="h2 serif">Houses for a Miami year.</h2>
+ </div>
+ <p class="lede" style="max-width:42ch">From a coral-stone Miami home to Wynwood town houses: residences drawn around climate, family and the slow rhythm of a Miami year.</p>
+ </div>
+
+ <div class="filters" data-filter-group style="margin-bottom:var(--x4)">
+ <span class="active" data-filter="all">All Residential</span>
+ <span data-filter="homes">Homes</span>
+ <span data-filter="townhouses">Townhouses</span>
+ <span data-filter="apartments">Apartments</span>
+ </div>
+
+ <div class="proj-grid" data-filter-grid>
+ <a class="proj large" href="work/nautilius.html" data-tags="homes" data-live>
+ <img src="img/projects/nautilius/card.jpg" alt="Nautilius" loading="lazy">
+ <img class="live-fr" data-src="img/projects/nautilius/06.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/nautilius/grounds/g-01.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Nautilius <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj medium" href="work/parallel.html" data-tags="homes" data-live>
+ <img src="img/projects/parallel/card.jpg" alt="Parallel" loading="lazy">
+ <img class="live-fr" data-src="img/projects/parallel/09.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/parallel/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Parallel <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj regular" href="work/211-house.html" data-tags="homes" data-live>
+ <img src="img/projects/211-house/card.jpg" alt="211" loading="lazy">
+ <img class="live-fr" data-src="img/projects/211-house/constr-foundation.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/211-house/09.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/211-house/grounds/g-01.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">211 <span class="status-tag status-tag--live">Under Construction</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj regular" href="work/buddha.html" data-tags="homes" data-live>
+ <img src="img/projects/buddha/card.jpg" alt="Buddha" loading="lazy">
+ <img class="live-fr" data-src="img/projects/buddha/09.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/buddha/grounds/g-01.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Buddha <span class="status-tag">Design & Documented</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj medium" href="work/samana.html" data-tags="homes" data-live>
+ <img src="img/projects/samana/card.jpg" alt="Samana" loading="lazy">
+ <img class="live-fr" data-src="img/projects/samana/09.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/samana/grounds/g-01.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Samana <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj large" href="work/tigertail.html" data-tags="homes" data-live>
+ <img src="img/projects/tigertail/card.jpg" alt="Tigertail" loading="lazy">
+ <img class="live-fr" data-src="img/projects/tigertail/09.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/tigertail/grounds/g-01.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Tigertail <span class="status-tag status-tag--live">Under Construction</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj medium" href="work/233-house.html" data-tags="homes" data-live>
+ <img src="img/projects/233-house/card.jpg" alt="233" loading="lazy">
+ <img class="live-fr" data-src="img/projects/233-house/09.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/233-house/grounds/g-01.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">233 <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj regular" href="work/jefferson.html" data-tags="homes" data-live>
+ <img src="img/projects/jefferson/card.jpg" alt="Jefferson" loading="lazy">
+ <img class="live-fr" data-src="img/projects/jefferson/09.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/jefferson/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Jefferson <span class="status-tag">Design & Documented</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj large" href="work/285-house.html" data-tags="homes" data-live>
+ <img src="img/projects/285-house/card.jpg" alt="285" loading="lazy">
+ <img class="live-fr" data-src="img/projects/285-house/09.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/285-house/grounds/g-01.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">285 <span class="status-tag status-tag--live">Under Construction</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj medium" href="work/temple-house.html" data-tags="homes" data-live>
+ <img src="img/projects/temple-house/card.jpg" alt="Temple" loading="lazy">
+ <img class="live-fr" data-src="img/projects/temple-house/07.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/temple-house/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Temple <span class="status-tag status-tag--built">Built</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj regular" href="work/miranda.html" data-tags="homes" data-live>
+ <img src="img/projects/miranda/card.jpg" alt="Miranda" loading="lazy">
+ <img class="live-fr" data-src="img/projects/miranda/08.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/miranda/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Miranda <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj regular" href="work/72-house.html" data-tags="homes" data-live>
+ <img src="img/projects/72-house/card.jpg" alt="72" loading="lazy">
+ <img class="live-fr" data-src="img/projects/72-house/09.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/72-house/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">72 <span class="status-tag">Design & Documented</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj medium" href="work/tigertail-ct.html" data-tags="homes" data-live>
+ <img src="img/projects/tigertail-ct/card.jpg" alt="Tigertail Court" loading="lazy">
+ <img class="live-fr" data-src="img/projects/tigertail-ct/05.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/tigertail-ct/grounds/g-01.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Tigertail Court <span class="status-tag status-tag--live">Under Construction</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj large" href="work/pompano.html" data-tags="homes" data-live>
+ <img src="img/projects/pompano/card.jpg" alt="Pompano" loading="lazy">
+ <img class="live-fr" data-src="img/projects/pompano/09.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/pompano/grounds/g-01.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Pompano <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj medium" href="work/espanola-house.html" data-tags="homes" data-live>
+ <img src="img/projects/espanola-house/card.jpg" alt="Española" loading="lazy">
+ <img class="live-fr" data-src="img/projects/espanola-house/04.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/espanola-house/grounds/g-01.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Española <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj regular" href="work/hannaford.html" data-tags="homes" data-live>
+ <img src="img/projects/hannaford/card.jpg" alt="Hannaford" loading="lazy">
+ <img class="live-fr" data-src="img/projects/hannaford/06.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/hannaford/grounds/g-01.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Hannaford <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj large" href="work/adriana.html" data-tags="homes" data-live>
+ <img src="img/projects/adriana/card.jpg" alt="Adriana" loading="lazy">
+ <img class="live-fr" data-src="img/projects/adriana/07.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/adriana/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Adriana <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj medium" href="work/la-rampa.html" data-tags="homes" data-live>
+ <img src="img/projects/la-rampa/card.jpg" alt="La Rampa" loading="lazy">
+ <img class="live-fr" data-src="img/projects/la-rampa/06.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/la-rampa/grounds/g-01.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">La Rampa <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj regular" href="work/sans-souci.html" data-tags="homes" data-live>
+ <img src="img/projects/sans-souci/card.jpg" alt="Sans Souci" loading="lazy">
+ <img class="live-fr" data-src="img/projects/sans-souci/07.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/sans-souci/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Sans Souci <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj regular" href="work/nicolas-turbay.html" data-tags="homes" data-live>
+ <img src="img/projects/nicolas-turbay/card.jpg" alt="Nicolás Turbay" loading="lazy">
+ <img class="live-fr" data-src="img/projects/nicolas-turbay/07.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/nicolas-turbay/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Nicolás Turbay <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj medium" href="work/port-charlotte.html" data-tags="homes" data-live>
+ <img src="img/projects/port-charlotte/card.jpg" alt="Port Charlotte" loading="lazy">
+ <img class="live-fr" data-src="img/projects/port-charlotte/04.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/port-charlotte/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Port Charlotte <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj medium" href="work/235-house.html" data-tags="homes" data-live>
+ <img src="img/projects/235-house/card.jpg" alt="235" loading="lazy">
+ <img class="live-fr" data-src="img/projects/235-house/03.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/235-house/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">235 <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj regular" href="work/84-house.html" data-tags="homes" data-live>
+ <img src="img/projects/84-house/card.jpg" alt="84" loading="lazy">
+ <img class="live-fr" data-src="img/projects/84-house/03.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/84-house/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">84 <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <!-- Townhouses -->
+ <a class="proj large" href="work/town-houses.html" data-tags="townhouses" data-live>
+ <img src="img/projects/town-houses/card.jpg" alt="Town Houses" loading="lazy">
+ <img class="live-fr" data-src="img/projects/town-houses/06.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/town-houses/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Town Houses <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <!-- Apartments -->
+ <a class="proj medium" href="work/oracle-apartments.html" data-tags="apartments" data-live>
+ <img src="img/projects/oracle-apartments/card.jpg" alt="Oracle Apartments" loading="lazy">
+ <img class="live-fr" data-src="img/projects/oracle-apartments/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Oracle Apartments <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ </div>
+ </div>
+</section>
+
+<!-- ── HOSPITALITY (fully independent) ──────────────── -->
+<section class="section" id="hospitality">
+ <div class="wrap">
+ <div class="portfolio-head">
+ <div>
+ <div class="section-num">02 — Hospitality Experiences</div>
+ <h2 class="h2 serif">Rooms drawn for long meals.</h2>
+ </div>
+ <p class="lede" style="max-width:42ch">Hospitality experiences in Miami, New York and LATAM: El Cielo, Española Way, Nido de Agua and more. Interior weather held inside warm, layered shells, drawn and detailed in-house.</p>
+ </div>
+
+ <div class="proj-grid">
+ <a class="proj large" href="work/el-cielo-ny.html" data-live>
+ <img src="img/projects/el-cielo-ny/card.jpg" alt="El Cielo · New York" loading="lazy">
+ <img class="live-fr" data-src="img/projects/el-cielo-ny/09.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/el-cielo-ny/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">El Cielo · New York <span class="status-tag">Design & Documented</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj medium" href="work/the-river.html" data-live>
+ <img src="img/projects/the-river/card.jpg" alt="The River" loading="lazy">
+ <img class="live-fr" data-src="img/projects/the-river/09.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/the-river/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">The River <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj medium" href="work/el-cielo-medellin.html" data-live>
+ <img src="img/projects/el-cielo-medellin/card.jpg" alt="El Cielo · Medellín" loading="lazy">
+ <img class="live-fr" data-src="img/projects/el-cielo-medellin/06.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/el-cielo-medellin/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">El Cielo · Medellín <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj regular" href="work/el-cielo-omakase.html">
+ <img src="img/projects/el-cielo-omakase/card.jpg" alt="El Cielo · Omakase" loading="lazy">
+ <div class="proj__cap"><span class="name">El Cielo · Omakase <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj regular" href="work/la-victoria.html" data-live>
+ <img src="img/projects/la-victoria/card.jpg" alt="La Victoria" loading="lazy">
+ <img class="live-fr" data-src="img/projects/la-victoria/09.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/la-victoria/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">La Victoria <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj regular" href="work/aromas-del-peru.html" data-live>
+ <img src="img/projects/aromas-del-peru/card.jpg" alt="Aromas del Perú" loading="lazy">
+ <img class="live-fr" data-src="img/projects/aromas-del-peru/09.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/aromas-del-peru/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Aromas del Perú <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj medium" href="work/el-cielo-miami.html" data-live>
+ <img src="img/projects/el-cielo-miami/card.jpg" alt="El Cielo · Miami" loading="lazy">
+ <img class="live-fr" data-src="img/projects/el-cielo-miami/06.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/el-cielo-miami/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">El Cielo · Miami <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj large" href="work/bakery.html" data-live>
+ <img src="img/projects/bakery/card.jpg" alt="The Bakery" loading="lazy">
+ <img class="live-fr" data-src="img/projects/bakery/09.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/bakery/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">The Bakery <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj large" href="work/espanola-way.html" data-live>
+ <img src="img/projects/espanola-way/card.jpg" alt="Española Way" loading="lazy">
+ <img class="live-fr" data-src="img/projects/espanola-way/05.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/espanola-way/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Española Way <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj medium" href="work/nido-de-agua-restaurante.html" data-live>
+ <img src="img/projects/nido-de-agua-restaurante/card.jpg" alt="Nido de Agua · Restaurant" loading="lazy">
+ <img class="live-fr" data-src="img/projects/nido-de-agua-restaurante/05.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/nido-de-agua-restaurante/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Nido de Agua · Restaurant <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj medium" href="work/nido-de-agua-lobby.html" data-live>
+ <img src="img/projects/nido-de-agua-lobby/card.jpg" alt="Nido de Agua · Lobby" loading="lazy">
+ <img class="live-fr" data-src="img/projects/nido-de-agua-lobby/04.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/nido-de-agua-lobby/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Nido de Agua · Lobby <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj large" href="work/the-spa.html" data-live>
+ <img src="img/projects/the-spa/card.jpg" alt="Wellness Retreat" loading="lazy">
+ <img class="live-fr" data-src="img/projects/the-spa/04.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/the-spa/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Wellness Retreat <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ </div>
+ </div>
+</section>
+
+<!-- ── COMMERCIAL ───────────────────────────────────── -->
+<section class="section section--cream" id="commercial">
+ <div class="wrap">
+ <div class="portfolio-head">
+ <div>
+ <div class="section-num">03 — Commercial</div>
+ <h2 class="h2 serif">Workplaces designed like landscape.</h2>
+ </div>
+ <p class="lede" style="max-width:42ch">Offices, workplaces and corporate interiors: environments that trade cubicles for warmth, daylight and a soft architectural topography. Design-driven space for the way teams actually work.</p>
+ </div>
+
+ <div class="proj-grid">
+ <a class="proj large" href="work/workplace-pavilion.html" data-live>
+ <img src="img/projects/workplace-pavilion/card.jpg" alt="Workplace Pavilion" loading="lazy">
+ <img class="live-fr" data-src="img/projects/workplace-pavilion/05.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/workplace-pavilion/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Workplace Pavilion <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ </div>
+ </div>
+</section>
+
+<section class="closing" style="padding:var(--x10) var(--rail);text-align:center">
+ <div class="section-num center" style="justify-content:center;margin-bottom:var(--x4)">A studio, not a vendor</div>
+ <h2 class="display">Have a project?</h2>
+ <p class="lede center" style="margin:var(--x4) auto 0;max-width:48ch">A first conversation is private and free. Bring a site, a brief, or just a question.</p>
+ <div class="ctas" style="display:flex;gap:1.4rem;justify-content:center;flex-wrap:wrap;margin-top:var(--x5)">
+ <a class="btn btn--solid" href="contact.html">Start the Process <span class="arr">→</span></a>
+ </div>
+</section>
+
+<footer class="foot">
+ <div class="wrap">
+ <div class="foot__top">
+ <div class="foot__brand">
+ <img src="img/brand/wordmark.png" alt="Astro Station" style="height:36px;width:auto;display:block;margin-bottom:.6rem">
+ <div class="desc">Architecture · Interiors · Millwork · Construction</div>
+ <p>Bespoke homes designed and delivered as one.</p>
+ </div>
+ <div class="foot__col">
+ <h6>Studio</h6>
+ <a href="about.html">About</a>
+ <a href="journal.html">Journal</a>
+ <a href="mailto:careers@astrostation.com">Careers</a>
+ </div>
+ <div class="foot__col">
+ <h6>Services</h6>
+ <a href="services/architecture.html">Architecture</a>
+ <a href="services/interiors.html">Interior Design</a>
+ <a href="services/millwork.html">Millwork · Dragon</a>
+ <a href="services/built.html">Construction · Astro Cósmico</a>
+ <a href="services/landscape.html">Landscape &amp; Pool</a>
+ <a href="services/exterior.html">Exterior Re-facing</a>
+ <a href="services/rendering.html">Visualization</a>
+ </div>
+ <div class="foot__col">
+ <h6>Work</h6>
+ <a href="work.html#featured">Featured</a>
+ <a href="work.html#residential">Residential</a>
+ <a href="work.html#hospitality">Hospitality</a>
+ <a href="work.html#commercial">Commercial</a>
+ </div>
+ <div class="foot__col">
+ <h6>Contact</h6>
+ <a href="tel:+17869091565">+1 786 909 1565</a>
+ <a href="mailto:info@astrostation.com">info@astrostation.com</a>
+ <a href="https://www.instagram.com/astrostation.co/" target="_blank" rel="noopener">Instagram</a>
+ <a href="https://linkedin.com/company/astrostation" target="_blank" rel="noopener">LinkedIn</a>
+ </div>
+ </div>
+ <div class="foot__bottom">
+ <span>© Astro Station 2026 · All rights reserved</span>
+ <nav class="foot__legal" aria-label="Legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Disclaimer</a><a href="#" data-cookie-prefs>Cookie Preferences</a></nav>
+ <span>Miami · Los Angeles</span>
+ </div>
+ </div>
+</footer>
+<script src="assets/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>When a Render Misleads — Astro Station Journal</title>
+<meta name="description" content="On the ethics of marketing imagery for projects that haven’t yet been built — and how Astro keeps the bar honest." />
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  .essay-hero{padding:calc(var(--x9) + 70px) 0 var(--x6);background:var(--paper)}
+  .essay-hero .wrap-narrow{max-width:840px}
+  .essay-kicker{font-family:var(--mono);font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-mute);display:flex;align-items:center;gap:.85rem;margin-bottom:var(--x4)}
+  .essay-kicker::before{content:"";width:32px;height:1px;background:var(--ink-mute)}
+  .essay-title{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,6vw,5.2rem);line-height:.98;letter-spacing:-.018em;text-transform:uppercase;margin-bottom:var(--x4)}
+  .essay-meta{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
+
+  .essay{max-width:840px;margin:0 auto;padding:0 var(--rail) var(--x8)}
+  .essay p{font-family:var(--sans);font-weight:300;font-size:1.13rem;line-height:1.8;color:var(--ink-mid);margin-bottom:1.6rem}
+  .essay p strong{font-weight:600;color:var(--ink)}
+  .essay h2{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,2.6vw,2.1rem);text-transform:uppercase;letter-spacing:-.008em;margin:var(--x6) 0 var(--x3)}
+  .essay .pull{
+    font-family:var(--display);font-weight:300;font-style:italic;
+    font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.25;letter-spacing:-.01em;color:var(--ink);
+    border-left:2px solid var(--ink);padding-left:var(--x4);margin:var(--x6) 0;
+  }
+  .essay-cta{border-top:1px solid var(--ink-rule);margin-top:var(--x6);padding-top:var(--x5)}
+</style>
+</head>
+<body>
+<nav class="nav">
+ <a class="nav__brand" href="../index.html">
+ <img src="../img/brand/wordmark.png" alt="Astro Station" class="nav__logo">
+ </a>
+ <div class="nav__menu">
+ <a href="../about.html">About</a>
+ <a href="../work.html">Work</a>
+ <div class="has-sub">
+ <a href="../services.html">Services <span class="caret">▾</span></a>
+ <div class="nav__sub">
+ <a href="../services/architecture.html"><span>01 — Architecture</span><span class="num">01</span></a>
+ <a href="../services/interiors.html"><span>02 — Interior Design</span><span class="num">02</span></a>
+ <a href="../services/millwork.html"><span>03 — Millwork · Dragon</span><span class="num">03</span></a>
+ <a href="../services/built.html" class="is-built"><span>04 — Construction <img class="brand-star" src="../img/brand/star.png" alt="Astro"> Cósmico</span><span class="num">04</span></a>
+ <a href="../services/landscape.html"><span>05 — Landscape &amp; Pool</span><span class="num">05</span></a>
+ <a href="../services/exterior.html"><span>06 — Exterior Re-facing</span><span class="num">06</span></a>
+ <a href="../services/rendering.html"><span>07 — Visualization</span><span class="num">07</span></a>
+ </div>
+ </div>
+ <a href="../journal.html" class="active">Journal</a>
+ <a href="../contact.html">Contact</a>
+ </div>
+ <div class="nav__util">
+ <span class="nav__clock" id="clock">Miami · Los Angeles</span>
+ <a class="btn" href="../contact.html">Start the Process <span class="arr">→</span></a>
+ <button class="nav__hamburger" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+ </div>
+</nav>
+
+<header class="essay-hero">
+ <div class="wrap-narrow" style="max-width:840px">
+ <div class="essay-kicker">Journal · 07, Visualization</div>
+ <h1 class="essay-title">When a Render Misleads.</h1>
+ <div class="essay-meta">Astro Station · June 2026 · 6-min read</div>
+ </div>
+</header>
+
+<div class="wrap-narrow" style="max-width:840px;padding-bottom:var(--x5)">
+ <p class="lede" style="font-size:clamp(1.25rem,1.9vw,1.6rem)">On the ethics of marketing imagery for projects that haven’t yet been built, and how Astro keeps the bar honest.</p>
+</div>
+
+<article class="essay">
+ <p><strong>Architectural renderings have never been more beautiful.</strong></p>
+
+ <p>Today, a rendering can look almost indistinguishable from a photograph. Materials are flawless. Sunsets are perfectly timed. Landscaping is mature. Interiors are fully furnished. Every reflection, shadow, and detail feels real.</p>
+
+ <p>And that is both the power—and the danger—of visualization.</p>
+
+ <p>Because a rendering is not a photograph.</p>
+
+ <p>It is a prediction.<br>A representation of intent.<br>A glimpse of what a project could become if designed, approved, engineered, and built exactly as envisioned.</p>
+
+ <p>The problem begins when that distinction disappears.</p>
+
+ <p>Too often, renderings are used not as design tools, but as sales tools. Images are enhanced beyond what is realistic. Views are carefully framed to avoid difficult conditions. Materials are shown at a level of perfection that may never exist in reality. Budgets, site constraints, code requirements, and construction realities quietly disappear from the picture.</p>
+
+ <p>The result is a beautiful image.<br>But not always an honest one.</p>
+
+ <h2>Visualization carries responsibility</h2>
+
+ <p>At Astro Station, we believe visualization carries responsibility.</p>
+
+ <p>A rendering should inspire. It should communicate. It should help clients understand a vision. But it should never create expectations that cannot reasonably be achieved.</p>
+
+ <p>The goal of a rendering is not to sell a fantasy.<br>The goal is to communicate a future reality.</p>
+
+ <p>That distinction shapes how we approach every visualization we produce.</p>
+
+ <p>When we develop renderings, we begin with the same principles that guide our architecture: accuracy, clarity, and intention.</p>
+
+ <p>We study real dimensions.<br>Real materials.<br>Real lighting conditions.<br>Real site constraints.<br>Real construction methods.</p>
+
+ <p>The rendering is not created independently from the design process—it grows from it.</p>
+
+ <p>This means our images may occasionally be less dramatic than what marketing software can produce.</p>
+
+ <p>The trees may be younger.<br>The landscaping may be more realistic.<br>The lighting may be less theatrical.<br>The furniture may reflect actual budgets rather than aspirational fantasy.</p>
+
+ <p>But the trade-off is trust.</p>
+
+ <p>Because when a project is eventually built, the client should recognize it. The finished architecture should feel familiar. The render should become reality—not a distant relative of it.</p>
+
+ <h2>Decisions are built on these images</h2>
+
+ <p>This is particularly important in residential and hospitality work, where renderings often become the foundation of major financial decisions.</p>
+
+ <p>Clients approve budgets based on them.<br>Investors evaluate opportunities based on them.<br>Municipalities review proposals based on them.<br>Marketing campaigns are built around them.</p>
+
+ <p>A misleading rendering can have consequences long before construction begins.</p>
+
+ <p>That is why we view visualization as both a creative exercise and an ethical one.</p>
+
+ <p>The most valuable rendering is not necessarily the most dramatic image. It is the image that accurately captures the spirit of the project while remaining grounded in reality.</p>
+
+ <p>In many ways, rendering is similar to architectural photography. A great photographer understands how to frame a building beautifully without misrepresenting it. The same standard should apply to visualization.</p>
+
+ <p>Show the project at its best.<br>But show it truthfully.</p>
+
+ <p>That does not mean renderings should be boring.<br>Far from it.</p>
+
+ <p>Visualization remains one of the most powerful storytelling tools available to architects and designers. It helps clients see possibilities that drawings alone cannot communicate. It creates excitement. It builds confidence. It helps transform abstract ideas into tangible experiences.</p>
+
+ <p>But storytelling and honesty should never be opposites.</p>
+
+ <p>The best renderings achieve both.</p>
+
+ <p>They inspire without exaggerating.<br>They elevate without misleading.<br>They communicate vision without abandoning reality.</p>
+
+ <h2>The question ahead</h2>
+
+ <p>As rendering technology continues to evolve, the industry will face an increasingly important question:</p>
+
+ <p>Just because we can make something look real, does that mean we should?</p>
+
+ <p>At Astro Station, our answer is simple.</p>
+
+ <p>The purpose of visualization is not to create illusions.<br>It is to create understanding.</p>
+
+ <p>To help clients see what is possible.<br>To align expectations with design intent.<br>To build confidence before construction begins.<br>And ultimately, to ensure that what gets built lives up to the promise of the image.</p>
+
+ <div class="pull">The best compliment a rendering can receive is not that it looked real. It is that the finished project looked exactly like it.</div>
+
+ <p>That is the standard we hold ourselves to.<br>And that is how we keep the bar honest.</p>
+
+ <div class="essay-cta">
+ <p style="margin-bottom:1rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)">Next in the Journal</p>
+ <p style="margin-bottom:1.6rem"><a class="arr-link" href="open-book-budgeting.html" style="display:inline-flex">The Case for Open-Book Budgeting →</a></p>
+ <div style="display:flex;gap:1.4rem;flex-wrap:wrap">
+ <a class="btn btn--solid" href="../contact.html">Start the process <span class="arr">→</span></a>
+ <a class="btn" href="../journal.html">All essays <span class="arr">→</span></a>
+ </div>
+ </div>
+</article>
+
+<footer class="foot">
+ <div class="wrap">
+ <div class="foot__top">
+ <div class="foot__brand">
+ <img src="../img/brand/wordmark.png" alt="Astro Station" style="height:36px;width:auto;display:block;margin-bottom:.6rem">
+ <div class="desc">Architecture · Interiors · Millwork · Construction</div>
+ <p>Bespoke homes designed and delivered as one.</p>
+ </div>
+ <div class="foot__col">
+ <h6>Studio</h6>
+ <a href="../about.html">About</a>
+ <a href="../journal.html">Journal</a>
+ <a href="mailto:careers@astrostation.com">Careers</a>
+ </div>
+ <div class="foot__col">
+ <h6>Services</h6>
+ <a href="../services/architecture.html">Architecture</a>
+ <a href="../services/interiors.html">Interior Design</a>
+ <a href="../services/millwork.html">Millwork · Dragon</a>
+ <a href="../services/built.html">Construction · Astro Cósmico</a>
+ <a href="../services/landscape.html">Landscape &amp; Pool</a>
+ <a href="../services/exterior.html">Exterior Re-facing</a>
+ <a href="../services/rendering.html">Visualization</a>
+ </div>
+ <div class="foot__col">
+ <h6>Work</h6>
+ <a href="../work.html#featured">Featured</a>
+ <a href="../work.html#residential">Residential</a>
+ <a href="../work.html#hospitality">Hospitality</a>
+ <a href="../work.html#commercial">Commercial</a>
+ </div>
+ <div class="foot__col">
+ <h6>Contact</h6>
+ <a href="tel:+17869091565">+1 786 909 1565</a>
+ <a href="mailto:info@astrostation.com">info@astrostation.com</a>
+ <a href="https://www.instagram.com/astrostation.co/" target="_blank" rel="noopener">Instagram</a>
+ <a href="https://linkedin.com/company/astrostation" target="_blank" rel="noopener">LinkedIn</a>
+ </div>
+ </div>
+ <div class="foot__bottom">
+ <span>© Astro Station 2026 · All rights reserved</span>
+ <nav class="foot__legal" aria-label="Legal"><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms &amp; Disclaimer</a><a href="#" data-cookie-prefs>Cookie Preferences</a></nav>
+ <span>Miami · Los Angeles</span>
+ </div>
+ </div>
+</footer>
+<script src="../assets/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>A Pool Is a Room — Astro Station Journal</title>
+<meta name="description" content="On treating outdoor space with the same rigor as the rooms above grade — and why most landscape design fails the test." />
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+  .essay-hero{padding:calc(var(--x9) + 70px) 0 var(--x6);background:var(--paper)}
+  .essay-hero .wrap-narrow{max-width:840px}
+  .essay-kicker{font-family:var(--mono);font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-mute);display:flex;align-items:center;gap:.85rem;margin-bottom:var(--x4)}
+  .essay-kicker::before{content:"";width:32px;height:1px;background:var(--ink-mute)}
+  .essay-title{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,6vw,5.2rem);line-height:.98;letter-spacing:-.018em;text-transform:uppercase;margin-bottom:var(--x4)}
+  .essay-meta{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
+
+  .essay{max-width:840px;margin:0 auto;padding:0 var(--rail) var(--x8)}
+  .essay p{font-family:var(--sans);font-weight:300;font-size:1.13rem;line-height:1.8;color:var(--ink-mid);margin-bottom:1.6rem}
+  .essay p strong{font-weight:600;color:var(--ink)}
+  .essay h2{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,2.6vw,2.1rem);text-transform:uppercase;letter-spacing:-.008em;margin:var(--x6) 0 var(--x3)}
+  .essay .pull{
+    font-family:var(--display);font-weight:300;font-style:italic;
+    font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.25;letter-spacing:-.01em;color:var(--ink);
+    border-left:2px solid var(--ink);padding-left:var(--x4);margin:var(--x6) 0;
+  }
+  .essay-cta{border-top:1px solid var(--ink-rule);margin-top:var(--x6);padding-top:var(--x5)}
+</style>
+</head>
+<body>
+<nav class="nav">
+ <a class="nav__brand" href="../index.html">
+ <img src="../img/brand/wordmark.png" alt="Astro Station" class="nav__logo">
+ </a>
+ <div class="nav__menu">
+ <a href="../about.html">About</a>
+ <a href="../work.html">Work</a>
+ <div class="has-sub">
+ <a href="../services.html">Services <span class="caret">▾</span></a>
+ <div class="nav__sub">
+ <a href="../services/architecture.html"><span>01 — Architecture</span><span class="num">01</span></a>
+ <a href="../services/interiors.html"><span>02 — Interior Design</span><span class="num">02</span></a>
+ <a href="../services/millwork.html"><span>03 — Millwork · Dragon</span><span class="num">03</span></a>
+ <a href="../services/built.html" class="is-built"><span>04 — Construction <img class="brand-star" src="../img/brand/star.png" alt="Astro"> Cósmico</span><span class="num">04</span></a>
+ <a href="../services/landscape.html"><span>05 — Landscape &amp; Pool</span><span class="num">05</span></a>
+ <a href="../services/exterior.html"><span>06 — Exterior Re-facing</span><span class="num">06</span></a>
+ <a href="../services/rendering.html"><span>07 — Visualization</span><span class="num">07</span></a>
+ </div>
+ </div>
+ <a href="../journal.html" class="active">Journal</a>
+ <a href="../contact.html">Contact</a>
+ </div>
+ <div class="nav__util">
+ <span class="nav__clock" id="clock">Miami · Los Angeles</span>
+ <a class="btn" href="../contact.html">Start the Process <span class="arr">→</span></a>
+ <button class="nav__hamburger" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+ </div>
+</nav>
+
+<header class="essay-hero">
+ <div class="wrap-narrow" style="max-width:840px">
+ <div class="essay-kicker">Journal · 04, Landscape</div>
+ <h1 class="essay-title">A Pool Is a Room.</h1>
+ <div class="essay-meta">Astro Station · June 2026 · 5-min read</div>
+ </div>
+</header>
+
+<div class="wrap-narrow" style="max-width:840px;padding-bottom:var(--x5)">
+ <p class="lede" style="font-size:clamp(1.25rem,1.9vw,1.6rem)">On treating outdoor space with the same rigor as the rooms above grade, and why most landscape design fails the test.</p>
+</div>
+
+<article class="essay">
+ <p><strong>There is a contradiction in modern residential design.</strong></p>
+
+ <p>Homeowners will spend months refining floor plans, ceiling details, millwork, and furniture layouts. Every interior room is carefully studied. Every decision is intentional.</p>
+
+ <p>Then the conversation moves outside.</p>
+
+ <p>A pool is placed. A patio is drawn. A few trees are added. Furniture is selected at the end. What should be one of the most important parts of the property often becomes an afterthought.</p>
+
+ <p>At Astro Station, we believe a pool is not simply a landscape feature.</p>
+
+ <p>A pool is a room.</p>
+
+ <p>And when viewed through that lens, the entire design process changes.</p>
+
+ <h2>The questions we ask indoors</h2>
+
+ <p>No architect would design a living room without considering circulation, scale, light, furniture placement, views, and how people will occupy the space. Yet these considerations are frequently overlooked in landscape design.</p>
+
+ <p>The truth is that people spend very little time swimming.</p>
+
+ <p>Most of the experience happens around the pool.</p>
+
+ <p>They gather. They dine. They relax. They entertain. They watch children play. They enjoy sunsets with family and friends.</p>
+
+ <p>The water becomes the center of a social space.<br>Just like a room.</p>
+
+ <p>The most successful outdoor environments begin with the same questions we ask indoors:</p>
+
+ <p>How will people use the space?<br>Where will they gather?<br>How will they move through it?<br>Where will shade be needed?<br>What views should be framed?<br>How does the outdoor experience connect back to the architecture?</p>
+
+ <p>These are architectural questions, not landscaping questions.<br>And that distinction matters.</p>
+
+ <h2>Features compete. Rooms work together.</h2>
+
+ <p>Many outdoor spaces fail because they are designed as a collection of features rather than a sequence of experiences. The pool becomes the feature. The fire pit becomes the feature. The outdoor kitchen becomes the feature.</p>
+
+ <p>Everything competes for attention.<br>Nothing works together.</p>
+
+ <p>Great landscape design is not about adding more elements. It is about creating relationships between architecture, nature, light, materials, and people.</p>
+
+ <p>The best projects feel effortless. The architecture flows into the landscape. The landscape flows back into the architecture. Boundaries begin to disappear.</p>
+
+ <p>This is especially important in climates like Southern California, South Florida, and throughout LATAM, where outdoor living is not secondary to the home—it is part of the home.</p>
+
+ <p>A terrace becomes a dining room.<br>A covered lounge becomes a living room.<br>A garden becomes a place of retreat.<br>A pool becomes the social heart of the property.</p>
+
+ <p>When designed correctly, outdoor spaces are not decorative additions. They are essential rooms without walls.</p>
+
+ <p>That is why landscape architecture deserves the same rigor, discipline, and intentionality as the architecture itself.</p>
+
+ <div class="pull">People do not remember individual features. They remember how a place made them feel.</div>
+
+ <p>And the most memorable properties are those where every room—inside and out—works together as one complete experience.</p>
+
+ <p>A pool is not a feature.<br>A pool is a room.</p>
+
+ <div class="essay-cta">
+ <p style="margin-bottom:1rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)">Next in the Journal</p>
+ <p style="margin-bottom:1.6rem"><a class="arr-link" href="re-facing-without-regret.html" style="display:inline-flex">Re-Facing Without Regret →</a></p>
+ <div style="display:flex;gap:1.4rem;flex-wrap:wrap">
+ <a class="btn btn--solid" href="../contact.html">Start the process <span class="arr">→</span></a>
+ <a class="btn" href="../journal.html">All essays <span class="arr">→</span></a>
+ </div>
+ </div>
+</article>
+
+<footer class="foot">
+ <div class="wrap">
+ <div class="foot__top">
+ <div class="foot__brand">
+ <img src="../img/brand/wordmark.png" alt="Astro Station" style="height:36px;width:auto;display:block;margin-bottom:.6rem">
+ <div class="desc">Architecture · Interiors · Millwork · Construction</div>
+ <p>Bespoke homes designed and delivered as one.</p>
+ </div>
+ <div class="foot__col">
+ <h6>Studio</h6>
+ <a href="../about.html">About</a>
+ <a href="../journal.html">Journal</a>
+ <a href="mailto:careers@astrostation.com">Careers</a>
+ </div>
+ <div class="foot__col">
+ <h6>Services</h6>
+ <a href="../services/architecture.html">Architecture</a>
+ <a href="../services/interiors.html">Interior Design</a>
+ <a href="../services/millwork.html">Millwork · Dragon</a>
+ <a href="../services/built.html">Construction · Astro Cósmico</a>
+ <a href="../services/landscape.html">Landscape &amp; Pool</a>
+ <a href="../services/exterior.html">Exterior Re-facing</a>
+ <a href="../services/rendering.html">Visualization</a>
+ </div>
+ <div class="foot__col">
+ <h6>Work</h6>
+ <a href="../work.html#featured">Featured</a>
+ <a href="../work.html#residential">Residential</a>
+ <a href="../work.html#hospitality">Hospitality</a>
+ <a href="../work.html#commercial">Commercial</a>
+ </div>
+ <div class="foot__col">
+ <h6>Contact</h6>
+ <a href="tel:+17869091565">+1 786 909 1565</a>
+ <a href="mailto:info@astrostation.com">info@astrostation.com</a>
+ <a href="https://www.instagram.com/astrostation.co/" target="_blank" rel="noopener">Instagram</a>
+ <a href="https://linkedin.com/company/astrostation" target="_blank" rel="noopener">LinkedIn</a>
+ </div>
+ </div>
+ <div class="foot__bottom">
+ <span>© Astro Station 2026 · All rights reserved</span>
+ <nav class="foot__legal" aria-label="Legal"><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms &amp; Disclaimer</a><a href="#" data-cookie-prefs>Cookie Preferences</a></nav>
+ <span>Miami · Los Angeles</span>
+ </div>
+ </div>
+</footer>
+<script src="../assets/main.js"></script>
+</body>
+</html>

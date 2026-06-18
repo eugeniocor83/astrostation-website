@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Astro Station — Architecture, Interiors &amp; Construction · Miami + Los Angeles</title>
+<meta name="description" content="Astro Station is a design-build studio in Miami and Los Angeles. Bespoke homes — drawn, detailed, and built under one roof by one team, under one contract." />
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  /* ── 01 · Hero — full-bleed project visual, live text ── */
+  .home-hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#0b0b0b}
+  /* cinematic crossfade + slow Ken-Burns sequence */
+  .home-hero__seq{position:absolute;inset:0;z-index:0}
+  .home-hero__seq .hs{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%;
+    opacity:0;transition:opacity 1.8s ease;will-change:opacity,transform;transform:scale(1.06);
+  }
+  .home-hero__seq .hs.is-active{opacity:1;animation:heroKB 8.5s ease-out both}
+  @keyframes heroKB{from{transform:scale(1.005)}to{transform:scale(1.075)}}
+  .home-hero__seq .hs.is-active.kb-alt{animation:heroKBalt 8.5s ease-out both}
+  @keyframes heroKBalt{from{transform:scale(1.075) translateX(0)}to{transform:scale(1.01) translateX(-1.2%)}}
+  .home-hero__veil{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.28) 0%,rgba(0,0,0,.04) 30%,rgba(0,0,0,.34) 64%,rgba(0,0,0,.72) 100%)}
+  /* brand ethos eyebrow + frame caption */
+  .home-hero__ethos{font-family:var(--mono);font-weight:500;font-size:clamp(.84rem,1.7vw,1.18rem);letter-spacing:.34em;text-transform:uppercase;color:#fff;margin-bottom:1.4rem;display:flex;flex-wrap:wrap;align-items:center;gap:.4rem 1rem;text-shadow:0 1px 18px rgba(0,0,0,.45)}
+  .home-hero__ethos::before{content:"";width:42px;height:1px;background:rgba(255,255,255,.85)}
+  @media(max-width:720px){
+    .home-hero__ethos{font-size:min(2.7vw,.66rem);letter-spacing:.08em;gap:.32rem;margin-bottom:1.1rem;flex-wrap:nowrap;white-space:nowrap}
+    .home-hero__ethos::before{display:none}
+    .home-hero__ethos span{margin:0 .05em;opacity:.85}
+  }
+  .home-hero__frame{
+    position:absolute;right:var(--rail);bottom:var(--x4);z-index:2;
+    display:flex;align-items:center;gap:.6rem;
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.82);
+  }
+  .home-hero__frame .dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.9);animation:pulse 2.4s infinite}
+  #heroCap{transition:opacity .5s ease}
+  @media(max-width:720px){.home-hero__frame{display:none}}
+  @media(prefers-reduced-motion:reduce){
+    .home-hero__seq .hs.is-active{animation:none;transform:none}
+    .home-hero__seq .hs{transition:opacity .4s ease}
+  }
+  .home-hero__inner{
+    position:relative;z-index:2;width:100%;max-width:var(--max);
+    margin:0 auto;padding:0 var(--rail) var(--x6);color:#fff;
+  }
+  .home-hero__ethos span{opacity:.82;margin:0 .14em;font-weight:400;color:#fff}
+  .home-hero__head{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(2.5rem,5.4vw,5.2rem);line-height:.98;letter-spacing:-.022em;
+    text-transform:uppercase;color:#fff;max-width:18ch;margin-bottom:var(--x4);
+  }
+  .home-hero__head-sub{
+    display:block;font-weight:400;font-size:.5em;line-height:1.05;
+    letter-spacing:-.005em;opacity:.92;margin-top:.34em;max-width:24ch;
+  }
+  .home-hero__lines{display:flex;flex-direction:column;gap:.55rem;margin-bottom:var(--x1)}
+  .home-hero__line{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.9)}
+  .home-hero__line i{font-style:normal;opacity:.5;margin:0 .4em}
+  .home-hero__line--mute{color:rgba(255,255,255,.66)}
+  @media(max-width:720px){
+    .home-hero__head{font-size:clamp(2.1rem,8.4vw,2.9rem);max-width:15ch}
+    .home-hero__head-sub{font-size:.56em;margin-top:.4em;max-width:22ch}
+    .home-hero__lines{gap:.4rem}
+    .home-hero__line{font-size:.56rem;letter-spacing:.1em}
+    .home-hero__line i{margin:0 .3em}
+  }
+  .home-hero__ctas{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:var(--x4)}
+  .btn--hero{border:1px solid rgba(255,255,255,.85);color:#fff}
+  .btn--hero:hover{background:#fff;color:var(--ink)}
+  .btn--hero-solid{background:#fff;color:var(--ink);border:1px solid #fff}
+  .btn--hero-solid:hover{background:rgba(255,255,255,.88)}
+
+  /* ── 04 · Proof — status tag ── */
+  .status-tag{
+    display:inline-block;padding:.22rem .55rem;margin-left:.8rem;
+    border:1px solid var(--ink-line);
+    font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mid);
+    vertical-align:middle;white-space:nowrap;
+  }
+  .status-tag--live{border-color:var(--ink);color:var(--ink);font-weight:500}
+
+  /* ── 06 · Promises rows ── */
+  .promise{padding:var(--x4) 0;border-top:1px solid rgba(255,255,255,.16)}
+  .promise:last-child{border-bottom:1px solid rgba(255,255,255,.16)}
+  .promise__ttl{font-family:var(--display);font-weight:700;font-size:1.15rem;letter-spacing:.04em;text-transform:uppercase;color:#fff;margin-bottom:.6rem}
+  .promise__txt{font-family:var(--sans);font-weight:300;font-size:1rem;line-height:1.65;color:rgba(255,255,255,.78);max-width:62ch}
+
+  /* ── 07 · Deliverables teaser strip ── */
+  .teaser-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--x3);margin-top:var(--x5)}
+  .teaser-strip a{display:block;border:1px solid var(--ink-rule);background:#fff}
+  .teaser-strip img{width:100%;display:block;aspect-ratio:8/7;object-fit:cover;object-position:top center}
+  @media(max-width:720px){.teaser-strip{grid-template-columns:repeat(3,1fr);gap:var(--x2)}}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav class="nav">
+ <a class="nav__brand" href="index.html">
+ <img src="img/brand/wordmark.png" alt="Astro Station" class="nav__logo">
+ </a>
+ <div class="nav__menu">
+ <a href="about.html">About</a>
+ <a href="work.html">Work</a>
+ <div class="has-sub">
+ <a href="services.html">Services <span class="caret">▾</span></a>
+ <div class="nav__sub">
+ <a href="services/architecture.html"><span>01 — Architecture</span><span class="num">01</span></a>
+ <a href="services/interiors.html"><span>02 — Interior Design</span><span class="num">02</span></a>
+ <a href="services/millwork.html"><span>03 — Millwork · Dragon</span><span class="num">03</span></a>
+ <a href="services/built.html" class="is-built"><span>04 — Construction <img class="brand-star" src="img/brand/star.png" alt="Astro"> Cósmico</span><span class="num">04</span></a>
+ <a href="services/landscape.html"><span>05 — Landscape &amp; Pool</span><span class="num">05</span></a>
+ <a href="services/exterior.html"><span>06 — Exterior Re-facing</span><span class="num">06</span></a>
+ <a href="services/rendering.html"><span>07 — Visualization</span><span class="num">07</span></a>
+ </div>
+ </div>
+ <a href="journal.html">Journal</a>
+ <a href="contact.html">Contact</a>
+ </div>
+ <div class="nav__util">
+ <span class="nav__clock" id="clock">Miami · Los Angeles</span>
+ <a class="btn" href="contact.html">Start the Process <span class="arr">→</span></a>
+ <button class="nav__hamburger" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+ </div>
+</nav>
+
+<!-- ════════════════════════════════════════════════════════════
+     01 — HERO · full-bleed project visual, live text
+═══════════════════════════════════════════════════════════════ -->
+<header class="home-hero">
+ <div class="home-hero__seq" id="heroSeq" aria-hidden="true">
+ <img class="hs is-active" src="img/hero/hero-00a.jpg" alt="" fetchpriority="high" data-cap="Astro Station">
+ <img class="hs" data-src="img/hero/hero-00b.jpg" alt="" data-cap="Buddha">
+ <img class="hs" data-src="img/hero/hero-01.jpg" alt="" data-cap="Tigertail">
+ <img class="hs" data-src="img/hero/hero-02.jpg" alt="" data-cap="233">
+ <img class="hs" data-src="img/hero/hero-03.jpg" alt="" data-cap="Tigertail">
+ <img class="hs" data-src="img/hero/hero-04.jpg" alt="" data-cap="Jefferson">
+ <img class="hs" data-src="img/hero/hero-05.jpg" alt="" data-cap="Tigertail Court">
+ <img class="hs" data-src="img/hero/hero-06.jpg" alt="" data-cap="72">
+ </div>
+ <div class="home-hero__veil" aria-hidden="true"></div>
+ <div class="home-hero__inner">
+ <div class="home-hero__ethos">Outside the Box <span>·</span> Futurist <span>·</span> Liquid <span>·</span> Melted</div>
+ <p class="home-hero__head">Bespoke homes.<span class="home-hero__head-sub">Drawn, detailed &amp; built under one roof.</span></p>
+ <div class="home-hero__lines">
+ <span class="home-hero__line">Architecture <i>·</i> Interiors <i>·</i> Millwork <i>·</i> Construction</span>
+ <span class="home-hero__line home-hero__line--mute">Miami <i>·</i> Los Angeles</span>
+ </div>
+ <div class="home-hero__ctas">
+ <a class="btn btn--hero-solid" href="work.html">See the work <span class="arr">→</span></a>
+ <a class="btn btn--hero" href="contact.html">Start the process <span class="arr">→</span></a>
+ </div>
+ </div>
+ <div class="home-hero__frame"><span class="dot"></span><span id="heroCap">Astro Station</span></div>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════
+     02 — DEFINITION
+═══════════════════════════════════════════════════════════════ -->
+<section class="section" id="definition">
+ <div class="wrap">
+ <div class="col-2">
+ <div>
+ <div class="section-num">01 — The Studio</div>
+ <h2 class="h2 serif">One continuous practice.</h2>
+ </div>
+ <div>
+ <p class="body" style="font-size:1.08rem">Astro Station is a studio of architects, designers, engineers and builders working as one. The architect who draws your home sits at the same table as the contractor who builds it, from first sketch to keys.</p>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     03 — PRACTICE
+═══════════════════════════════════════════════════════════════ -->
+<section class="section section--cream" id="practice">
+ <div class="wrap">
+ <div class="col-2">
+ <div>
+ <div class="section-num">02 — The Model</div>
+ <h2 class="h2 serif">The handoff is where homes go wrong. So we removed it.</h2>
+ </div>
+ <div>
+ <p class="body" style="font-size:1.08rem">For decades, residential work has been split across trades: the architect draws, the designer specifies, the contractor improvises. Detail is lost at every handoff.</p>
+ <p class="body" style="font-size:1.08rem;margin-top:1.2rem">We rebuilt the pipeline as a single practice: <strong style="font-weight:600;color:var(--ink)">one project manager, one set of standards, one contract, one finished home.</strong></p>
+ </div>
+ </div>
+ <div class="statrow">
+ <div class="statrow__item"><span class="statrow__num">07</span><span class="statrow__lbl">Service<br>lines</span></div>
+ <div class="statrow__item"><span class="statrow__num">38</span><span class="statrow__lbl">Projects<br>in archive</span></div>
+ <div class="statrow__item"><span class="statrow__num">15<sup>+</sup></span><span class="statrow__lbl">In-house<br>professionals</span></div>
+ <div class="statrow__item"><span class="statrow__num">01</span><span class="statrow__lbl">Contract,<br>one team</span></div>
+ </div>
+ </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     04 — PROOF · featured work, pulled up the page
+═══════════════════════════════════════════════════════════════ -->
+<section class="section" id="proof">
+ <div class="wrap">
+ <div class="portfolio-head">
+ <div>
+ <div class="section-num">03 — Proof</div>
+ <h2 class="h2 serif">The work.</h2>
+ </div>
+ <a class="arr-link" href="work.html" style="align-self:end">Explore all projects →</a>
+ </div>
+ <div class="proj-grid" style="margin-top:var(--x5)">
+ <a class="proj large" href="work/nautilius.html" data-live>
+ <img src="img/projects/nautilius/card.jpg" alt="Nautilius — Miami Beach" loading="lazy">
+ <img class="live-fr" data-src="img/projects/nautilius/06.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/nautilius/grounds/g-01.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Nautilius <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj medium" href="work/211-house.html" data-live>
+ <img src="img/projects/211-house/constr-framing.jpg" alt="211 — circular timber frame on site, June 2026" loading="lazy">
+ <img class="live-fr" data-src="img/projects/211-house/constr-foundation.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/211-house/09.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/211-house/grounds/g-01.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">211 <span class="status-tag status-tag--live">Under Construction</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj medium" href="work/buddha.html" data-live>
+ <img src="img/projects/buddha/card.jpg" alt="Buddha — Upper Eastside, Miami" loading="lazy">
+ <img class="live-fr" data-src="img/projects/buddha/09.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/buddha/grounds/g-01.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">Buddha <span class="status-tag">Design & Documented</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj large" href="work/el-cielo-ny.html" data-live>
+ <img src="img/projects/el-cielo-ny/card.jpg" alt="El Cielo — NoMad, New York" loading="lazy">
+ <img class="live-fr" data-src="img/projects/el-cielo-ny/09.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/el-cielo-ny/02.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">El Cielo <span class="status-tag">Design & Documented</span></span><span class="geo"></span></div>
+ </a>
+ </div>
+ </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     05 — THE CREW
+═══════════════════════════════════════════════════════════════ -->
+<section class="section section--cream" id="crew">
+ <div class="wrap">
+ <div class="col-2">
+ <div>
+ <div class="section-num">04 — The Crew</div>
+ <h2 class="h2 serif">A small senior crew, accountable for every coordinate.</h2>
+ </div>
+ <div>
+ <p class="body" style="font-size:1.08rem">Three principals carry every project: <strong style="font-weight:600;color:var(--ink)">David Castrillón</strong> (Founder &amp; Principal: holds the pen on every engagement), <strong style="font-weight:600;color:var(--ink)">Maria Bernal</strong> (Principal, Interior Design: sets the material register), and <strong style="font-weight:600;color:var(--ink)">Eu Correa</strong> (Principal, Strategy, keeps the studio's standards and systems coherent). <strong style="font-weight:600;color:var(--ink)">José Martínez</strong>, GC and engineer, leads our construction arm, Astro Cósmico.</p>
+ <p class="body" style="font-size:1.08rem;margin-top:1.2rem">Internally, we call ourselves cosmonauts: building a home is a long mission, and we fly it with a small crew in full command of the systems.</p>
+ <a class="arr-link" href="about.html#crew" style="margin-top:1.8rem;display:inline-flex">Meet the team →</a>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     06 — PROMISES
+═══════════════════════════════════════════════════════════════ -->
+<section class="section section--ink" id="promises">
+ <div class="wrap">
+ <div class="col-2">
+ <div>
+ <div class="section-num" style="color:rgba(255,255,255,.6)">05 — Promises</div>
+ <h2 class="h2 serif" style="color:#fff">Three commitments. No asterisks.</h2>
+ </div>
+ <div>
+ <div class="promise">
+ <div class="promise__ttl">Open-book budget</div>
+ <p class="promise__txt">Every cost visible from day one, updated weekly, built with you in the room.</p>
+ </div>
+ <div class="promise">
+ <div class="promise__ttl">Weekly transparency</div>
+ <p class="promise__txt">Daily site photos, written weekly reports, a client portal where every decision is logged.</p>
+ </div>
+ <div class="promise">
+ <div class="promise__ttl">Lifetime support</div>
+ <p class="promise__txt">Two-year structural warranty, annual maintenance program. The handover starts the relationship.</p>
+ </div>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     07 — DELIVERABLES TEASER
+═══════════════════════════════════════════════════════════════ -->
+<section class="section" id="deliverables">
+ <div class="wrap">
+ <div class="col-2">
+ <div>
+ <div class="section-num">06 — Deliverables</div>
+ <h2 class="h2 serif">Not just images. A buildable package.</h2>
+ </div>
+ <div>
+ <p class="body" style="font-size:1.08rem">Every design closes with a complete, priced-and-permitted-ready package: plans, construction documents, millwork details, finish schedules, vendor lists. The difference between a beautiful picture and a buildable house.</p>
+ <p class="body" style="font-size:1.08rem;margin-top:1.2rem">We hand it over as one considered object, what we call <strong style="font-weight:600;color:var(--ink)">the White Box</strong>: everything a home needs to be built, resolved and gathered into a single set.</p>
+ <a class="arr-link" href="services.html#deliver" style="margin-top:1.8rem;display:inline-flex">See a real package →</a>
+ </div>
+ </div>
+ <div class="teaser-strip">
+ <a href="services.html#deliver"><img src="img/deliver/sheet-02.jpg" alt="Sample package — floor plans" loading="lazy"></a>
+ <a href="services.html#deliver"><img src="img/deliver/sheet-06.jpg" alt="Sample package — millwork details" loading="lazy"></a>
+ <a href="services.html#deliver"><img src="img/deliver/sheet-01.jpg" alt="Sample package — design concept and materials" loading="lazy"></a>
+ </div>
+ </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     08 — THE COSMONAUTS · visual band
+═══════════════════════════════════════════════════════════════ -->
+<style>
+  .cosmo-band{background:#0B0B0B;padding:var(--x7) 0}
+  .cosmo-band__head{max-width:var(--max);margin:0 auto var(--x5);padding:0 var(--rail);display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:1rem}
+  .cosmo-band .section-num{color:rgba(255,255,255,.65);margin-bottom:0}
+  .cosmo-band .section-num::before{background:rgba(255,255,255,.5)}
+  .cosmo-band__line{font-family:var(--sans);font-weight:300;font-size:1.02rem;color:rgba(255,255,255,.7)}
+  .cosmo-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:var(--x3);
+    max-width:var(--max);margin:0 auto;padding:0 var(--rail);
+  }
+  .cosmo-grid figure{margin:0;overflow:hidden}
+  .cosmo-grid img{
+    width:100%;height:100%;display:block;aspect-ratio:3/4;object-fit:cover;
+    transition:transform .8s ease;
+  }
+  .cosmo-grid figure:hover img{transform:scale(1.04)}
+  @media(max-width:720px){
+    .cosmo-grid{grid-template-columns:1fr;gap:var(--x2)}
+    .cosmo-grid img{aspect-ratio:4/5}
+  }
+</style>
+<section class="cosmo-band" id="cosmonauts" data-lightbox>
+ <div class="cosmo-band__head">
+ <div class="section-num">07 — The Cosmonauts</div>
+ <p class="cosmo-band__line">Every mission needs a crew. Ours never leaves the site.</p>
+ </div>
+ <div class="cosmo-grid">
+ <figure><img src="img/astronaut/falling-red.jpg" alt="Astro Station cosmonaut — in flight" loading="lazy"></figure>
+ <figure><img src="img/astronaut/ring2.jpg" alt="Astro Station cosmonaut — at the threshold" loading="lazy"></figure>
+ <figure><img src="img/astronaut/gwagon.jpg" alt="Astro Station cosmonaut — arrival" loading="lazy"></figure>
+ </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     09 — BEGIN
+═══════════════════════════════════════════════════════════════ -->
+<section class="closing section--cream" style="padding:var(--x9) var(--rail);text-align:center" id="begin">
+ <div class="section-num" style="justify-content:center">08 — Begin</div>
+ <h2 class="h2 serif" style="margin-top:var(--x4)">Begin with a conversation.</h2>
+ <p class="lede center" style="margin:var(--x4) auto 0;max-width:46ch">Every engagement starts with a 30-minute call. No charge, no commitment. Bring a site, a brief, or just a question.</p>
+ <div style="display:flex;gap:1.4rem;flex-wrap:wrap;justify-content:center;margin-top:var(--x5)">
+ <a class="btn btn--solid" href="contact.html">Start the process <span class="arr">→</span></a>
+ </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="foot">
+ <div class="wrap">
+ <div class="foot__top">
+ <div class="foot__brand">
+ <img src="img/brand/wordmark.png" alt="Astro Station" style="height:36px;width:auto;display:block;margin-bottom:.6rem">
+ <div class="desc">Architecture · Interiors · Millwork · Construction</div>
+ <p>Bespoke homes designed and delivered as one.</p>
+ </div>
+ <div class="foot__col">
+ <h6>Studio</h6>
+ <a href="about.html">About</a>
+ <a href="journal.html">Journal</a>
+ <a href="mailto:careers@astrostation.com">Careers</a>
+ </div>
+ <div class="foot__col">
+ <h6>Services</h6>
+ <a href="services/architecture.html">Architecture</a>
+ <a href="services/interiors.html">Interior Design</a>
+ <a href="services/millwork.html">Millwork · Dragon</a>
+ <a href="services/built.html">Construction · Astro Cósmico</a>
+ <a href="services/landscape.html">Landscape &amp; Pool</a>
+ <a href="services/exterior.html">Exterior Re-facing</a>
+ <a href="services/rendering.html">Visualization</a>
+ </div>
+ <div class="foot__col">
+ <h6>Work</h6>
+ <a href="work.html#featured">Featured</a>
+ <a href="work.html#residential">Residential</a>
+ <a href="work.html#hospitality">Hospitality</a>
+ <a href="work.html#commercial">Commercial</a>
+ </div>
+ <div class="foot__col">
+ <h6>Contact</h6>
+ <a href="tel:+17869091565">+1 786 909 1565</a>
+ <a href="mailto:info@astrostation.com">info@astrostation.com</a>
+ <a href="https://www.instagram.com/astrostation.co/" target="_blank" rel="noopener">Instagram</a>
+ <a href="https://linkedin.com/company/astrostation" target="_blank" rel="noopener">LinkedIn</a>
+ </div>
+ </div>
+ <div class="foot__bottom">
+ <span>© Astro Station 2026 · All rights reserved</span>
+ <nav class="foot__legal" aria-label="Legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Disclaimer</a><a href="#" data-cookie-prefs>Cookie Preferences</a></nav>
+ <span>Miami · Los Angeles</span>
+ </div>
+ </div>
+</footer>
+
+<script src="assets/main.js"></script>
+</body>
+</html>

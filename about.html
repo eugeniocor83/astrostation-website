@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — Astro Station</title>
+<meta name="description" content="Astro Station — a creative station of architecture and interior design. The story, the crew, the philosophy, and the universe of work behind a bespoke luxury residential studio." />
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  /* ── About-page editorial system ─────────────────────────── */
+
+  /* Quiet chapter opener */
+  .chapter{padding:var(--x10) 0;background:var(--paper);position:relative}
+  .chapter--cream{}
+  .chapter--ink{background:var(--ink);color:var(--paper)}
+  .chapter--ink .ch-num,
+  .chapter--ink .ch-meta{color:rgba(255,255,255,.6)}
+  .chapter--ink .ch-num::before{background:rgba(255,255,255,.5)}
+
+  .ch-num{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--ink-mute);
+    display:flex;align-items:center;gap:.85rem;margin-bottom:var(--x4);
+  }
+  .ch-num::before{content:"";width:32px;height:1px;background:var(--ink-mute)}
+
+  .ch-title{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(2.6rem,6.4vw,6rem);
+    line-height:.95;letter-spacing:-.02em;text-transform:uppercase;
+    margin-bottom:var(--x4);
+  }
+
+  .ch-lede{
+    font-family:var(--sans);font-weight:300;
+    font-size:clamp(1.4rem,2.1vw,1.9rem);line-height:1.4;
+    color:var(--ink);max-width:54ch;margin-bottom:var(--x5);
+  }
+
+  .ch-body{
+    font-family:var(--sans);font-weight:300;
+    font-size:1.05rem;line-height:1.75;color:var(--ink-mid);
+    max-width:60ch;
+  }
+  .ch-body p+p{margin-top:1.4rem}
+  .ch-body strong{font-weight:600;color:var(--ink)}
+  .chapter--ink .ch-body{color:rgba(255,255,255,.78)}
+  .chapter--ink .ch-body strong{color:var(--paper)}
+
+  /* Editorial two-column block: number/title left, content right */
+  .ch-grid{
+    display:grid;grid-template-columns:1fr 1.5fr;gap:var(--x6);
+    max-width:var(--max);margin:0 auto;padding:0 var(--rail);
+  }
+  .ch-grid--reverse{grid-template-columns:1.5fr 1fr}
+  @media(max-width:980px){
+    .ch-grid,.ch-grid--reverse{grid-template-columns:1fr;gap:var(--x4)}
+  }
+
+  /* Pull quote */
+  .ch-pull{
+    font-family:var(--display);font-weight:300;font-style:italic;
+    font-size:clamp(1.8rem,3.4vw,3rem);line-height:1.18;letter-spacing:-.012em;
+    max-width:30ch;color:var(--ink);
+  }
+  .ch-pull em{font-style:normal;font-weight:800}
+  .ch-pull-sig{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--ink-mute);margin-top:1.4rem;
+  }
+  .chapter--ink .ch-pull{color:var(--paper)}
+  .chapter--ink .ch-pull-sig{color:rgba(255,255,255,.55)}
+
+  /* Full-bleed visual moment — used as quiet anchor between chapters */
+  .anchor-visual{padding:0;margin:0;position:relative}
+  .anchor-visual img{width:100%;height:auto;display:block}
+  .anchor-visual--square img{aspect-ratio:1/1;object-fit:cover;background:var(--paper)}
+
+  /* Stats row */
+  .stats-row{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:var(--x4) var(--x5);
+    max-width:var(--max);margin:var(--x6) auto 0;padding:0 var(--rail);
+    border-top:1px solid var(--ink-rule);padding-top:var(--x5);
+  }
+  .stats-row .num{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,4.6vw,4.2rem);line-height:1;letter-spacing:-.012em;color:var(--ink)}
+  .stats-row .lbl{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);margin-top:.6rem}
+  .chapter--ink .stats-row{border-top-color:rgba(255,255,255,.18)}
+  .chapter--ink .stats-row .num{color:var(--paper)}
+  .chapter--ink .stats-row .lbl{color:rgba(255,255,255,.55)}
+  @media(max-width:720px){.stats-row{grid-template-columns:1fr 1fr}}
+
+  /* Principal block — large editorial portrait + bio */
+  .principal{
+    display:grid;grid-template-columns:1fr 1.3fr;gap:var(--x6);align-items:center;
+    max-width:var(--max);margin:0 auto;padding:var(--x7) var(--rail);
+    border-top:1px solid var(--ink-rule);
+  }
+  .principal:first-of-type{border-top:none;padding-top:var(--x4)}
+  .principal--reverse{grid-template-columns:1.3fr 1fr}
+  .principal--reverse .principal__photo{order:2}
+  .principal__photo{
+    aspect-ratio:4/5;overflow:hidden;background:var(--paper-soft);
+  }
+  .principal__photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.05);transition:filter .5s}
+  .principal:hover .principal__photo img{filter:grayscale(0) contrast(1)}
+  .principal__role{font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:1rem}
+  .principal__name{font-family:var(--display);font-weight:800;font-size:clamp(2.2rem,3.8vw,3.4rem);text-transform:uppercase;letter-spacing:-.012em;line-height:1;margin-bottom:1.4rem}
+  .principal__bio{font-family:var(--sans);font-weight:300;font-size:1.05rem;line-height:1.7;color:var(--ink-mid);max-width:48ch}
+  .principal__bio strong{font-weight:600;color:var(--ink)}
+  @media(max-width:980px){
+    .principal,.principal--reverse{grid-template-columns:1fr;gap:var(--x4);padding:var(--x5) var(--rail)}
+    .principal--reverse .principal__photo{order:0}
+  }
+
+  /* Crew grid (circular B&W) */
+  .crew-grid{
+    display:grid;grid-template-columns:repeat(6,1fr);gap:var(--x3);
+    max-width:var(--max);margin:var(--x6) auto 0;padding:0 var(--rail);
+  }
+  .crew-mem{display:flex;flex-direction:column;align-items:center;text-align:center}
+  .crew-mem__photo{
+    width:120px;height:120px;border-radius:50%;overflow:hidden;background:var(--paper-soft);
+  }
+  .crew-mem__photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.05);transition:filter .35s}
+  .crew-mem:hover .crew-mem__photo img{filter:grayscale(0)}
+  .crew-mem__name{margin-top:.85rem;font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase}
+  .crew-mem__role{margin-top:.2rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute)}
+  @media(max-width:980px){.crew-grid{grid-template-columns:repeat(4,1fr)}}
+  @media(max-width:720px){.crew-grid{grid-template-columns:repeat(3,1fr)}}
+
+  /* Three-pillar values block */
+  .pillars{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    max-width:var(--max);margin:var(--x5) auto 0;padding:0 var(--rail);gap:0;
+    border-top:1px solid var(--ink-rule);border-left:1px solid var(--ink-rule);
+  }
+  .pillar{
+    padding:var(--x5) var(--x4);
+    border-right:1px solid var(--ink-rule);border-bottom:1px solid var(--ink-rule);
+    display:flex;flex-direction:column;
+  }
+  .pillar__num{font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:1.4rem}
+  .pillar__title{font-family:var(--display);font-weight:800;font-size:1.6rem;text-transform:uppercase;letter-spacing:-.005em;margin-bottom:1.2rem}
+  .pillar__body{font-family:var(--sans);font-weight:300;font-size:.96rem;line-height:1.65;color:var(--ink-mid)}
+  @media(max-width:980px){.pillars{grid-template-columns:1fr;border-left:none}.pillar{border-right:none}}
+
+  /* Closing CTA */
+  .ch-close{padding:var(--x10) var(--rail);text-align:center;background:var(--paper)}
+  .ch-close .ch-title{margin-bottom:var(--x5)}
+  .ch-close .ctas{display:flex;gap:1.4rem;justify-content:center;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav class="nav">
+ <a class="nav__brand" href="index.html">
+ <img src="img/brand/wordmark.png" alt="Astro Station" class="nav__logo">
+ </a>
+ <div class="nav__menu">
+ <a href="about.html" class="active">About</a>
+ <a href="work.html">Work</a>
+ <div class="has-sub">
+ <a href="services.html">Services <span class="caret">▾</span></a>
+ <div class="nav__sub">
+ <a href="services/architecture.html"><span>01 — Architecture</span><span class="num">01</span></a>
+ <a href="services/interiors.html"><span>02 — Interior Design</span><span class="num">02</span></a>
+ <a href="services/millwork.html"><span>03 — Millwork · Dragon</span><span class="num">03</span></a>
+ <a href="services/built.html" class="is-built"><span>04 — Construction <img class="brand-star" src="img/brand/star.png" alt="Astro"> Cósmico</span><span class="num">04</span></a>
+ <a href="services/landscape.html"><span>05 — Landscape &amp; Pool</span><span class="num">05</span></a>
+ <a href="services/exterior.html"><span>06 — Exterior Re-facing</span><span class="num">06</span></a>
+ <a href="services/rendering.html"><span>07 — Visualization</span><span class="num">07</span></a>
+ </div>
+ </div>
+ <a href="journal.html">Journal</a>
+ <a href="contact.html">Contact</a>
+ </div>
+ <div class="nav__util">
+ <span class="nav__clock" id="clock">Miami · Los Angeles</span>
+ <a class="btn" href="contact.html">Start the Process <span class="arr">→</span></a>
+ <button class="nav__hamburger" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+ </div>
+</nav>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     CHAPTER 01 — HERO / ANCHOR
+═══════════════════════════════════════════════════════════════ -->
+<header class="hero hero--text">
+ <div class="hero__inner">
+ <div class="eyebrow">About · Astro Station</div>
+ <h1 class="hero__title">A creative station for residential design.</h1>
+ <div class="hero__foot">
+ <p class="hero__sub">Astro Station is a studio based in Miami and Los Angeles: of architects, designers, engineers and builders working as one continuous practice. We design and deliver bespoke luxury homes: drawn, detailed, and built under one roof.</p>
+ <span class="scroll-cue"><span class="dot"></span> The Story</span>
+ </div>
+ </div>
+</header>
+
+
+<!-- Astronaut anchor — cosmonaut at the architect's desk -->
+<section class="astro-anchor astro-anchor--full" aria-hidden="true">
+ <img src="img/astronaut/desk.jpg" alt="" loading="lazy">
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     CHAPTER 02 — THE STORY (Origin / White Story expanded)
+═══════════════════════════════════════════════════════════════ -->
+<section class="chapter chapter--cream" id="story">
+ <div class="ch-grid">
+ <div>
+ <div class="ch-num">01 — Story</div>
+ <h2 class="ch-title">The white story.</h2>
+ </div>
+ <div>
+ <p class="ch-lede">We arrived in a <strong>WHITE</strong> city made of square geometries, as if it had been designed and drawn in Minecraft. A city of <strong>WHITE</strong> marble, glass railings, <strong>WHITE</strong> walls and <strong>WHITE</strong> lighting.</p>
+ <div class="ch-body">
+ <p>Its inhabitants referred to it as contemporary. We saw something else: a default, repeated to the point of disappearance. The square box. The white finish. The architecture that says nothing because it asked nothing.</p>
+ <p>Astro Station was founded on a simple act of refusal. We do not draw the same house twice. We do not specify the same finish twice. Every project is an answer to a different question, drawn for a different family, on a different lot, and the answer should look like the question.</p>
+ <p>We built a studio that holds every part of the residential journey under one roof: architecture, interior design, millwork, landscape, and construction, so the conversation between disciplines never ends in a handoff. The drawing and the built thing are the same gesture.</p>
+ </div>
+ </div>
+ </div>
+</section>
+
+
+
+<!-- ════════════════════════════════════════════════════════════
+     CHAPTER 03 — THE CREW (cosmonauts)
+═══════════════════════════════════════════════════════════════ -->
+<section class="chapter" id="crew">
+ <div class="ch-grid">
+ <div>
+ <div class="ch-num">02 — Crew</div>
+ <h2 class="ch-title">A team of cosmonauts.</h2>
+ </div>
+ <div>
+ <p class="ch-lede">Three principals carry every Astro Station project, supported by an extended crew.</p>
+ <div class="ch-body">
+ <p>We use the word <strong>cosmonauts</strong> with intent. The work of building a home is a long mission: site survey to keys, sometimes thirty months in length, with a thousand small decisions made in flight. The cosmonaut metaphor reminds us how we operate: small senior crew, full command of the systems, accountable for every coordinate.</p>
+ <p>We hire infrequently and carefully. The studio is intentionally narrow so the work stays personal.</p>
+ </div>
+ </div>
+ </div>
+
+ <!-- Principals — standardized profile cards: photo, then name + title directly below -->
+ <style>
+    .crew-profiles{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:var(--x5) var(--x4);
+      max-width:var(--max);margin:var(--x6) auto 0;padding:0 var(--rail);
+    }
+    .profile{display:flex;flex-direction:column}
+    .profile__photo{
+      position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--paper-soft);
+      border:1px solid var(--ink-rule);
+    }
+    .profile__photo img{width:100%;height:100%;object-fit:cover;display:block}
+    .profile__num{
+      position:absolute;top:1.1rem;left:1.2rem;z-index:2;
+      font-family:var(--mono);font-size:.72rem;letter-spacing:.24em;
+      color:rgba(255,255,255,.92);text-shadow:0 1px 10px rgba(0,0,0,.5);
+    }
+    .profile__name{
+      font-family:var(--display);font-weight:800;font-size:1.45rem;
+      text-transform:uppercase;letter-spacing:-.005em;line-height:1.05;
+      margin:1.2rem 0 .45rem;
+    }
+    .profile__role{
+      font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;
+      text-transform:uppercase;color:var(--ink-mute);margin-bottom:1rem;
+    }
+    .profile__bio{
+      font-family:var(--sans);font-weight:300;font-size:.98rem;line-height:1.65;color:var(--ink-mid);
+    }
+    .profile__bio strong{font-weight:600;color:var(--ink)}
+    @media(max-width:980px){.crew-profiles{grid-template-columns:repeat(3,1fr);gap:var(--x4) var(--x3)}}
+    @media(max-width:720px){.crew-profiles{grid-template-columns:1fr;gap:var(--x5)}}
+    .crew-photo{max-width:1100px;margin:var(--x7) auto 0;padding:0 var(--rail)}
+    .crew-photo img{display:block;width:100%;height:auto;border:1px solid var(--ink-rule);background:#fff}
+    .crew-photo figcaption{
+      font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+      color:var(--ink-mute);margin-top:1rem;text-align:center;
+    }
+  </style>
+
+ <div class="crew-profiles" data-lightbox>
+ <article class="profile" id="david">
+ <div class="profile__photo">
+ <span class="profile__num">01</span>
+ <img src="img/astronaut/gwagon.jpg" alt="David Castrillón — Astro Station cosmonaut">
+ </div>
+ <h3 class="profile__name">David Castrillón</h3>
+ <div class="profile__role">Founder &amp; Principal</div>
+ <p class="profile__bio"><strong>Founder of Astro Station.</strong> David holds the pen on every engagement and reviews every drawing set before issue. Architectural concept and design language sit on his desk; the studio's visual register is, in the end, his handwriting.</p>
+ </article>
+
+ <article class="profile" id="maria">
+ <div class="profile__photo">
+ <span class="profile__num">02</span>
+ <img src="img/astronaut/maria.jpg" alt="Maria Bernal — Astro Station cosmonaut">
+ </div>
+ <h3 class="profile__name">Maria Bernal</h3>
+ <div class="profile__role">Principal · Interior Design</div>
+ <p class="profile__bio"><strong>Leads interior architecture, FF&amp;E and material specifications.</strong> Maria sets the studio's material register: the wood, stone, fabric, hardware and lighting palette that gives every Astro residence its tactile identity.</p>
+ </article>
+
+ <article class="profile" id="eu">
+ <div class="profile__photo">
+ <span class="profile__num">03</span>
+ <img src="img/astronaut/eu.jpg" alt="Eu Correa — Astro Station cosmonaut">
+ </div>
+ <h3 class="profile__name">Eu Correa</h3>
+ <div class="profile__role">Principal · Strategy</div>
+ <p class="profile__bio"><strong>Carries the company's vision and strategic direction.</strong> Eu keeps the studio's standards, systems, and decision-making coherent: leadership, accountability, and the architecture of the studio itself sit on his desk.</p>
+ </article>
+ </div>
+
+ <!-- Team photograph — immediately after the principals -->
+ <figure class="crew-photo">
+ <img src="img/brand/team-crew.jpg" alt="The Astro Station crew — portraits of the extended team" loading="lazy">
+ <figcaption>The Astro Station crew · Miami</figcaption>
+ </figure>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     CHAPTER 05 — THE PRACTICE
+═══════════════════════════════════════════════════════════════ -->
+<section class="chapter" id="practice">
+ <div class="ch-grid">
+ <div>
+ <div class="ch-num">03 — Practice</div>
+ <h2 class="ch-title">One studio.<br>One signature.</h2>
+ </div>
+ <div>
+ <p class="ch-lede">From line to lived-in. Architecture, interiors, millwork, landscape, and construction, produced inside one studio so every line drawn is a line built.</p>
+ <div class="ch-body">
+ <p>For decades, residential work has been split across separate trades. The architect draws. The interior designer specifies. The contractor improvises. Detail is lost at every handoff.</p>
+ <p>We rebuild that pipeline as a single, vertically-integrated practice: <strong>one project manager, one set of standards, one finished home.</strong> Every project moves through the same crew from concept through commissioning. The architect who drew the house sits at the same table as the contractor who builds it. The interior designer who specified the millwork stands next to the shop lead who fabricates it.</p>
+ <p>The result: a house that reads as one idea, not a committee.</p>
+ </div>
+ </div>
+ </div>
+
+ <div class="stats-row">
+ <div><div class="num">07</div><div class="lbl">Service verticals</div></div>
+ <div><div class="num">38</div><div class="lbl">Projects in archive</div></div>
+ <div><div class="num">15+</div><div class="lbl">In-house professionals</div></div>
+ <div><div class="num">01</div><div class="lbl">Studio · One contract</div></div>
+ </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     CHAPTER 06 — THE UNIVERSE (capabilities)
+═══════════════════════════════════════════════════════════════ -->
+<section class="chapter chapter--cream" id="universe">
+ <div class="ch-grid">
+ <div>
+ <div class="ch-num">04 — Universe</div>
+ <h2 class="ch-title">Some of our universe for you to discover.</h2>
+ </div>
+ <div>
+ <p class="ch-lede">Four core business lines: Architecture, Interior Design, Millwork (Dragon Millwork) and Construction (Astro Cósmico), plus three supporting services.</p>
+ <div class="ch-body">
+ <p>Most clients begin with one line and grow into the master agreement, which bundles all seven under a single contract, one project manager, and one transparent fee. A single decision opens the entire studio.</p>
+ </div>
+ <a class="arr-link" href="services.html" style="margin-top:var(--x4);display:inline-flex">Explore all services →</a>
+ </div>
+ </div>
+</section>
+
+
+<!-- Astronaut break before the promises chapter — falling figure on dark -->
+<section class="astro-break" aria-hidden="true" style="background:var(--paper);padding:var(--x7) var(--rail)">
+ <img src="img/astronaut/garden-hires.jpg" alt="" style="max-width:920px;width:100%;height:auto;border:1px solid var(--ink-rule)">
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     CHAPTER 07 — VALUES / PROMISES
+═══════════════════════════════════════════════════════════════ -->
+<section class="chapter chapter--ink" id="promises">
+ <div class="ch-grid">
+ <div>
+ <div class="ch-num">05 — Promises</div>
+ <h2 class="ch-title">What you<br>can expect.</h2>
+ </div>
+ <div>
+ <p class="ch-lede" style="color:var(--paper)">Three commitments we make on every project: no exceptions, no asterisks.</p>
+
+ <div style="display:grid;gap:var(--x4);margin-top:var(--x4)">
+ <div>
+ <div class="ch-num" style="color:rgba(255,255,255,.55)">01 — Open-book budget</div>
+ <p class="ch-body" style="color:rgba(255,255,255,.78)">Every cost: architect, designer, sub-trade, allowance, visible to the client from day one. No hidden margins. No surprise change orders. The budget is built with the client in the room and updated weekly.</p>
+ </div>
+ <div>
+ <div class="ch-num" style="color:rgba(255,255,255,.55)">02 — Weekly transparency</div>
+ <p class="ch-body" style="color:rgba(255,255,255,.78)">Daily site photos. Written weekly reports. Real-time access to a client portal where every drawing, decision, and change is logged. Clients are never asking what is happening, they are watching it happen.</p>
+ </div>
+ <div>
+ <div class="ch-num" style="color:rgba(255,255,255,.55)">03 — Lifetime support</div>
+ <p class="ch-body" style="color:rgba(255,255,255,.78)">Two-year structural warranty, an annual maintenance program, and lifetime referral support. Your house stays our project. The handover is the start of a relationship, not the end.</p>
+ </div>
+ </div>
+ </div>
+ </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     CHAPTER 08 — JOIN OUR JOURNEY (closing)
+═══════════════════════════════════════════════════════════════ -->
+<section class="ch-close">
+ <div class="ch-num" style="justify-content:center">06 — Begin</div>
+ <h2 class="ch-title display" style="font-size:clamp(3rem,9vw,9rem);max-width:18ch;margin-left:auto;margin-right:auto">Join our journey.</h2>
+ <p class="ch-lede" style="text-align:center;margin-left:auto;margin-right:auto;max-width:46ch;margin-bottom:var(--x5)">Every Astro Station engagement starts with a 30-minute conversation. No charge, no commitment.</p>
+ <div class="ctas">
+ <a class="btn btn--solid" href="contact.html">Start the Process <span class="arr">→</span></a>
+ <a class="btn" href="work.html">See the work <span class="arr">→</span></a>
+ </div>
+</section>
+
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="foot">
+ <div class="wrap">
+ <div class="foot__top">
+ <div class="foot__brand">
+ <img src="img/brand/wordmark.png" alt="Astro Station" style="height:36px;width:auto;display:block;margin-bottom:.6rem">
+ <div class="desc">Architecture · Interiors · Millwork · Construction</div>
+ <p>Bespoke homes designed and delivered as one.</p>
+ </div>
+ <div class="foot__col">
+ <h6>Studio</h6>
+ <a href="about.html">About</a>
+ <a href="journal.html">Journal</a>
+ <a href="mailto:careers@astrostation.com">Careers</a>
+ </div>
+ <div class="foot__col">
+ <h6>Services</h6>
+ <a href="services/architecture.html">Architecture</a>
+ <a href="services/interiors.html">Interior Design</a>
+ <a href="services/millwork.html">Millwork · Dragon</a>
+ <a href="services/built.html">Construction · Astro Cósmico</a>
+ <a href="services/landscape.html">Landscape &amp; Pool</a>
+ <a href="services/exterior.html">Exterior Re-facing</a>
+ <a href="services/rendering.html">Visualization</a>
+ </div>
+ <div class="foot__col">
+ <h6>Work</h6>
+ <a href="work.html#featured">Featured</a>
+ <a href="work.html#residential">Residential</a>
+ <a href="work.html#hospitality">Hospitality</a>
+ <a href="work.html#commercial">Commercial</a>
+ </div>
+ <div class="foot__col">
+ <h6>Contact</h6>
+ <a href="tel:+17869091565">+1 786 909 1565</a>
+ <a href="mailto:info@astrostation.com">info@astrostation.com</a>
+ <a href="https://www.instagram.com/astrostation.co/" target="_blank" rel="noopener">Instagram</a>
+ <a href="https://linkedin.com/company/astrostation" target="_blank" rel="noopener">LinkedIn</a>
+ </div>
+ </div>
+ <div class="foot__bottom">
+ <span>© Astro Station 2026 · All rights reserved</span>
+ <nav class="foot__legal" aria-label="Legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Disclaimer</a><a href="#" data-cookie-prefs>Cookie Preferences</a></nav>
+ <span>Miami · Los Angeles</span>
+ </div>
+ </div>
+</footer>
+
+<script src="assets/main.js"></script>
+</body>
+</html>

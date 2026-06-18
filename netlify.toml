@@ -1,0 +1,68 @@
+# Astro Station — Netlify configuration (Git deploy)
+# Repo root IS the site, so publish = "." (the repository root).
+[build]
+  publish = "."
+
+# Long-cache static assets (immutable imagery, fonts)
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# Security headers (sensible defaults for a static marketing site)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# ── Redirects & clean URLs ──────────────────────────────
+[[redirects]]
+  from = "/studio.html"
+  to = "/about.html"
+  status = 301
+
+[[redirects]]
+  from = "/studio"
+  to = "/about.html"
+  status = 301
+
+[[redirects]]
+  from = "/services/:slug"
+  to = "/services/:slug.html"
+  status = 200
+
+[[redirects]]
+  from = "/work/:slug"
+  to = "/work/:slug.html"
+  status = 200
+
+[[redirects]]
+  from = "/:page"
+  to = "/:page.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+# ════ STAGING ONLY — REMOVE THIS BLOCK AT DOMAIN CUTOVER ════
+# Keeps search engines from indexing the deploy until you go live.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+# ════ END STAGING-ONLY BLOCK ════

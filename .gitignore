@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+._*
+
+# Node / npm (if ever added)
+node_modules/
+package-lock.json
+
+# Build / cache
+.cache/
+.tmp/
+*.log
+
+# OS files
+Thumbs.db
+
+# Source / archive folders that shouldn't ship to production
+# (kept locally for reference, but excluded from a git deploy)
+PROYECTOS ASTRO/
+img/brand/hires/
+
+# Editor
+.vscode/
+.idea/
+*.swp

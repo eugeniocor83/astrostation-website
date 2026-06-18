@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Astro Station — Services</title>
+<meta name="description" content="Seven tailored ways to engage Astro Station — from architecture to construction." />
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="nav">
+ <a class="nav__brand" href="index.html">
+ <img src="img/brand/wordmark.png" alt="Astro Station" class="nav__logo">
+ </a>
+ <div class="nav__menu">
+ <a href="about.html">About</a>
+ <a href="work.html">Work</a>
+ <div class="has-sub">
+ <a href="services.html" class="active">Services <span class="caret">▾</span></a>
+ <div class="nav__sub">
+ <a href="services/architecture.html"><span>01 — Architecture</span><span class="num">01</span></a>
+ <a href="services/interiors.html"><span>02 — Interior Design</span><span class="num">02</span></a>
+ <a href="services/millwork.html"><span>03 — Millwork · Dragon</span><span class="num">03</span></a>
+ <a href="services/built.html" class="is-built"><span>04 — Construction <img class="brand-star" src="img/brand/star.png" alt="Astro"> Cósmico</span><span class="num">04</span></a>
+ <a href="services/landscape.html"><span>05 — Landscape &amp; Pool</span><span class="num">05</span></a>
+ <a href="services/exterior.html"><span>06 — Exterior Re-facing</span><span class="num">06</span></a>
+ <a href="services/rendering.html"><span>07 — Visualization</span><span class="num">07</span></a>
+ </div>
+ </div>
+ <a href="journal.html">Journal</a>
+ <a href="contact.html">Contact</a>
+ </div>
+ <div class="nav__util">
+ <span class="nav__clock" id="clock">Miami · Los Angeles</span>
+ <a class="btn" href="contact.html">Start the Process <span class="arr">→</span></a>
+ <button class="nav__hamburger" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+ </div>
+</nav>
+
+<header class="hero hero--text">
+ <div class="hero__inner">
+ <div class="eyebrow">Services · Seven ways to engage</div>
+ <h1 class="hero__title">Drawn, designed, delivered.</h1>
+ <div class="hero__foot">
+ <p class="hero__sub">Four core business lines: Architecture, Interior Design, Millwork (Dragon Millwork) and Construction (Astro Cósmico), plus three supporting services. Engaged à la carte or bundled under one master agreement.</p>
+ </div>
+ </div>
+</header>
+
+<section class="section--tight">
+ <div class="wrap">
+ <div class="service-list" style="border-top-color:var(--ink);border-top-width:2px">
+ <a class="svc-row" href="services/architecture.html">
+ <span class="idx">→ 01</span>
+ <span class="name">Architecture &amp; Design</span>
+ <span class="desc">End-to-end residential architecture, schematic design through construction administration. Drawn, coordinated and detailed in-house by David Castrillón.</span>
+ 
+ </a>
+ <a class="svc-row" href="services/interiors.html">
+ <span class="idx">→ 02</span>
+ <span class="name">Interior Design</span>
+ <span class="desc">Curated interiors: space planning, finish specification, FF&amp;E sourcing, integrated joinery and install oversight. Led by Maria Bernal.</span>
+ 
+ </a>
+ <a class="svc-row" href="services/millwork.html" >
+ <span class="idx" style="color:var(--accent)">→ 03 <span class="pill" style="margin-left:.4rem">DRAGON</span></span>
+ <span class="name">Millwork &amp; Joinery</span>
+ <span class="desc">Dragon Millwork, self-performed in-house. Built-ins, kitchens, vanities, paneling and bespoke furniture: drawn, prototyped, fabricated and installed by our own team.</span>
+ 
+ </a>
+ <a class="svc-row" href="services/built.html">
+ <span class="idx">→ 04</span>
+ <span class="name">Construction <img class="brand-star" src="img/brand/star.png" alt="Astro"> Cósmico</span>
+ <span class="desc">The general-contracting arm of Astro Station. Custom builds, whole-home renovations and owner's representation. Led by José Martínez, GC &amp; Engineer.</span>
+ 
+ </a>
+ <a class="svc-row" href="services/landscape.html">
+ <span class="idx">→ 05</span>
+ <span class="name">Landscape, Patio &amp; Pool</span>
+ <span class="desc">Refined landscape plans, hardscape and pools, drawn build-ready and delivered with bidding documentation.</span>
+ 
+ </a>
+ <a class="svc-row" href="services/exterior.html">
+ <span class="idx">→ 06</span>
+ <span class="name">Exterior Re-facing</span>
+ <span class="desc">Façade, fencing and front-yard interventions, quiet refinement of an existing home without breaking ground.</span>
+ 
+ </a>
+ <a class="svc-row" href="services/rendering.html">
+ <span class="idx">→ 07</span>
+ <span class="name">Visualization Services</span>
+ <span class="desc">Photoreal visualization for design review, marketing and approvals. Interiors, exteriors and aerials.</span>
+ 
+ </a>
+ </div>
+ </div>
+</section>
+
+<!-- ── WHAT WE DELIVER ─────────────────────────────────── -->
+<style>
+  .deliver-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border-top:1px solid var(--ink-rule);border-left:1px solid var(--ink-rule);
+    margin-top:var(--x6);
+  }
+  .deliver-cell{
+    padding:var(--x4) var(--x3);
+    border-right:1px solid var(--ink-rule);border-bottom:1px solid var(--ink-rule);
+    background:var(--paper);
+  }
+  .deliver-cell .num{font-family:var(--mono);font-size:.66rem;letter-spacing:.22em;color:var(--ink-mute);margin-bottom:.9rem}
+  .deliver-cell .ttl{font-family:var(--display);font-weight:700;font-size:1.02rem;text-transform:uppercase;letter-spacing:.02em;line-height:1.2;margin-bottom:.6rem}
+  .deliver-cell .dsc{font-family:var(--sans);font-weight:300;font-size:.9rem;line-height:1.55;color:var(--ink-mid)}
+  @media(max-width:980px){.deliver-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.deliver-grid{grid-template-columns:1fr;border-left:none}.deliver-cell{border-right:none}}
+
+  .deliver-sample{margin-top:var(--x7)}
+  .deliver-sample__head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.4rem;margin-bottom:var(--x4)}
+  .deliver-strip{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:var(--x3);
+  }
+  .deliver-strip figure{margin:0;display:flex;flex-direction:column;gap:.7rem}
+  .deliver-strip img{
+    width:100%;display:block;background:#fff;border:1px solid var(--ink-rule);
+    aspect-ratio:8/7;object-fit:cover;object-position:top center;
+  }
+  .deliver-strip figcaption{
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink-mute);
+  }
+  @media(max-width:720px){.deliver-strip{grid-template-columns:1fr 1fr;gap:var(--x2)}}
+</style>
+<section class="section" id="deliver">
+ <div class="wrap">
+ <div class="col-2">
+ <div>
+ <div class="section-num">What We Deliver</div>
+ <h2 class="h2 serif">Not just images.<br>A buildable package.</h2>
+ </div>
+ <div>
+ <p class="lede" style="margin-bottom:1.4rem">Every Astro Station design closes with a complete, organized project package, documented down to the last detail.</p>
+ <p class="body">It is the difference between a beautiful picture and a buildable house: a package your general contractor can price, your vendors can order from, and your bidding team can take to market, without a single follow-up question to fill a gap.</p>
+ </div>
+ </div>
+
+ <div class="deliver-grid">
+ <div class="deliver-cell">
+ <div class="num">01</div>
+ <div class="ttl">Design Concept &amp; Renderings</div>
+ <div class="dsc">The complete design intent: photoreal interior, exterior and aerial visualizations of every key space.</div>
+ </div>
+ <div class="deliver-cell">
+ <div class="num">02</div>
+ <div class="ttl">Plans, Sections &amp; Elevations</div>
+ <div class="dsc">Full architectural drawing set: floor plans, building sections, exterior and interior elevations, roof and site plans.</div>
+ </div>
+ <div class="deliver-cell">
+ <div class="num">03</div>
+ <div class="ttl">Construction Documents</div>
+ <div class="dsc">Coordinated, dimensioned documentation ready for permitting and submission to a general contractor.</div>
+ </div>
+ <div class="deliver-cell">
+ <div class="num">04</div>
+ <div class="ttl">Material Selections</div>
+ <div class="dsc">Curated palettes for every room: stone, wood, tile, metal, paint and fabric, presented with samples and references.</div>
+ </div>
+ <div class="deliver-cell">
+ <div class="num">05</div>
+ <div class="ttl">Finish Schedules</div>
+ <div class="dsc">Room-by-room finish schedules, tile layouts, door and window schedules, every surface accounted for.</div>
+ </div>
+ <div class="deliver-cell">
+ <div class="num">06</div>
+ <div class="ttl">Millwork &amp; Casework Details</div>
+ <div class="dsc">Shop-level drawings for every built-in, kitchen, vanity and panel, fabrication-ready for Dragon Millwork or any shop.</div>
+ </div>
+ <div class="deliver-cell">
+ <div class="num">07</div>
+ <div class="ttl">Materials List &amp; Vendor Info</div>
+ <div class="dsc">A complete purchasing list: quantities, specifications, vendors, and where to buy every material in the project.</div>
+ </div>
+ <div class="deliver-cell">
+ <div class="num">08</div>
+ <div class="ttl">Bid &amp; Pricing Ready</div>
+ <div class="dsc">Documentation structured for competitive bidding, your GC and pricing team work from one organized source.</div>
+ </div>
+ </div>
+
+ <!-- Sample package — Buddha House -->
+ <div class="deliver-sample" data-lightbox>
+ <div class="deliver-sample__head">
+ <div>
+ <div class="section-num" style="margin-bottom:1rem">Inside a real package</div>
+ <h3 class="h3 serif">Buddha House: 150 sheets, June 2026.</h3>
+ <p class="body" style="margin-top:.8rem;max-width:56ch">One real deliverable, end to end: concept, construction documents, millwork details, vendor specifications and renderings in a single continuous package. Click any sheet to expand, or open the 30-sheet excerpt. The full 150-sheet package is available on request.</p>
+ </div>
+ <a class="btn" href="assets/Astro_Station_Sample_Package.pdf" target="_blank" rel="noopener">View the sample package, PDF <span class="arr">→</span></a>
+ </div>
+
+ <div class="deliver-strip">
+ <figure><img src="img/deliver/sheet-01.jpg" alt="Sample package — design concept and material palette" loading="lazy"><figcaption>Design concept &amp; materials</figcaption></figure>
+ <figure><img src="img/deliver/sheet-02.jpg" alt="Sample package — floor plans" loading="lazy"><figcaption>Floor plans</figcaption></figure>
+ <figure><img src="img/deliver/sheet-03.jpg" alt="Sample package — sections and elevations" loading="lazy"><figcaption>Sections &amp; elevations</figcaption></figure>
+ <figure><img src="img/deliver/sheet-04.jpg" alt="Sample package — construction documents and schedules" loading="lazy"><figcaption>Construction documents</figcaption></figure>
+ <figure><img src="img/deliver/sheet-05.jpg" alt="Sample package — window, tile and finish details" loading="lazy"><figcaption>Finish schedules &amp; tile layouts</figcaption></figure>
+ <figure><img src="img/deliver/sheet-06.jpg" alt="Sample package — millwork and casework details" loading="lazy"><figcaption>Millwork details</figcaption></figure>
+ <figure><img src="img/deliver/sheet-07.jpg" alt="Sample package — material and vendor specifications" loading="lazy"><figcaption>Materials &amp; vendor specs</figcaption></figure>
+ <figure><img src="img/deliver/sheet-08.jpg" alt="Sample package — exterior rendering" loading="lazy"><figcaption>Renderings, exterior</figcaption></figure>
+ <figure><img src="img/deliver/sheet-09.jpg" alt="Sample package — interior renderings" loading="lazy"><figcaption>Renderings, interior</figcaption></figure>
+ </div>
+ </div>
+ </div>
+</section>
+
+<section class="section section--cream">
+ <div class="wrap">
+ <div class="col-2">
+ <div>
+ <div class="section-num">Engagement</div>
+ <h2 class="h2 serif">À la carte. Or all of it.</h2>
+ </div>
+ <div>
+ <p class="lede" style="margin-bottom:1.4rem">Most clients begin with a single line: Architecture, Interiors, or Built, and grow from there. A typical Astro Station relationship spans three to four service lines by the time the keys turn.</p>
+ <p class="body">A master agreement bundles every line under one contract, one project manager and one transparent fee. Move between phases without re-negotiating scope.</p>
+ <a class="arr-link" href="contact.html" style="margin-top:1.8rem">Discuss a master agreement →</a>
+ </div>
+ </div>
+ </div>
+</section>
+
+<section class="closing">
+ <div class="wrap">
+ <h2 class="display">Begin here.</h2>
+ <div class="ctas">
+ <a class="btn btn--solid" href="contact.html">Schedule a Consultation <span class="arr">→</span></a>
+ </div>
+ </div>
+</section>
+
+<footer class="foot">
+ <div class="wrap">
+ <div class="foot__top">
+ <div class="foot__brand">
+ <img src="img/brand/wordmark.png" alt="Astro Station" style="height:36px;width:auto;display:block;margin-bottom:.6rem">
+ <div class="desc">Architecture · Interiors · Millwork · Construction</div>
+ <p>Bespoke homes designed and delivered as one.</p>
+ </div>
+ <div class="foot__col">
+ <h6>Studio</h6>
+ <a href="about.html">About</a>
+ <a href="journal.html">Journal</a>
+ <a href="mailto:careers@astrostation.com">Careers</a>
+ </div>
+ <div class="foot__col">
+ <h6>Services</h6>
+ <a href="services/architecture.html">Architecture</a>
+ <a href="services/interiors.html">Interior Design</a>
+ <a href="services/millwork.html">Millwork · Dragon</a>
+ <a href="services/built.html">Construction · Astro Cósmico</a>
+ <a href="services/landscape.html">Landscape &amp; Pool</a>
+ <a href="services/exterior.html">Exterior Re-facing</a>
+ <a href="services/rendering.html">Visualization</a>
+ </div>
+ <div class="foot__col">
+ <h6>Work</h6>
+ <a href="work.html#featured">Featured</a>
+ <a href="work.html#residential">Residential</a>
+ <a href="work.html#hospitality">Hospitality</a>
+ <a href="work.html#commercial">Commercial</a>
+ </div>
+ <div class="foot__col">
+ <h6>Contact</h6>
+ <a href="tel:+17869091565">+1 786 909 1565</a>
+ <a href="mailto:info@astrostation.com">info@astrostation.com</a>
+ <a href="https://www.instagram.com/astrostation.co/" target="_blank" rel="noopener">Instagram</a>
+ <a href="https://linkedin.com/company/astrostation" target="_blank" rel="noopener">LinkedIn</a>
+ </div>
+ </div>
+ <div class="foot__bottom">
+ <span>© Astro Station 2026 · All rights reserved</span>
+ <nav class="foot__legal" aria-label="Legal"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Disclaimer</a><a href="#" data-cookie-prefs>Cookie Preferences</a></nav>
+ <span>Miami · Los Angeles</span>
+ </div>
+ </div>
+</footer>
+<script src="assets/main.js"></script>
+</body>
+</html>
