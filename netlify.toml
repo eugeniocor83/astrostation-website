@@ -58,11 +58,3 @@
   from = "/*"
   to = "/404.html"
   status = 404
-
-# ════ STAGING ONLY — REMOVE THIS BLOCK AT DOMAIN CUTOVER ════
-# Keeps search engines from indexing the deploy until you go live.
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Robots-Tag = "noindex"
-# ════ END STAGING-ONLY BLOCK ════
