@@ -44,6 +44,17 @@
   to = "/services/:slug.html"
   status = 200
 
+# Corrected project slug (Nautilius → Nautilus)
+[[redirects]]
+  from = "/work/nautilius"
+  to = "/work/nautilus"
+  status = 301
+
+[[redirects]]
+  from = "/work/nautilius.html"
+  to = "/work/nautilus.html"
+  status = 301
+
 [[redirects]]
   from = "/work/:slug"
   to = "/work/:slug.html"
