@@ -44,6 +44,27 @@
   to = "/services/:slug.html"
   status = 200
 
+# Removed projects → Work index (avoid broken inbound links)
+[[redirects]]
+  from = "/work/pompano"
+  to = "/work"
+  status = 301
+
+[[redirects]]
+  from = "/work/pompano.html"
+  to = "/work"
+  status = 301
+
+[[redirects]]
+  from = "/work/nicolas-turbay"
+  to = "/work"
+  status = 301
+
+[[redirects]]
+  from = "/work/nicolas-turbay.html"
+  to = "/work"
+  status = 301
+
 # Corrected project slug (Nautilius → Nautilus)
 [[redirects]]
   from = "/work/nautilius"
