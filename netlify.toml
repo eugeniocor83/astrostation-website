@@ -3,11 +3,12 @@
 [build]
   publish = "."
 
-# Long-cache static assets (immutable imagery, fonts)
+# Imagery — cache a day, then revalidate (so a replaced file at the same path refreshes).
+# Versioned URLs (e.g. ?v=YYYYMMDD) are used to force-bust changed images instantly.
 [[headers]]
   for = "/img/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=86400"
 
 [[headers]]
   for = "/fonts/*"
