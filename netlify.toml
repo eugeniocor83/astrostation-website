@@ -45,6 +45,17 @@
   to = "/services/:slug.html"
   status = 200
 
+# Merged: El Cielo · Omakase → Omakase / El Cielo (el-cielo-medellin)
+[[redirects]]
+  from = "/work/el-cielo-omakase"
+  to = "/work/el-cielo-medellin"
+  status = 301
+
+[[redirects]]
+  from = "/work/el-cielo-omakase.html"
+  to = "/work/el-cielo-medellin"
+  status = 301
+
 # Removed projects → Work index (avoid broken inbound links)
 [[redirects]]
   from = "/work/pompano"
