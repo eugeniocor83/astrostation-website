@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>AstroStation — Launch</title>
+
+<!-- Fonts: Sora (wordmark) + Space Mono (telemetry). Swap Sora for the real ASTRO brand face when ready. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Preload the hero so the reveal never shows a blank frame -->
+<link rel="preload" as="image" href="launch-assets/hero.jpg">
+
+<style>
+/* ============================================================
+   DESIGN TOKENS  (match the brand world)
+   ============================================================ */
+:root{
+  --space:#0A0908;          /* near-black space            */
+  --hairline:#2A241C;       /* warm hairline               */
+  --gold:#E8C36B;           /* visor gold — primary accent */
+  --gold-deep:#C9A24B;      /* deep gold                   */
+  --white:#F2EDE4;          /* warm white                  */
+  --muted:#8A8276;          /* muted telemetry             */
+
+  --font-brand:'Sora',-apple-system,system-ui,sans-serif;
+  --font-mono:'Space Mono','SFMono-Regular',ui-monospace,monospace;
+
+  /* ---- PACING (ms). Retune the whole intro from here. ----
+     Total to reveal ≈ 7.1s; full settle ≈ 8s. */
+  --t-reveal-fade:900ms;    /* flash → site dissolve        */
+  --t-kenburns:6000ms;      /* slow hero push-in            */
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--space);color:var(--white);font-family:var(--font-brand)}
+body{overflow:hidden}                 /* locked during intro; released on reveal */
+body.as-revealed{overflow:auto}
+
+/* ============================================================
+   THE LIVE LANDING PAGE  (#site)
+   --- In production this is YOUR real landing markup.
+   --- The intro reveals whatever lives inside #site. ---
+   ============================================================ */
+#site{
+  position:relative;min-height:100%;
+  opacity:0;                            /* hidden until reveal */
+  transition:opacity var(--t-reveal-fade) ease;
+}
+#site.as-show{opacity:1}
+
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:space-between;
+  padding:22px clamp(20px,4vw,54px);mix-blend-mode:difference}
+.site-nav__brand{display:flex;align-items:center;gap:14px}
+.nav-mark{width:30px;height:30px;color:var(--gold);opacity:0;transform:rotate(-90deg) scale(.6);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.as-revealed .nav-mark{opacity:1;transform:none}
+.site-nav__word{font-family:var(--font-brand);font-weight:700;letter-spacing:.34em;font-size:.82rem}
+.site-nav__links{display:flex;gap:30px;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white)}
+@media(max-width:640px){.site-nav__links{display:none}}
+
+.hero{position:relative;height:100svh;overflow:hidden}
+.hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transform:scale(1.09);transform-origin:55% 45%}
+/* Ken Burns push-in begins the instant the site is revealed */
+.as-revealed .hero__img{animation:kenburns var(--t-kenburns) ease-out forwards}
+@keyframes kenburns{to{transform:scale(1.0)}}
+.hero__scrim{position:absolute;inset:0;background:
+  radial-gradient(120% 90% at 50% 30%,transparent 40%,rgba(10,9,8,.55) 100%),
+  linear-gradient(to top,rgba(10,9,8,.85),transparent 45%)}
+.hero__copy{position:absolute;left:0;right:0;bottom:clamp(48px,9vh,120px);text-align:center;padding:0 20px}
+.wordmark{font-family:var(--font-brand);font-weight:800;letter-spacing:.16em;
+  font-size:clamp(2.4rem,8vw,6rem);line-height:1;margin:0;display:inline-flex;flex-wrap:wrap;justify-content:center}
+.wordmark .l{display:inline-block;opacity:0;filter:blur(14px);transform:translateY(8px)}
+.wordmark .sp{width:.5em}
+.hero__tag{margin-top:1.4rem;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--gold);opacity:0;transition:opacity .8s ease 1.1s}
+.as-revealed .hero__tag{opacity:.95}
+
+/* ============================================================
+   INTRO OVERLAY  (#as-intro)
+   ============================================================ */
+#as-intro{position:fixed;inset:0;z-index:50;background:var(--space);
+  display:flex;align-items:center;justify-content:center;
+  /* default visible; removed after reveal */}
+#as-intro.as-gone{opacity:0;pointer-events:none;transition:opacity .6s ease}
+
+#as-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+/* film grain + vignette */
+.as-grain{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity 1s ease;mix-blend-mode:overlay}
+.as-grain.on{opacity:.5}
+.as-vignette{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 100% at 50% 50%,transparent 52%,rgba(0,0,0,.7) 100%)}
+
+/* gold hairline frame corners */
+.as-corners{position:absolute;inset:clamp(16px,3vw,40px);pointer-events:none;opacity:0;transition:opacity 1.1s ease}
+.as-corners.on{opacity:.85}
+.as-corner{position:absolute;width:34px;height:34px;border:1px solid var(--gold);opacity:.55}
+.as-corner.tl{top:0;left:0;border-right:0;border-bottom:0}
+.as-corner.tr{top:0;right:0;border-left:0;border-bottom:0}
+.as-corner.bl{bottom:0;left:0;border-right:0;border-top:0}
+.as-corner.br{bottom:0;right:0;border-left:0;border-top:0}
+
+/* HUD layer */
+.as-hud{position:absolute;inset:0;pointer-events:none;font-family:var(--font-mono);color:var(--muted)}
+.as-hud .row{position:absolute;display:flex;gap:10px;align-items:baseline;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;opacity:0;transition:opacity .8s ease}
+.as-hud .row.on{opacity:1}
+.slug{top:clamp(22px,4vw,46px);left:clamp(22px,4vw,46px);flex-direction:column;gap:6px}
+.slug b{color:var(--gold);font-weight:700;letter-spacing:.34em}
+.telemetry{top:clamp(22px,4vw,46px);right:clamp(22px,4vw,46px);flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
+.telemetry .v{color:var(--white)}
+.status{left:0;right:0;bottom:clamp(74px,16vh,150px);justify-content:center;color:var(--white);letter-spacing:.3em}
+
+/* centre stage: vortex + mission ring + countdown */
+.as-stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.as-core{position:relative;width:min(46vmin,360px);height:min(46vmin,360px);display:flex;align-items:center;justify-content:center}
+.as-ring{position:absolute;inset:0;transform:rotate(-90deg)}
+.as-ring circle{fill:none;stroke-linecap:round}
+.as-ring .track{stroke:var(--hairline);stroke-width:1.5}
+.as-ring .run{stroke:var(--gold);stroke-width:2;filter:drop-shadow(0 0 6px rgba(232,195,107,.5))}
+.as-vortex{position:absolute;width:54%;height:54%;opacity:.16;transition:opacity .6s ease;color:var(--gold)}
+.as-vortex.lit{opacity:.9;filter:drop-shadow(0 0 10px rgba(232,195,107,.45))}
+.as-count{position:absolute;font-family:var(--font-brand);font-weight:300;font-size:clamp(3rem,12vmin,7rem);
+  color:var(--white);opacity:0;letter-spacing:.02em}
+
+/* controls */
+.as-controls{position:absolute;bottom:clamp(20px,4vw,38px);right:clamp(20px,4vw,40px);display:flex;gap:10px;z-index:3}
+.as-btn{pointer-events:auto;cursor:pointer;background:rgba(20,18,15,.5);border:1px solid var(--hairline);
+  color:var(--muted);font-family:var(--font-mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  padding:9px 14px;border-radius:2px;backdrop-filter:blur(4px);transition:color .25s,border-color .25s}
+.as-btn:hover,.as-btn:focus-visible{color:var(--gold);border-color:var(--gold-deep)}
+.as-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* sound-unlock prompt (unobtrusive) */
+.as-sound{position:absolute;bottom:clamp(20px,4vw,38px);left:clamp(20px,4vw,40px);z-index:3;
+  pointer-events:auto;cursor:pointer;display:flex;align-items:center;gap:9px;
+  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+  opacity:0;transition:opacity .6s ease}
+.as-sound.on{opacity:.8}
+.as-sound .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);
+  animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.3}}
+
+/* white-gold flash punch */
+.as-flash{position:absolute;inset:0;pointer-events:none;opacity:0;
+  background:radial-gradient(circle at 50% 50%,#fff 0%,var(--gold) 35%,rgba(232,195,107,0) 72%)}
+
+@media(max-width:640px){
+  .telemetry{display:none}        /* keep mobile quiet */
+  .as-corners{inset:14px}
+}
+
+/* ============================================================
+   prefers-reduced-motion — skip straight to the site
+   ============================================================ */
+@media(prefers-reduced-motion:reduce){
+  #as-intro{display:none!important}
+  #site{opacity:1!important}
+  .hero__img{animation:none!important;transform:scale(1)!important}
+  .wordmark .l{opacity:1!important;filter:none!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ========================================================
+     #site  — YOUR LIVE LANDING PAGE
+     Replace everything inside #site with your real markup.
+     The intro only needs: an element to fade in (#site),
+     a hero <img class="hero__img">, and (optional) the
+     letter-split .wordmark for the assemble effect.
+     ======================================================== -->
+<main id="site">
+  <nav class="site-nav" aria-label="Primary">
+    <div class="site-nav__brand">
+      <svg class="nav-mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#vortex"/></svg>
+      <span class="site-nav__word">ASTRO&nbsp;STATION</span>
+    </div>
+    <div class="site-nav__links"><a href="#">Work</a><a href="#">Studio</a><a href="#">Contact</a></div>
+  </nav>
+
+  <section class="hero">
+    <img class="hero__img" src="launch-assets/hero.jpg" alt="AstroStation — the architect at the drafting table">
+    <div class="hero__scrim"></div>
+    <div class="hero__copy">
+      <!-- .wordmark letters are split by JS for the blur-assemble reveal -->
+      <h1 class="wordmark" data-word="ASTRO STATION">ASTRO STATION</h1>
+      <div class="hero__tag">Architecture · Interiors · Built · LA + Miami</div>
+    </div>
+  </section>
+</main>
+
+<!-- ========================================================
+     INTRO OVERLAY
+     ======================================================== -->
+<div id="as-intro" role="dialog" aria-label="AstroStation launch sequence">
+  <canvas id="as-canvas"></canvas>
+  <div class="as-grain" id="asGrain"></div>
+  <div class="as-vignette"></div>
+
+  <div class="as-corners" id="asCorners">
+    <span class="as-corner tl"></span><span class="as-corner tr"></span>
+    <span class="as-corner bl"></span><span class="as-corner br"></span>
+  </div>
+
+  <div class="as-hud" aria-hidden="true">
+    <div class="row slug" id="asSlug">
+      <b>ASTROSTATION FLIGHT DECK</b>
+      <span>MISSION · AS-01 — DESIGN-BUILD</span>
+    </div>
+    <div class="row telemetry" id="asTele">
+      <span>VEL <span class="v" id="tVel">00000</span> M/S</span>
+      <span>ALT <span class="v" id="tAlt">000.0</span> KM</span>
+      <span>COORD <span class="v">34.0522°N · 25.7617°W</span></span>
+    </div>
+    <div class="row status" id="asStatus"></div>
+  </div>
+
+  <div class="as-stage">
+    <div class="as-core">
+      <svg class="as-ring" viewBox="0 0 100 100" id="asRing" aria-hidden="true">
+        <circle class="track" cx="50" cy="50" r="47"></circle>
+        <circle class="run"   cx="50" cy="50" r="47" id="asRingRun"></circle>
+      </svg>
+      <svg class="as-vortex" id="asVortex" viewBox="0 0 100 100" aria-hidden="true"><use href="#vortex"/></svg>
+      <div class="as-count" id="asCount"></div>
+    </div>
+  </div>
+
+  <div class="as-flash" id="asFlash"></div>
+
+  <button class="as-btn" id="asSkip" aria-label="Skip intro (Esc)">Skip ⏎</button>
+  <div class="as-controls">
+    <button class="as-btn" id="asMute" aria-pressed="false" aria-label="Toggle sound">♪ Sound</button>
+  </div>
+  <div class="as-sound" id="asSound" role="button" tabindex="0" aria-label="Enable sound">
+    <span class="dot"></span> Tap for sound
+  </div>
+</div>
+
+<!-- Reusable vortex glyph (the six-spoke mark). Swap this <symbol> for the real SVG. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="vortex" viewBox="0 0 100 100">
+    <!-- one spiral blade, rotated 6×60° → the six-spoke pinwheel vortex -->
+    <g fill="none" stroke="currentColor" stroke-width="5.4" stroke-linecap="round">
+      <path d="M50 50 C 46 35, 47 21, 57 9"></path>
+      <path d="M50 50 C 46 35, 47 21, 57 9" transform="rotate(60 50 50)"></path>
+      <path d="M50 50 C 46 35, 47 21, 57 9" transform="rotate(120 50 50)"></path>
+      <path d="M50 50 C 46 35, 47 21, 57 9" transform="rotate(180 50 50)"></path>
+      <path d="M50 50 C 46 35, 47 21, 57 9" transform="rotate(240 50 50)"></path>
+      <path d="M50 50 C 46 35, 47 21, 57 9" transform="rotate(300 50 50)"></path>
+    </g>
+  </symbol>
+</svg>
+
+<script>
+"use strict";
+/* ============================================================
+   ASTROSTATION ENTRANCE SEQUENCE
+   Self-contained. Canvas = starfield/warp/collapse.
+   DOM/SVG = HUD + vortex. Web Audio = all sound.
+   ============================================================ */
+(function(){
+  const D = document;
+  const intro   = D.getElementById('as-intro');
+  const site    = D.getElementById('site');
+  const cv      = D.getElementById('as-canvas');
+  const ctx     = cv.getContext('2d');
+  const flash   = D.getElementById('asFlash');
+  const vortex  = D.getElementById('asVortex');
+  const ringRun = D.getElementById('asRingRun');
+  const countEl = D.getElementById('asCount');
+  const statusEl= D.getElementById('asStatus');
+  const reduce  = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* ---- TIMELINE (ms) — every beat lives here, tweak freely ---- */
+  const T = {
+    grainIn:   150,   // grain/vignette/corners/slug fade in
+    telemetry: 700,   // telemetry begins counting
+    status:   1200,   // "Launch sequence initiated."
+    countFrom:1750,   // 5·4·3·2·1 — one digit per `step`
+    step:      720,   // gap between countdown digits
+    liftoff:  1750 + 720*5,  // T-0  (≈5350)
+    warp:      950,   // warp/thrust duration
+    collapse:  900,   // portal collapse duration
+    flash:     260,   // white-gold punch
+    settle:    900    // overlay fade after reveal
+  };
+  T.collapseAt = T.liftoff + T.warp;       // ≈6300
+  T.flashAt    = T.collapseAt + T.collapse;// ≈7200
+  T.revealAt   = T.flashAt - 60;
+
+  /* ---------- Session: show once per session ---------- */
+  let SKIP_INTRO = false;
+  try{ SKIP_INTRO = sessionStorage.getItem('as_intro_seen') === '1'; }catch(e){}
+  function markSeen(){ try{ sessionStorage.setItem('as_intro_seen','1'); }catch(e){} }
+
+  /* ================= WEB AUDIO (no files) ================= */
+  const Audio = (function(){
+    let actx=null, master=null, muted=false, unlocked=false;
+    function ensure(){
+      if(actx) return;
+      try{ actx = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ return; }
+      master = actx.createGain(); master.gain.value = .9; master.connect(actx.destination);
+    }
+    function unlock(){ ensure(); if(actx && actx.state==='suspended') actx.resume(); unlocked=true; soundPrompt(false); }
+    function noiseBuffer(sec){ const n=actx.sampleRate*sec, b=actx.createBuffer(1,n,actx.sampleRate), d=b.getChannelData(0);
+      for(let i=0;i<n;i++) d[i]=Math.random()*2-1; return b; }
+    function beep(freq,t){ if(!actx||muted) return; const o=actx.createOscillator(),g=actx.createGain();
+      o.type='sine'; o.frequency.value=freq; o.connect(g); g.connect(master);
+      const s=actx.currentTime+t; g.gain.setValueAtTime(0,s); g.gain.linearRampToValueAtTime(.25,s+.01);
+      g.gain.exponentialRampToValueAtTime(.0001,s+.14); o.start(s); o.stop(s+.16); }
+    function rumble(t,dur){ if(!actx||muted) return; const src=actx.createBufferSource();src.buffer=noiseBuffer(dur+.2);
+      const lp=actx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=90;
+      const g=actx.createGain();src.connect(lp);lp.connect(g);g.connect(master);
+      const s=actx.currentTime+t; g.gain.setValueAtTime(0,s);g.gain.linearRampToValueAtTime(.6,s+.25);
+      g.gain.linearRampToValueAtTime(.0001,s+dur); src.start(s);src.stop(s+dur+.1); }
+    function whoosh(t,dur){ if(!actx||muted) return; const src=actx.createBufferSource();src.buffer=noiseBuffer(dur+.2);
+      const bp=actx.createBiquadFilter();bp.type='bandpass';bp.Q.value=.7;
+      const g=actx.createGain();src.connect(bp);bp.connect(g);g.connect(master);
+      const s=actx.currentTime+t; bp.frequency.setValueAtTime(300,s);bp.frequency.exponentialRampToValueAtTime(4200,s+dur);
+      g.gain.setValueAtTime(0,s);g.gain.linearRampToValueAtTime(.35,s+dur*.5);g.gain.linearRampToValueAtTime(.0001,s+dur);
+      src.start(s);src.stop(s+dur+.1); }
+    function punch(t){ if(!actx||muted) return; const o=actx.createOscillator(),g=actx.createGain();
+      o.type='triangle';o.frequency.setValueAtTime(420,actx.currentTime+t);o.frequency.exponentialRampToValueAtTime(60,actx.currentTime+t+.4);
+      o.connect(g);g.connect(master);const s=actx.currentTime+t;g.gain.setValueAtTime(.5,s);g.gain.exponentialRampToValueAtTime(.0001,s+.5);
+      o.start(s);o.stop(s+.5); }
+    return {
+      unlock, isUnlocked:()=>unlocked,
+      setMuted:m=>{muted=m; if(master)master.gain.value=m?0:.9;},
+      beep,rumble,whoosh,punch
+    };
+  })();
+
+  function soundPrompt(show){ const el=D.getElementById('asSound'); el.classList.toggle('on',show); }
+
+  /* ================= STARFIELD / WARP / COLLAPSE ================= */
+  const DPR = Math.min(window.devicePixelRatio||1, 2);   // cap at 2 (perf)
+  let W=0,H=0,CX=0,CY=0;
+  function resize(){ W=cv.clientWidth;H=cv.clientHeight;CX=W/2;CY=H/2;
+    cv.width=Math.floor(W*DPR);cv.height=Math.floor(H*DPR);ctx.setTransform(DPR,0,0,DPR,0,0); }
+  resize(); window.addEventListener('resize',resize);
+
+  const STAR_N = Math.min(460, Math.floor((W*H)/2600)) || 360;
+  const stars = [];
+  function seed(){ stars.length=0; for(let i=0;i<STAR_N;i++){ const a=Math.random()*Math.PI*2; const r=Math.pow(Math.random(),.6)*Math.hypot(CX,CY);
+    stars.push({a, r, baseR:r, tw:Math.random(), sp:.6+Math.random()*.9, hue:Math.random()}); } }
+  seed();
+
+  // phase: 'idle' | 'warp' | 'collapse' | 'core' | 'done'
+  let phase='idle', shake=0, coreGlow=0;
+  function lerp(a,b,t){return a+(b-a)*t;}
+  function clamp01(x){return x<0?0:x>1?1:x;}
+
+  function draw(now){
+    ctx.clearRect(0,0,W,H);
+    // subtle warm space wash
+    if(phase!=='done'){
+      let g=ctx.createRadialGradient(CX,CY,0,CX,CY,Math.hypot(CX,CY));
+      g.addColorStop(0,'rgba(20,17,12,.55)');g.addColorStop(1,'rgba(10,9,8,0)');
+      ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    }
+    const sh = shake>0 ? (Math.random()-.5)*shake : 0;
+    const shy= shake>0 ? (Math.random()-.5)*shake : 0;
+    for(const s of stars){
+      let x=CX+Math.cos(s.a)*s.r+sh, y=CY+Math.sin(s.a)*s.r+shy;
+      if(phase==='idle'){
+        s.tw+=0.02*s.sp; const tw=.35+.45*(0.5+0.5*Math.sin(s.tw));
+        ctx.fillStyle=`rgba(242,237,228,${tw*0.6})`;
+        ctx.fillRect(x,y,1.2,1.2);
+      } else {
+        // streak from previous radius → gold shift grows with speed
+        const prevR = s.r - s.vel*8;
+        const px=CX+Math.cos(s.a)*prevR+sh, py=CY+Math.sin(s.a)*prevR+shy;
+        const goldT = clamp01((s.warpAmt||0));
+        const r=Math.round(lerp(242,232,goldT)),gg=Math.round(lerp(237,195,goldT)),b=Math.round(lerp(228,107,goldT));
+        ctx.strokeStyle=`rgba(${r},${gg},${b},${.85})`;
+        ctx.lineWidth=lerp(1,2.2,goldT);
+        ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(x,y);ctx.stroke();
+      }
+    }
+    // glowing gold core during collapse/flash
+    if(coreGlow>0){
+      const rad=lerp(0,Math.min(W,H)*.5,coreGlow);
+      const g=ctx.createRadialGradient(CX,CY,0,CX,CY,Math.max(2,rad));
+      g.addColorStop(0,`rgba(255,255,255,${.9*coreGlow})`);
+      g.addColorStop(.4,`rgba(232,195,107,${.7*coreGlow})`);
+      g.addColorStop(1,'rgba(232,195,107,0)');
+      ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    }
+  }
+
+  /* ---- per-frame physics for the active phase ---- */
+  function physics(){
+    if(phase==='warp'){
+      for(const s of stars){ s.vel=(s.vel||1)*1.06+0.6*s.sp; s.r+=s.vel; s.warpAmt=clamp01((s.warpAmt||0)+0.02);
+        if(s.r>Math.hypot(CX,CY)*1.25){ s.r=Math.random()*40; s.vel=2; } }
+    } else if(phase==='collapse'){
+      for(const s of stars){ s.vel=(s.vel||6); s.r-=Math.max(6,s.r*0.10); s.a+=0.10*s.sp;  // spiral inward
+        s.warpAmt=clamp01((s.warpAmt||1)); if(s.r<2) s.r=2; }
+    }
+  }
+
+  /* ================= MAIN LOOP ================= */
+  let raf=0, running=true;
+  function loop(now){
+    if(!running) return;
+    physics();
+    draw(now);
+    raf=requestAnimationFrame(loop);
+  }
+
+  /* ================= HUD helpers ================= */
+  function on(id){ D.getElementById(id).classList.add('on'); }
+  function ringSetup(){ const r=47, c=2*Math.PI*r; ringRun.style.strokeDasharray=c; ringRun.style.strokeDashoffset=c;
+    return {c}; }
+  let RING=ringSetup();
+  function ringTo(frac,ms){ ringRun.style.transition=`stroke-dashoffset ${ms}ms linear`;
+    ringRun.style.strokeDashoffset = RING.c*frac; }
+  let teleRAF=0;
+  function runTelemetry(){ const vEl=D.getElementById('tVel'),aEl=D.getElementById('tAlt');
+    const start=performance.now();
+    (function tick(t){ const k=clamp01((t-start)/(T.liftoff-T.telemetry));
+      vEl.textContent=String(Math.floor(k*27500)).padStart(5,'0');
+      aEl.textContent=(k*altPeak()).toFixed(1);
+      if(k<1 && phase!=='done') teleRAF=requestAnimationFrame(tick);
+    })(start); }
+  function altPeak(){return 412.0;}
+
+  /* ================= COUNTDOWN ================= */
+  function showCount(n){ countEl.textContent=n; countEl.style.transition='none'; countEl.style.opacity='1'; countEl.style.transform='scale(1.18)';
+    requestAnimationFrame(()=>{ countEl.style.transition='opacity .6s ease,transform .6s ease'; countEl.style.opacity='0'; countEl.style.transform='scale(.7)'; });
+    Audio.beep(n===1?880:560, 0); }
+
+  /* ================= VORTEX spin (CSS via JS rAF) ================= */
+  let vAngle=0, vSpin=0, vScale=1, vRunning=false;
+  function vortexLoop(){ if(!vRunning) return; vAngle+=vSpin; vortex.style.transform=`rotate(${vAngle}deg) scale(${vScale})`;
+    requestAnimationFrame(vortexLoop); }
+
+  /* ================= TIMELINE ================= */
+  const timers=[];
+  function at(ms,fn){ timers.push(setTimeout(fn,ms)); }
+
+  function runSequence(){
+    running=true; raf=requestAnimationFrame(loop);
+    // 1 — warm space, slug, corners, faint vortex
+    at(T.grainIn, ()=>{ D.getElementById('asGrain').classList.add('on'); D.getElementById('asCorners').classList.add('on'); on('asSlug'); });
+    at(T.telemetry, ()=>{ on('asTele'); runTelemetry(); });
+    // 2 — status + countdown + ring depletes + vortex rotates
+    at(T.status, ()=>{ statusEl.textContent='Launch sequence initiated.'; on('asStatus');
+      vRunning=true; vSpin=0.25; vortexLoop(); });
+    at(T.countFrom-150, ()=>{                       // ring starts FULL, then depletes to T-0
+      ringRun.style.transition='none'; ringRun.style.strokeDashoffset='0';
+      requestAnimationFrame(()=>{ ringRun.style.transition=`stroke-dashoffset ${T.liftoff-(T.countFrom-150)}ms linear`;
+        ringRun.style.strokeDashoffset=RING.c; });
+    });
+    for(let i=0;i<5;i++){ at(T.countFrom + i*T.step, ()=> showCount(5-i)); }
+    // 3 — LIFTOFF: rumble + whoosh + shake + warp
+    at(T.liftoff, ()=>{
+      statusEl.textContent='Liftoff.';
+      Audio.rumble(0,1.3); Audio.whoosh(.05,.7);
+      shake=10; at(420,()=>shake=4); at(T.warp,()=>shake=0);
+      phase='warp'; for(const s of stars){ s.vel=2; s.warpAmt=0; }
+      D.getElementById('asVortex').classList.add('lit');
+    });
+    // 4 — PORTAL COLLAPSE: reverse warp, spiral to gold core, vortex spins up + scales in, flash
+    at(T.collapseAt, ()=>{
+      statusEl.textContent='';
+      phase='collapse';
+      coreAnim(0, 1, T.collapse);          // core glow grows
+      vSpin=2.2; const vs=performance.now();// vortex spins up fast + scales into core
+      (function sc(t){ const k=clamp01((t-vs)/T.collapse); vScale=lerp(1,.12,k*k);
+        if(k<1) requestAnimationFrame(sc); })(vs);
+    });
+    // white-gold flash punch
+    at(T.flashAt, ()=>{
+      Audio.punch(0);
+      flash.style.transition='none'; flash.style.opacity='1';
+      requestAnimationFrame(()=>{ flash.style.transition='opacity .55s ease'; flash.style.opacity='0'; });
+    });
+    // 5 — REVEAL
+    at(T.revealAt, revealSite);
+    // hard stop / cleanup
+    at(T.flashAt + 1400, finish);
+  }
+  function coreAnim(from,to,ms){ const s=performance.now();
+    (function f(t){ const k=clamp01((t-s)/ms); coreGlow=lerp(from,to,k); if(k<1&&phase!=='done') requestAnimationFrame(f); })(s); }
+
+  /* ===================== REVEAL HOOK =====================
+     The single integration point. The flash dissolves and
+     the live #site materialises. Wire this against YOUR hero. */
+  function revealSite(){
+    D.body.classList.add('as-revealed');   // triggers Ken Burns + nav-mark settle
+    site.classList.add('as-show');          // fade #site in
+    splitWordmark();                        // assemble the wordmark letters
+    // overlay fades out and is removed
+    intro.classList.add('as-gone');
+  }
+
+  /* wordmark assembles letter-by-letter out of blur */
+  function splitWordmark(){
+    const el=site.querySelector('.wordmark'); if(!el||el.dataset.split) return; el.dataset.split='1';
+    const word=el.getAttribute('data-word')||el.textContent; el.textContent='';
+    [...word].forEach((ch,i)=>{
+      if(ch===' '){ const sp=D.createElement('span'); sp.className='sp'; el.appendChild(sp); return; }
+      const s=D.createElement('span'); s.className='l'; s.textContent=ch; el.appendChild(s);
+      s.style.transition='opacity .5s ease, filter .6s ease, transform .6s cubic-bezier(.2,.7,.2,1)';
+      setTimeout(()=>{ s.style.opacity='1'; s.style.filter='blur(0)'; s.style.transform='none'; }, 240 + i*70);
+    });
+  }
+
+  function finish(){
+    phase='done'; running=false; vRunning=false; cancelAnimationFrame(raf); cancelAnimationFrame(teleRAF);
+    if(intro && intro.parentNode) intro.parentNode.removeChild(intro);   // stop canvas + free memory
+    D.body.classList.add('as-revealed'); site.classList.add('as-show');
+    markSeen();
+  }
+
+  /* ================= SKIP / CLEANUP ================= */
+  function skip(){ timers.forEach(clearTimeout); cancelAnimationFrame(raf); cancelAnimationFrame(teleRAF);
+    running=false; vRunning=false;
+    if(intro){ intro.classList.add('as-gone'); setTimeout(()=>{ if(intro.parentNode)intro.parentNode.removeChild(intro); },600); }
+    splitWordmark(); D.body.classList.add('as-revealed'); site.classList.add('as-show'); markSeen(); }
+
+  /* ================= CONTROLS / INPUT ================= */
+  D.getElementById('asSkip').addEventListener('click',skip);
+  const muteBtn=D.getElementById('asMute');
+  let muted=false;
+  muteBtn.addEventListener('click',()=>{ muted=!muted; Audio.setMuted(muted);
+    muteBtn.setAttribute('aria-pressed',String(muted)); muteBtn.textContent = muted?'♪ Muted':'♪ Sound'; });
+  // sound unlocks on first interaction (autoplay-safe)
+  function firstInteract(){ Audio.unlock(); window.removeEventListener('pointerdown',firstInteract); window.removeEventListener('keydown',keyHandler2); }
+  function keyHandler2(){ firstInteract(); }
+  window.addEventListener('pointerdown',firstInteract,{once:false});
+  D.getElementById('asSound').addEventListener('click',firstInteract);
+  D.getElementById('asSound').addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ')firstInteract(); });
+  // keyboard: Esc/Enter skip, M mute
+  window.addEventListener('keydown',e=>{
+    if(SKIP_INTRO) return;
+    if(e.key==='Escape'||e.key==='Enter'){ skip(); }
+    else if(e.key.toLowerCase()==='m'){ muteBtn.click(); }
+    else { firstInteract(); }
+  });
+
+  /* ================= BOOT ================= */
+  function boot(){
+    if(reduce || SKIP_INTRO){
+      // straight to the site — no warp, no audio
+      if(intro&&intro.parentNode) intro.parentNode.removeChild(intro);
+      D.body.classList.add('as-revealed'); site.classList.add('as-show'); splitWordmark();
+      return;
+    }
+    // show the gentle sound prompt shortly after start
+    at(900, ()=>{ if(!Audio.isUnlocked()) soundPrompt(true); });
+    runSequence();
+  }
+  // wait a tick so fonts/first paint settle, then run
+  if(D.readyState==='complete') boot(); else window.addEventListener('load',boot);
+})();
+</script>
+</body>
+</html>
