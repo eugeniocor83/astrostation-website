@@ -145,7 +145,7 @@ work_html = f'''<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Astro Station — Work</title>
 <meta name="description" content="Selected work from Astro Station. Residential and hospitality projects across architecture, interior design and built work." />
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/styles.css?v=20260620b">
 </head>
 <body>
 {nav_block(active='work', depth=0)}
@@ -325,7 +325,7 @@ for i, p in enumerate(projects):
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>{p['name']} — Astro Station</title>
 <meta name="description" content="{p['name']} — {p['summary']}" />
-<link rel="stylesheet" href="../assets/styles.css">
+<link rel="stylesheet" href="../assets/styles.css?v=20260620b">
 </head>
 <body>
 {nav_block(active='work', depth=1)}
@@ -387,7 +387,7 @@ for i, p in enumerate(projects):
 <aside class="cs-ethos">
   <div class="cs-ethos__eyebrow">Astro Station</div>
   <p class="cs-ethos__line">Architecture, interiors, millwork and construction — <strong>drawn and built under one roof</strong>, as one continuous practice.</p>
-  <div class="cs-ethos__tag">Conceived outside the box · Futurist · Liquid · Melted</div>
+  <div class="cs-ethos__tag"><span class="cs-ethos__t1">Conceived outside the box</span> <span class="cs-ethos__dot">·</span> <span class="cs-ethos__tags">Futurist · Liquid · Melted</span></div>
 </aside>
 
 <!-- ── PREV / NEXT ──────────────────────────────────── -->

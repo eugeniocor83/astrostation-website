@@ -1163,6 +1163,12 @@ html.has-reveal [data-reveal].is-in{opacity:1;transform:none;
   margin-top:1rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.24em;
   text-transform:uppercase;color:var(--ink-mute);
 }
+/* mobile: stack the ethos tag onto two centered lines so the three tags never strand */
+@media(max-width:600px){
+  .cs-ethos__tag{line-height:1.5}
+  .cs-ethos__tag .cs-ethos__dot{display:none}
+  .cs-ethos__tag .cs-ethos__tags{display:block;white-space:nowrap;margin-top:.5rem}
+}
 
 /* ── Architecture flagship · three-phase process ──────────────── */
 .phaseflow{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--x4);margin-top:var(--x6)}
