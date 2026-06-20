@@ -61,12 +61,14 @@
     '<button class="lb__btn lb__prev" aria-label="Previous">←</button>'+
     '<img class="lb__img" alt="">'+
     '<button class="lb__btn lb__next" aria-label="Next">→</button>'+
-    '<div class="lb__cap"></div>';
+    '<div class="lb__cap"></div>'+
+    '<a class="lb__pdf" target="_blank" rel="noopener" style="display:none">Open full PDF ↗</a>';
   document.body.appendChild(lb);
 
   var elImg = lb.querySelector('.lb__img'),
       elCap = lb.querySelector('.lb__cap'),
       elCount = lb.querySelector('.lb__count'),
+      elPdf = lb.querySelector('.lb__pdf'),
       list = [], idx = 0;
 
   function caption(im){
@@ -77,7 +79,7 @@
 
   // global page list
   var globalList = pageImgs.map(function(im){
-    return { src: im.currentSrc || im.src, cap: caption(im), el: im };
+    return { src: im.currentSrc || im.src, cap: caption(im), pdf: im.getAttribute('data-pdf') || '', el: im };
   });
 
   function show(i){
@@ -92,6 +94,7 @@
     else { elImg.onload = reveal; setTimeout(reveal, 400); }
     elCap.textContent = it.cap || '';
     elCount.textContent = (idx+1) + ' / ' + list.length;
+    if(elPdf){ if(it.pdf){ elPdf.href = it.pdf; elPdf.style.display = ''; } else { elPdf.style.display = 'none'; elPdf.removeAttribute('href'); } }
     // preload neighbours
     [idx+1, idx-1].forEach(function(j){
       var n = list[(j+list.length)%list.length];
@@ -120,6 +123,23 @@
     g.style.cursor = 'pointer';
     g.addEventListener('click', function(e){
       e.preventDefault(); e.stopPropagation(); open(gl, 0);
+    });
+  });
+
+  // Anchored image galleries ([data-lightbox] with <a href="…jpg">) → browse the
+  // group in the viewer (forward/back) instead of navigating away to the raw file.
+  document.querySelectorAll('[data-lightbox]').forEach(function(g){
+    var anchors = Array.prototype.slice.call(g.querySelectorAll('a')).filter(function(a){
+      return /\.(jpe?g|png|webp|gif)$/i.test(a.getAttribute('href') || '');
+    });
+    if(!anchors.length) return;
+    var gl = anchors.map(function(a){
+      var im = a.querySelector('img');
+      return { src: a.getAttribute('href'), cap: (im && im.alt) || '', pdf: a.getAttribute('data-pdf') || '' };
+    });
+    anchors.forEach(function(a,i){
+      var im = a.querySelector('img'); if(im) im.classList.add('lb-zoom');
+      a.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); open(gl, i); });
     });
   });
 
