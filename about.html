@@ -279,7 +279,8 @@
     @media(max-width:980px){.crew-profiles{gap:var(--x4) var(--x4)}}
     @media(max-width:560px){.crew-profiles{grid-template-columns:1fr;gap:var(--x5);max-width:420px}}
     .crew-photo figcaption .crew-cap__name{display:block;color:var(--ink);font-weight:600}
-    .crew-photo figcaption .crew-cap__loc{display:block;margin-top:.6rem;letter-spacing:.32em;color:var(--ink-mute)}
+    .crew-photo figcaption .crew-cap__loc{display:block;margin-top:.6rem;letter-spacing:.28em;padding-left:.28em;color:var(--ink-mute);line-height:1.5}
+    @media(max-width:480px){.crew-photo figcaption .crew-cap__loc{letter-spacing:.18em;padding-left:.18em}}
     .crew-photo figcaption .crew-cap__loc::before{content:"";display:block;width:26px;height:1px;background:var(--ink-line);margin:0 auto .7rem}
     .crew-photo{max-width:880px;margin:var(--x7) auto 0;padding:0 var(--rail)}
     .crew-photo img{display:block;width:100%;height:auto;border:1px solid var(--ink-rule);background:#fff}
@@ -293,7 +294,7 @@
  <article class="profile" id="david">
  <div class="profile__photo">
  <span class="profile__num">01</span>
- <img src="img/team/david.jpg" alt="David Castrillón — Founder &amp; Principal, Astro Station">
+ <img src="img/team/david.jpg?v=2" alt="David Castrillón — Founder &amp; Principal, Astro Station">
  </div>
  <h3 class="profile__name">David Castrillón</h3>
  <div class="profile__role">Founder &amp; Principal</div>
@@ -303,7 +304,7 @@
  <article class="profile" id="maria">
  <div class="profile__photo">
  <span class="profile__num">02</span>
- <img src="img/team/maria.jpg" alt="Maria Bernal — Principal, Interior Design, Astro Station">
+ <img src="img/team/maria.jpg?v=2" alt="Maria Bernal — Principal, Interior Design, Astro Station">
  </div>
  <h3 class="profile__name">Maria Bernal</h3>
  <div class="profile__role">Principal · Interior Design</div>
@@ -315,7 +316,7 @@
  <!-- Team photograph — immediately after the principals -->
  <figure class="crew-photo">
  <img src="img/team/crew.jpg" alt="The Astro Station crew — Miami and Los Angeles" loading="lazy">
- <figcaption><span class="crew-cap__name">The Astro Station Crew</span><span class="crew-cap__loc">Miami · Los Angeles</span></figcaption>
+ <figcaption><span class="crew-cap__name">The Astro Station Crew</span><span class="crew-cap__loc">Miami · Los Angeles · Medellín</span></figcaption>
  </figure>
 </section>
 
