@@ -140,6 +140,22 @@
   }
   @media(max-width:460px){.pf-trio{grid-template-columns:1fr}}
 
+  /* Drawings: clickable PDF cards (3D + blueprints) in masonry columns — no white gaps */
+  .dwg-feature{margin:0 0 var(--x3);border:1px solid var(--ink-rule);background:var(--paper)}
+  .dwg-feature a{display:block}
+  .dwg-feature img{width:100%;height:auto;display:block}
+  .dwg-grid{column-count:3;column-gap:var(--x3)}
+  .dwg-card{break-inside:avoid;margin:0 0 var(--x3);display:inline-block;width:100%}
+  .dwg-card a{display:block;border:1px solid var(--ink-rule);background:var(--paper);transition:border-color .2s}
+  .dwg-card a:hover{border-color:var(--ink)}
+  .dwg-card img{width:100%;height:auto;display:block}
+  .dwg-cap{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-top:.55rem;
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)}
+  .dwg-cap .dl{color:var(--ink);opacity:.6;white-space:nowrap}
+  .dwg-card:hover .dwg-cap .dl{opacity:1}
+  @media(max-width:900px){.dwg-grid{column-count:2}}
+  @media(max-width:560px){.dwg-grid{column-count:1}}
+
   /* Prev/Next nav */
   .cs-nav{
     max-width:var(--max);margin:var(--x7) auto var(--x6);
@@ -205,7 +221,7 @@
  <div class="cs-meta__row"><span>Type</span><span>Residential</span></div>
  <div class="cs-meta__row"><span>Status</span><span>Under Construction</span></div>
  <div class="cs-meta__row"><span>Discipline</span><span>Design · Visualization</span></div>
- <div class="cs-meta__row"><span>Drawings</span><span>6 sheets</span></div>
+ <div class="cs-meta__row"><span>Drawings</span><span>12 sheets · PDF</span></div>
  <div class="cs-meta__row"><span>Documentation</span><span>8 renderings</span></div>
  </div>
  </div>
@@ -240,33 +256,24 @@
  <div class="cs-section__head">
  <div class="cs-num">03 — Drawings</div>
  <h3 class="cs-h">The architectural language.</h3>
- <p class="cs-body">Plans, sections and elevations produced in-house. The drawings carry the same restraint as the renderings: nothing decorative, nothing surplus.</p>
+ <p class="cs-body">Plans, sections, elevations and the 3D, produced in-house. Click any sheet to open the full drawing as a PDF.</p>
  </div>
- <div class="plan-grid">
- <figure class="plan-card">
- <img src="../img/projects/211-house/plan-01.jpg?v=20260619" alt="211 — Floor Plan · Level 01" loading="lazy">
- <figcaption>Floor Plan · Level 01</figcaption>
+ <figure class="dwg-feature">
+ <a href="../img/projects/211-house/drawings/3d.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/3d.jpg" alt="211 — axonometric 3D" loading="lazy"></a>
+ <figcaption class="dwg-cap" style="padding:0 1rem 1rem"><span>Axonometric · 3D</span><span class="dl">Open PDF ↗</span></figcaption>
  </figure>
- <figure class="plan-card">
- <img src="../img/projects/211-house/plan-02.jpg?v=20260619" alt="211 — Floor Plan · Level 02" loading="lazy">
- <figcaption>Floor Plan · Level 02</figcaption>
- </figure>
- <figure class="plan-card">
- <img src="../img/projects/211-house/plan-03.jpg?v=20260619" alt="211 — Section A" loading="lazy">
- <figcaption>Section A</figcaption>
- </figure>
- <figure class="plan-card">
- <img src="../img/projects/211-house/plan-04.jpg?v=20260619" alt="211 — Section B" loading="lazy">
- <figcaption>Section B</figcaption>
- </figure>
- <figure class="plan-card">
- <img src="../img/projects/211-house/plan-05.jpg?v=20260619" alt="211 — Elevation" loading="lazy">
- <figcaption>Elevation</figcaption>
- </figure>
- <figure class="plan-card">
- <img src="../img/projects/211-house/plan-06.jpg?v=20260619" alt="211 — Roof Plan" loading="lazy">
- <figcaption>Roof Plan</figcaption>
- </figure>
+ <div class="dwg-grid">
+ <figure class="dwg-card"><a href="../img/projects/211-house/drawings/level-1.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/level-1.jpg" alt="211 — Floor Plan, Level 01" loading="lazy"></a><figcaption class="dwg-cap"><span>Floor Plan · Level 01</span><span class="dl">PDF ↗</span></figcaption></figure>
+ <figure class="dwg-card"><a href="../img/projects/211-house/drawings/roof.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/roof.jpg" alt="211 — Roof Plan" loading="lazy"></a><figcaption class="dwg-cap"><span>Roof Plan</span><span class="dl">PDF ↗</span></figcaption></figure>
+ <figure class="dwg-card"><a href="../img/projects/211-house/drawings/elevation-1.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/elevation-1.jpg" alt="211 — Elevation 01" loading="lazy"></a><figcaption class="dwg-cap"><span>Elevation 01</span><span class="dl">PDF ↗</span></figcaption></figure>
+ <figure class="dwg-card"><a href="../img/projects/211-house/drawings/elevation-2.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/elevation-2.jpg" alt="211 — Elevation 02" loading="lazy"></a><figcaption class="dwg-cap"><span>Elevation 02</span><span class="dl">PDF ↗</span></figcaption></figure>
+ <figure class="dwg-card"><a href="../img/projects/211-house/drawings/elevation-3.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/elevation-3.jpg" alt="211 — Elevation 03" loading="lazy"></a><figcaption class="dwg-cap"><span>Elevation 03</span><span class="dl">PDF ↗</span></figcaption></figure>
+ <figure class="dwg-card"><a href="../img/projects/211-house/drawings/elevation-4.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/elevation-4.jpg" alt="211 — Elevation 04" loading="lazy"></a><figcaption class="dwg-cap"><span>Elevation 04</span><span class="dl">PDF ↗</span></figcaption></figure>
+ <figure class="dwg-card"><a href="../img/projects/211-house/drawings/section-a.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/section-a.jpg" alt="211 — Section A" loading="lazy"></a><figcaption class="dwg-cap"><span>Section A</span><span class="dl">PDF ↗</span></figcaption></figure>
+ <figure class="dwg-card"><a href="../img/projects/211-house/drawings/section-b.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/section-b.jpg" alt="211 — Section B" loading="lazy"></a><figcaption class="dwg-cap"><span>Section B</span><span class="dl">PDF ↗</span></figcaption></figure>
+ <figure class="dwg-card"><a href="../img/projects/211-house/drawings/section-c.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/section-c.jpg" alt="211 — Section C" loading="lazy"></a><figcaption class="dwg-cap"><span>Section C</span><span class="dl">PDF ↗</span></figcaption></figure>
+ <figure class="dwg-card"><a href="../img/projects/211-house/drawings/wall-section-a.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/wall-section-a.jpg" alt="211 — Wall Section A" loading="lazy"></a><figcaption class="dwg-cap"><span>Wall Section A</span><span class="dl">PDF ↗</span></figcaption></figure>
+ <figure class="dwg-card"><a href="../img/projects/211-house/drawings/wall-section-b.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/wall-section-b.jpg" alt="211 — Wall Section B" loading="lazy"></a><figcaption class="dwg-cap"><span>Wall Section B</span><span class="dl">PDF ↗</span></figcaption></figure>
  </div>
 </section>
 
