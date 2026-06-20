@@ -48,13 +48,14 @@
   #center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
   #status{font-size:12px;letter-spacing:.46em;color:var(--mute);text-transform:uppercase;min-height:16px}
 
-  #stage{position:relative;width:320px;height:320px;margin:24px 0;display:flex;align-items:center;justify-content:center}
+  #stage{position:relative;width:392px;height:392px;margin:24px 0;display:flex;align-items:center;justify-content:center}
   #ring{position:absolute;inset:0;transform:rotate(-90deg)}
   #ring .track{fill:none;stroke:var(--line);stroke-width:1.5}
   #ring .prog{fill:none;stroke:var(--gold);stroke-width:2.5;stroke-linecap:round;
     stroke-dasharray:880;stroke-dashoffset:0}
   /* the vortex logo lives at center, spins through the sequence */
-  #mark{position:absolute;width:150px;height:150px;color:var(--bone);opacity:.16;
+  /* the brand star — rendered in warm white for a stronger focal point */
+  #mark{position:absolute;width:212px;height:212px;color:var(--bone);opacity:.22;
     transform:rotate(0deg) scale(1);will-change:transform,opacity}
   #count{position:absolute;font-family:"Sora",sans-serif;font-weight:300;font-size:150px;line-height:1;
     color:var(--bone);font-variant-numeric:tabular-nums}
@@ -109,7 +110,7 @@
 
   @media (max-width:600px){
     .links{display:none}
-    #stage{width:240px;height:240px}#mark{width:110px;height:110px}#count{font-size:112px}
+    #stage{width:300px;height:300px}#mark{width:166px;height:166px}#count{font-size:118px}
     .slug{font-size:9px}
   }
   @media (prefers-reduced-motion:reduce){
@@ -165,7 +166,7 @@
 
   <div id="flash"></div>
   <div id="ctrl"><button class="btn" id="replay" style="display:none">↻ Replay</button><button class="btn" id="mute" aria-pressed="false" aria-label="Toggle sound">♪ Sound</button><button class="btn" id="skip" aria-label="Skip intro (Esc)">Skip ⏎</button></div>
-  <div id="soundhint">🔊 click for sound</div>
+  <div id="soundhint">♪ Sound on · press M to mute</div>
 </div>
 
 <script>
@@ -215,15 +216,16 @@
   }
 
   /* ---- AUDIO ---- */
-  let AC=null,rumble=null,soundReady=false,muted=false;
+  let AC=null,rumble=null,soundReady=true,muted=false;   /* sound ON by default */
   function ac(){if(!AC){try{AC=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}}if(AC&&AC.state==='suspended')AC.resume();return AC;}
   function beep(f,d,v=.16,t='sine'){if(muted)return;const a=ac();if(!a)return;const o=a.createOscillator(),g=a.createGain();o.type=t;o.frequency.value=f;o.connect(g);g.connect(a.destination);const n=a.currentTime;g.gain.setValueAtTime(0,n);g.gain.linearRampToValueAtTime(v,n+.01);g.gain.exponentialRampToValueAtTime(.0001,n+d);o.start(n);o.stop(n+d+.02);}
   function startRumble(){if(muted)return;const a=ac();if(!a||rumble)return;const o=a.createOscillator(),g=a.createGain(),f=a.createBiquadFilter();o.type='sawtooth';o.frequency.value=40;f.type='lowpass';f.frequency.value=140;o.connect(f);f.connect(g);g.connect(a.destination);g.gain.value=.0001;o.start();rumble={o,g};}
   function rumbleTo(v,t=.4){if(muted)return;if(rumble){const a=ac();rumble.g.gain.exponentialRampToValueAtTime(Math.max(.0001,v),a.currentTime+t);}}
   function stopRumble(){if(rumble){const a=ac(),r=rumble;r.g.gain.exponentialRampToValueAtTime(.0001,a.currentTime+1.4);rumble=null;setTimeout(()=>{try{r.o.stop()}catch(e){}},1600);}}
   function whoosh(){if(muted)return;const a=ac();if(!a)return;const o=a.createOscillator(),g=a.createGain();o.type='sawtooth';o.connect(g);g.connect(a.destination);const n=a.currentTime;o.frequency.setValueAtTime(110,n);o.frequency.exponentialRampToValueAtTime(1100,n+1.2);g.gain.setValueAtTime(.0001,n);g.gain.linearRampToValueAtTime(.22,n+.1);g.gain.exponentialRampToValueAtTime(.0001,n+1.5);o.start(n);o.stop(n+1.6);}
-  function enableSound(){if(soundReady)return;soundReady=true;ac();soundHint.style.display='none';}
-  ['pointerdown','keydown'].forEach(e=>addEventListener(e,enableSound));
+  // sound is on by default; resume the AudioContext at the first possible moment
+  function enableSound(){ac();soundHint.style.display='none';}
+  ['pointerdown','pointermove','keydown','touchstart','click'].forEach(e=>addEventListener(e,enableSound,{passive:true}));
 
   /* ---- TELEMETRY ---- */
   let telemRaf,vel=0;
@@ -243,7 +245,7 @@
     telemetry();
     at(300,()=>{launch.classList.add('armed');statusEl.textContent='Linking telemetry';if(soundReady)beep(440,.06,.05);});
     at(900,()=>{statusEl.textContent='All systems nominal';if(soundReady)beep(560,.06,.05);startRumble();rumbleTo(.03);});
-    at(1500,()=>{statusEl.textContent='Launch sequence initiated';mark.style.transition='opacity 1s, transform 6s linear';mark.style.opacity='.34';mark.style.transform='rotate(120deg)';});
+    at(1500,()=>{statusEl.textContent='Launch sequence initiated';mark.style.transition='opacity 1s, transform 6s linear';mark.style.opacity='.46';mark.style.transform='rotate(120deg)';});
     const t0=2100,step=900;
     [5,4,3,2,1].forEach((n,i)=>at(t0+i*step,()=>{
       countEl.textContent=n;countEl.classList.remove('pulse');void countEl.offsetWidth;countEl.classList.add('pulse');
@@ -261,7 +263,7 @@
     at(tIg+1100,()=>{ // PORTAL: spiral collapse into the mark
       statusEl.textContent='';let c=0;const id=setInterval(()=>{c+=.05;collapse=Math.min(1,c);if(c>=1)clearInterval(id);},32);
       core.style.transition='opacity .6s, box-shadow 1s';core.style.opacity='1';core.style.boxShadow='0 0 120px 50px rgba(232,195,107,.9)';
-      mark.style.transition='opacity .5s .3s, transform 1.1s cubic-bezier(.3,.6,.2,1)';mark.style.opacity='1';mark.style.transform='rotate(540deg) scale(1.9)';mark.style.color='var(--gold)';
+      mark.style.transition='opacity .5s .3s, transform 1.1s cubic-bezier(.3,.6,.2,1)';mark.style.opacity='1';mark.style.transform='rotate(540deg) scale(1.85)';mark.style.color='#FFFFFF';mark.style.filter='drop-shadow(0 0 26px rgba(255,248,230,.55))';
       if(soundReady)beep(880,.5,.12,'sine');
     });
     at(tIg+2300,()=>{ // punch through
@@ -278,7 +280,7 @@
     launch.style.display='block';launch.style.opacity='1';launch.classList.remove('armed','ignite');
     countEl.textContent='';statusEl.textContent='Flight deck · initializing';subEl.textContent='T-minus to launch';
     prog.style.transition='none';prog.style.strokeDashoffset='0';core.style.opacity='0';core.style.boxShadow='none';
-    mark.style.transition='none';mark.style.opacity='.16';mark.style.transform='rotate(0deg) scale(1)';mark.style.color='var(--bone)';
+    mark.style.transition='none';mark.style.opacity='.22';mark.style.transform='rotate(0deg) scale(1)';mark.style.color='var(--bone)';mark.style.filter='none';
     vel=0;replayBtn.style.display='none';seed();telemetry();sequence();
   }
   skipBtn.onclick=skip;replayBtn.onclick=replay;
@@ -286,7 +288,10 @@
   addEventListener('keydown',e=>{if(e.key==='Enter'||e.key==='Escape')skip();else if(e.key.toLowerCase()==='m')muteBtn.click();});
 
   /* ---- BOOT ---- */
-  function boot(){if(reduce||seenIntro()){launch.style.display='none';site.classList.add('show');chars.forEach(c=>{c.style.opacity=1;c.style.transform='none';c.style.filter='none';});return;}resize();seed();draw();sequence();}
+  function boot(){if(reduce||seenIntro()){launch.style.display='none';site.classList.add('show');chars.forEach(c=>{c.style.opacity=1;c.style.transform='none';c.style.filter='none';});return;}
+    ac();                                   // try to start audio immediately (resumes on first move if blocked)
+    setTimeout(()=>{soundHint.style.display='none';},2800);
+    resize();seed();draw();sequence();}
   addEventListener('resize',()=>{resize();seed();});
   boot();
 })();
