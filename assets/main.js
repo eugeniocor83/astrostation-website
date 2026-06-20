@@ -194,27 +194,39 @@
     var W = gal.clientWidth; if(!W || !imgs.length) return;
     var gap = parseInt(gal.getAttribute('data-gap') || '10', 10);
     var target = parseInt(gal.getAttribute('data-row-h') || '320', 10);
-    var frag = document.createDocumentFragment();
-    var row = document.createElement('div'); row.className = 'jgal-row';
-    var items = [], sum = 0;
-    function flush(fill){
-      items.forEach(function(o){
-        o.img.style.aspectRatio = o.ar;
-        if(fill){ o.img.style.flex = o.ar + ' 1 0'; o.img.style.width = ''; o.img.style.height = ''; }
-        else { o.img.style.flex = '0 0 auto'; o.img.style.height = target + 'px'; o.img.style.width = 'auto'; }
-        row.appendChild(o.img);
-      });
-      frag.appendChild(row);
-      row = document.createElement('div'); row.className = 'jgal-row'; items = []; sum = 0;
-    }
+    function fillH(r){ var s = 0; r.forEach(function(o){ s += o.ar; }); return (W - gap*(r.length-1)) / s; }
+    // 1) group greedily into rows
+    var rows = [], items = [], sum = 0;
     imgs.forEach(function(im){
       var a = arOf(im); items.push({ img: im, ar: a }); sum += a;
-      if((W - gap*(items.length-1)) / sum <= target) flush(true);
+      if((W - gap*(items.length-1)) / sum <= target){ rows.push(items); items = []; sum = 0; }
     });
-    if(items.length){
-      var h = (W - gap*(items.length-1)) / sum;
-      flush(h <= target * 1.7);          // fill the last row unless it would blow up
+    if(items.length) rows.push(items);
+    // 2) rebalance: if the last row is sparse (would be too tall), merge it with the
+    //    previous row and re-split into two rows both near the target height. Every
+    //    row still fills the full width — so no row is oversized and no white gaps.
+    if(rows.length > 1 && fillH(rows[rows.length-1]) > target * 1.45){
+      var merged = rows[rows.length-2].concat(rows[rows.length-1]);
+      rows.splice(rows.length-2, 2);
+      var bestCost = Math.abs(fillH(merged) - target), splitK = null;   // option: one row
+      for(var k = 1; k < merged.length; k++){                            // option: best 2-way split
+        var cost = Math.abs(fillH(merged.slice(0,k)) - target) + Math.abs(fillH(merged.slice(k)) - target);
+        if(cost < bestCost){ bestCost = cost; splitK = k; }
+      }
+      if(splitK === null){ rows.push(merged); }
+      else { rows.push(merged.slice(0, splitK)); rows.push(merged.slice(splitK)); }
     }
+    // 3) build — every row fills the width at the images' true aspect ratios
+    var frag = document.createDocumentFragment();
+    rows.forEach(function(r){
+      var rowEl = document.createElement('div'); rowEl.className = 'jgal-row';
+      r.forEach(function(o){
+        o.img.style.aspectRatio = o.ar;
+        o.img.style.flex = o.ar + ' 1 0'; o.img.style.width = ''; o.img.style.height = '';
+        rowEl.appendChild(o.img);
+      });
+      frag.appendChild(rowEl);
+    });
     while(gal.firstChild) gal.removeChild(gal.firstChild);
     gal.appendChild(frag);
   }
