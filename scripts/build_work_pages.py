@@ -95,7 +95,7 @@ def footer_block(depth=0):
     </div>
   </div>
 </footer>
-<script src="{p}assets/main.js?v=20260620d"></script>'''
+<script src="{p}assets/main.js?v=20260620e"></script>'''
 
 
 # ─────────────────────────────────────────────────────────────
@@ -145,7 +145,7 @@ work_html = f'''<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Astro Station — Work</title>
 <meta name="description" content="Selected work from Astro Station. Residential and hospitality projects across architecture, interior design and built work." />
-<link rel="stylesheet" href="assets/styles.css?v=20260620b">
+<link rel="stylesheet" href="assets/styles.css?v=20260620c">
 </head>
 <body>
 {nav_block(active='work', depth=0)}
@@ -325,7 +325,7 @@ for i, p in enumerate(projects):
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>{p['name']} — Astro Station</title>
 <meta name="description" content="{p['name']} — {p['summary']}" />
-<link rel="stylesheet" href="../assets/styles.css?v=20260620b">
+<link rel="stylesheet" href="../assets/styles.css?v=20260620c">
 </head>
 <body>
 {nav_block(active='work', depth=1)}

@@ -335,6 +335,16 @@ p{font-weight:300;line-height:1.6}
 .proj.full{grid-column:span 12;aspect-ratio:16/8}
 .proj img{width:100%;height:100%;object-fit:cover;transition:transform .85s ease}
 .proj:hover img{transform:scale(1.04)}
+
+/* ── Justified gallery (.jgal): JS lays images into equal-height rows that fill the
+   width at each image's TRUE aspect ratio — full images, no crop, no white gaps. ── */
+.jgal{display:block}
+.jgal-row{display:flex;gap:10px;margin-bottom:10px}
+.jgal-row:last-child{margin-bottom:0}
+.jgal-row img{display:block;width:100%;height:auto;min-width:0;object-fit:cover;background:var(--paper-soft);cursor:zoom-in;transition:filter .3s}
+.jgal-row img:hover{filter:brightness(1.05)}
+.jgal > img{display:block;width:100%;height:auto;margin-bottom:10px}   /* pre-JS fallback: full-width stack, never cropped */
+@media(max-width:600px){.jgal-row{gap:6px;margin-bottom:6px}}
 .proj__cap{
   margin-top:.85rem;display:flex;justify-content:space-between;align-items:flex-end;
   font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);

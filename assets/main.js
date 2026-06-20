@@ -180,6 +180,50 @@
   }, {passive:true});
 })();
 
+// ── Justified galleries (.jgal) — lay images into equal-height rows that fill the
+//    width at each image's TRUE aspect ratio: full images, no crop, no white gaps. ──
+(function(){
+  var gals = document.querySelectorAll('.jgal');
+  if(!gals.length) return;
+  function arOf(im){
+    return parseFloat(im.getAttribute('data-ar')) ||
+           (im.naturalWidth && im.naturalHeight ? im.naturalWidth/im.naturalHeight : 1);
+  }
+  function layout(gal){
+    var imgs = gal._jimgs || (gal._jimgs = Array.prototype.slice.call(gal.querySelectorAll('img')));
+    var W = gal.clientWidth; if(!W || !imgs.length) return;
+    var gap = parseInt(gal.getAttribute('data-gap') || '10', 10);
+    var target = parseInt(gal.getAttribute('data-row-h') || '320', 10);
+    var frag = document.createDocumentFragment();
+    var row = document.createElement('div'); row.className = 'jgal-row';
+    var items = [], sum = 0;
+    function flush(fill){
+      items.forEach(function(o){
+        o.img.style.aspectRatio = o.ar;
+        if(fill){ o.img.style.flex = o.ar + ' 1 0'; o.img.style.width = ''; o.img.style.height = ''; }
+        else { o.img.style.flex = '0 0 auto'; o.img.style.height = target + 'px'; o.img.style.width = 'auto'; }
+        row.appendChild(o.img);
+      });
+      frag.appendChild(row);
+      row = document.createElement('div'); row.className = 'jgal-row'; items = []; sum = 0;
+    }
+    imgs.forEach(function(im){
+      var a = arOf(im); items.push({ img: im, ar: a }); sum += a;
+      if((W - gap*(items.length-1)) / sum <= target) flush(true);
+    });
+    if(items.length){
+      var h = (W - gap*(items.length-1)) / sum;
+      flush(h <= target * 1.7);          // fill the last row unless it would blow up
+    }
+    while(gal.firstChild) gal.removeChild(gal.firstChild);
+    gal.appendChild(frag);
+  }
+  function all(){ Array.prototype.forEach.call(gals, layout); }
+  all();
+  window.addEventListener('load', all);
+  var t; window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(all, 150); });
+})();
+
 // ── Scroll-reveal — gentle fade/rise as content enters the viewport ──
 // Safe by design: if IntersectionObserver is missing, everything is shown.
 (function(){
