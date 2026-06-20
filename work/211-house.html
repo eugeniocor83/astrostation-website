@@ -119,42 +119,22 @@
   @media(max-width:980px){.plan-grid{grid-template-columns:1fr 1fr}}
   @media(max-width:720px){.plan-grid{grid-template-columns:1fr}}
 
-  /* ── Portrait gallery: tall image full-height on the side, paired with
-     stacked horizontals; trio of matched-aspect renders underneath.
-     Aspect slots match native image ratios so nothing is awkwardly cropped. ── */
-  .pf{max-width:var(--max);margin:var(--x5) auto 0;padding:0 var(--rail)}
-  .pf-hero{display:grid;grid-template-columns:.46fr .54fr;gap:var(--x3);align-items:stretch}
-  .pf-hero figure{margin:0;overflow:hidden;background:var(--paper-soft)}
-  .pf-tall{position:relative}
-  .pf-tall img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-  .pf-stack{display:grid;grid-template-rows:1fr 1fr;gap:var(--x3)}
-  .pf-stack figure{margin:0;overflow:hidden;background:var(--paper-soft)}
-  .pf-stack img{width:100%;height:auto;display:block}
-  .pf-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--x3);margin-top:var(--x3)}
-  .pf-trio figure{margin:0;overflow:hidden;background:var(--paper-soft)}
-  .pf-trio img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+  /* ── Justified rows: each image/drawing keeps its true proportions; items in a
+     row share one height and fill the width exactly (flex-grow = aspect ratio,
+     set inline). No crop, no gaps, no frames, no background blocks. ── */
+  .jrow{display:flex;gap:var(--x3);max-width:var(--max);margin:0 auto var(--x3);
+    padding:0 var(--rail);align-items:flex-start}
+  .jrow > figure{margin:0;min-width:0}
+  .jrow img{display:block;width:100%;height:auto}
+  .jrow a{display:block}
+  .dcap{margin-top:.55rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--ink-mute)}
+  .dcap .dl{color:var(--ink);opacity:.55;transition:opacity .2s}
+  .jrow figure:hover .dcap .dl{opacity:1}
   @media(max-width:760px){
-    .pf-hero{grid-template-columns:1fr}
-    .pf-tall img{position:static;height:auto}
-    .pf-trio{grid-template-columns:1fr 1fr}
+    .jrow{flex-wrap:wrap;gap:var(--x2)}
+    .jrow > figure{flex:1 1 100% !important}
   }
-  @media(max-width:460px){.pf-trio{grid-template-columns:1fr}}
-
-  /* Drawings: clickable PDF cards (3D + blueprints) in masonry columns — no white gaps */
-  .dwg-feature{margin:0 0 var(--x3);border:1px solid var(--ink-rule);background:var(--paper)}
-  .dwg-feature a{display:block}
-  .dwg-feature img{width:100%;height:auto;display:block}
-  .dwg-grid{column-count:3;column-gap:var(--x3)}
-  .dwg-card{break-inside:avoid;margin:0 0 var(--x3);display:inline-block;width:100%}
-  .dwg-card a{display:block;border:1px solid var(--ink-rule);background:var(--paper);transition:border-color .2s}
-  .dwg-card a:hover{border-color:var(--ink)}
-  .dwg-card img{width:100%;height:auto;display:block}
-  .dwg-cap{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-top:.55rem;
-    font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)}
-  .dwg-cap .dl{color:var(--ink);opacity:.6;white-space:nowrap}
-  .dwg-card:hover .dwg-cap .dl{opacity:1}
-  @media(max-width:900px){.dwg-grid{column-count:2}}
-  @media(max-width:560px){.dwg-grid{column-count:1}}
 
   /* Prev/Next nav */
   .cs-nav{
@@ -236,19 +216,17 @@
  <p class="cs-body">Coral-stone walls, a recessed entry and a courtyard pool, studied in full photoreal renderings before a single footing was poured.</p>
  </div>
 </section>
-<div class="pf" data-lightbox>
- <div class="pf-hero">
- <figure class="pf-tall"><img src="../img/projects/211-house/05.jpg" alt="211 — street facade with light-ring" loading="lazy"></figure>
- <div class="pf-stack">
- <figure><img src="../img/projects/211-house/12.jpg" alt="211 — coral-stone facade, arched openings" loading="lazy"></figure>
- <figure><img src="../img/projects/211-house/03.jpg" alt="211 — aerial study" loading="lazy"></figure>
- </div>
- </div>
- <div class="pf-trio">
- <figure><img src="../img/projects/211-house/14.jpg" alt="211 — curved glass great room over the pool" loading="lazy"></figure>
- <figure><img src="../img/projects/211-house/08.jpg" alt="211 — living room interior" loading="lazy"></figure>
- <figure><img src="../img/projects/211-house/11.jpg" alt="211 — courtyard pool" loading="lazy"></figure>
- </div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:0.8 1 0"><img src="../img/projects/211-house/14.jpg" alt="211 — curved glass great room over the pool" loading="lazy"></figure>
+ <figure style="flex:0.8 1 0"><img src="../img/projects/211-house/08.jpg" alt="211 — living room interior" loading="lazy"></figure>
+ <figure style="flex:0.8 1 0"><img src="../img/projects/211-house/11.jpg" alt="211 — courtyard pool" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.78 1 0"><img src="../img/projects/211-house/12.jpg" alt="211 — coral-stone facade, arched openings" loading="lazy"></figure>
+ <figure style="flex:0.56 1 0"><img src="../img/projects/211-house/05.jpg" alt="211 — street facade with light-ring" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.78 1 0"><img src="../img/projects/211-house/03.jpg" alt="211 — aerial study" loading="lazy"></figure>
 </div>
 
 
@@ -258,24 +236,33 @@
  <h3 class="cs-h">The architectural language.</h3>
  <p class="cs-body">Plans, sections, elevations and the 3D, produced in-house. Click any sheet to open the full drawing as a PDF.</p>
  </div>
- <figure class="dwg-feature">
- <a href="../img/projects/211-house/drawings/3d.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/3d.jpg" alt="211 — axonometric 3D" loading="lazy"></a>
- <figcaption class="dwg-cap" style="padding:0 1rem 1rem"><span>Axonometric · 3D</span><span class="dl">Open PDF ↗</span></figcaption>
- </figure>
- <div class="dwg-grid">
- <figure class="dwg-card"><a href="../img/projects/211-house/drawings/level-1.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/level-1.jpg" alt="211 — Floor Plan, Level 01" loading="lazy"></a><figcaption class="dwg-cap"><span>Floor Plan · Level 01</span><span class="dl">PDF ↗</span></figcaption></figure>
- <figure class="dwg-card"><a href="../img/projects/211-house/drawings/roof.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/roof.jpg" alt="211 — Roof Plan" loading="lazy"></a><figcaption class="dwg-cap"><span>Roof Plan</span><span class="dl">PDF ↗</span></figcaption></figure>
- <figure class="dwg-card"><a href="../img/projects/211-house/drawings/elevation-1.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/elevation-1.jpg" alt="211 — Elevation 01" loading="lazy"></a><figcaption class="dwg-cap"><span>Elevation 01</span><span class="dl">PDF ↗</span></figcaption></figure>
- <figure class="dwg-card"><a href="../img/projects/211-house/drawings/elevation-2.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/elevation-2.jpg" alt="211 — Elevation 02" loading="lazy"></a><figcaption class="dwg-cap"><span>Elevation 02</span><span class="dl">PDF ↗</span></figcaption></figure>
- <figure class="dwg-card"><a href="../img/projects/211-house/drawings/elevation-3.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/elevation-3.jpg" alt="211 — Elevation 03" loading="lazy"></a><figcaption class="dwg-cap"><span>Elevation 03</span><span class="dl">PDF ↗</span></figcaption></figure>
- <figure class="dwg-card"><a href="../img/projects/211-house/drawings/elevation-4.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/elevation-4.jpg" alt="211 — Elevation 04" loading="lazy"></a><figcaption class="dwg-cap"><span>Elevation 04</span><span class="dl">PDF ↗</span></figcaption></figure>
- <figure class="dwg-card"><a href="../img/projects/211-house/drawings/section-a.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/section-a.jpg" alt="211 — Section A" loading="lazy"></a><figcaption class="dwg-cap"><span>Section A</span><span class="dl">PDF ↗</span></figcaption></figure>
- <figure class="dwg-card"><a href="../img/projects/211-house/drawings/section-b.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/section-b.jpg" alt="211 — Section B" loading="lazy"></a><figcaption class="dwg-cap"><span>Section B</span><span class="dl">PDF ↗</span></figcaption></figure>
- <figure class="dwg-card"><a href="../img/projects/211-house/drawings/section-c.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/section-c.jpg" alt="211 — Section C" loading="lazy"></a><figcaption class="dwg-cap"><span>Section C</span><span class="dl">PDF ↗</span></figcaption></figure>
- <figure class="dwg-card"><a href="../img/projects/211-house/drawings/wall-section-a.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/wall-section-a.jpg" alt="211 — Wall Section A" loading="lazy"></a><figcaption class="dwg-cap"><span>Wall Section A</span><span class="dl">PDF ↗</span></figcaption></figure>
- <figure class="dwg-card"><a href="../img/projects/211-house/drawings/wall-section-b.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/wall-section-b.jpg" alt="211 — Wall Section B" loading="lazy"></a><figcaption class="dwg-cap"><span>Wall Section B</span><span class="dl">PDF ↗</span></figcaption></figure>
- </div>
 </section>
+ <div class="jrow">
+ <figure style="flex:1.87 1 0"><a href="../img/projects/211-house/drawings/3d.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/3d.jpg" alt="211 — 3D axonometric" loading="lazy"></a><figcaption class="dcap">Axonometric · 3D<span class="dl"> — open PDF ↗</span></figcaption></figure>
+ </div>
+ <div class="jrow">
+ <figure style="flex:1.55 1 0"><a href="../img/projects/211-house/drawings/level-1.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/level-1.jpg" alt="211 — Floor Plan, Level 01" loading="lazy"></a><figcaption class="dcap">Floor Plan · Level 01<span class="dl"> — PDF ↗</span></figcaption></figure>
+ <figure style="flex:1.25 1 0"><a href="../img/projects/211-house/drawings/roof.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/roof.jpg" alt="211 — Roof Plan" loading="lazy"></a><figcaption class="dcap">Roof Plan<span class="dl"> — PDF ↗</span></figcaption></figure>
+ </div>
+ <div class="jrow">
+ <figure style="flex:3.58 1 0"><a href="../img/projects/211-house/drawings/elevation-1.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/elevation-1.jpg" alt="211 — Elevation 01" loading="lazy"></a><figcaption class="dcap">Elevation 01<span class="dl"> — PDF ↗</span></figcaption></figure>
+ <figure style="flex:4.72 1 0"><a href="../img/projects/211-house/drawings/elevation-2.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/elevation-2.jpg" alt="211 — Elevation 02" loading="lazy"></a><figcaption class="dcap">Elevation 02<span class="dl"> — PDF ↗</span></figcaption></figure>
+ </div>
+ <div class="jrow">
+ <figure style="flex:3.91 1 0"><a href="../img/projects/211-house/drawings/elevation-3.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/elevation-3.jpg" alt="211 — Elevation 03" loading="lazy"></a><figcaption class="dcap">Elevation 03<span class="dl"> — PDF ↗</span></figcaption></figure>
+ <figure style="flex:6.06 1 0"><a href="../img/projects/211-house/drawings/elevation-4.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/elevation-4.jpg" alt="211 — Elevation 04" loading="lazy"></a><figcaption class="dcap">Elevation 04<span class="dl"> — PDF ↗</span></figcaption></figure>
+ </div>
+ <div class="jrow">
+ <figure style="flex:3.80 1 0"><a href="../img/projects/211-house/drawings/section-a.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/section-a.jpg" alt="211 — Section A" loading="lazy"></a><figcaption class="dcap">Section A<span class="dl"> — PDF ↗</span></figcaption></figure>
+ <figure style="flex:5.27 1 0"><a href="../img/projects/211-house/drawings/section-b.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/section-b.jpg" alt="211 — Section B" loading="lazy"></a><figcaption class="dcap">Section B<span class="dl"> — PDF ↗</span></figcaption></figure>
+ </div>
+ <div class="jrow">
+ <figure style="flex:5.72 1 0"><a href="../img/projects/211-house/drawings/section-c.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/section-c.jpg" alt="211 — Section C" loading="lazy"></a><figcaption class="dcap">Section C<span class="dl"> — PDF ↗</span></figcaption></figure>
+ </div>
+ <div class="jrow">
+ <figure style="flex:0.66 1 0"><a href="../img/projects/211-house/drawings/wall-section-a.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/wall-section-a.jpg" alt="211 — Wall Section A" loading="lazy"></a><figcaption class="dcap">Wall Section A<span class="dl"> — PDF ↗</span></figcaption></figure>
+ <figure style="flex:0.63 1 0"><a href="../img/projects/211-house/drawings/wall-section-b.pdf" target="_blank" rel="noopener"><img src="../img/projects/211-house/drawings/thumbs/wall-section-b.jpg" alt="211 — Wall Section B" loading="lazy"></a><figcaption class="dcap">Wall Section B<span class="dl"> — PDF ↗</span></figcaption></figure>
+ </div>
 
 
 <!-- ── ON SITE — CONSTRUCTION PROGRESS ─────────────────── -->
