@@ -397,25 +397,33 @@
       } else { start(); }
     }
 
-    // If the launch overlay is on top, hold on the astronaut (frame 0) underneath
-    // it — don't advance behind the overlay. The instant the overlay is removed,
-    // reset to frame 0 and restart its Ken Burns, so the astronaut is guaranteed to
-    // be the first image the visitor sees on reveal (never the house first).
-    var overlay = document.getElementById('as-launch');
-    if(overlay && 'MutationObserver' in window){
-      var mo = new MutationObserver(function(){
-        if(!document.getElementById('as-launch')){
-          mo.disconnect();
-          slides.forEach(function(s){ s.classList.remove('is-active','kb-alt'); });
-          void seq.offsetWidth;                       // reflow → Ken Burns restarts clean
-          i = 0; slides[0].classList.add('is-active');
-          if(capEl && slides[0].dataset.cap) capEl.textContent = slides[0].dataset.cap;
-          engage();
-        }
-      });
-      mo.observe(document.body, {childList:true, subtree:true});
-    } else {
+    // Begin the rotation on the astronaut (frame 0), restarting its Ken Burns from
+    // a clean state, then engage the timer. Runs exactly once.
+    var started = false;
+    function beginHero(){
+      if(started) return; started = true;
+      slides.forEach(function(s){ s.classList.remove('is-active','kb-alt'); });
+      void seq.offsetWidth;                           // reflow → Ken Burns restarts clean
+      i = 0; slides[0].classList.add('is-active');
+      if(capEl && slides[0].dataset.cap) capEl.textContent = slides[0].dataset.cap;
       engage();
+    }
+
+    // If the launch overlay is on top, hold on the astronaut underneath it and don't
+    // advance. Hand off the instant the intro begins its dissolve (its reveal event),
+    // so the astronaut is the very first image revealed — never the house. The
+    // overlay-removal watch and a timeout are fallbacks if the event is missed.
+    if(document.getElementById('as-launch')){
+      window.addEventListener('astro:intro-reveal', beginHero, {once:true});
+      if('MutationObserver' in window){
+        var mo = new MutationObserver(function(){
+          if(!document.getElementById('as-launch')){ mo.disconnect(); beginHero(); }
+        });
+        mo.observe(document.body, {childList:true, subtree:true});
+      }
+      setTimeout(function(){ if(!document.getElementById('as-launch')) beginHero(); }, 12000);
+    } else {
+      beginHero();
     }
 
     // subtle parallax on the sequence container (not the slides — preserves Ken Burns)

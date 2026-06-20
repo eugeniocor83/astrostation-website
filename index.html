@@ -264,7 +264,7 @@
   function telemetry(){ (function tick(){ if(ROOT.classList.contains('ignite')) vel+=170; velEl.textContent=String(Math.floor(vel)).padStart(4,'0')+' M/S'; altEl.textContent=(vel/900).toFixed(1).padStart(5,'0')+' KM'; telemRaf=requestAnimationFrame(tick); })(); }
 
   /* ---- SEQUENCE  (≈7.2s to reveal · ~8s fully gone) ---- */
-  function reveal(){ ROOT.style.transition='opacity 1s ease'; ROOT.style.opacity='0'; at(1050,destroy); }
+  function reveal(){ try{ window.dispatchEvent(new CustomEvent('astro:intro-reveal')); }catch(e){} ROOT.style.transition='opacity 1s ease'; ROOT.style.opacity='0'; at(1050,destroy); }
   function sequence(){
     telemetry();
     at(300, function(){ ROOT.classList.add('armed'); statusEl.textContent='Linking telemetry'; beep(440,.06,.05); });
@@ -636,6 +636,6 @@
  </div>
 </footer>
 
-<script src="assets/main.js"></script>
+<script src="assets/main.js?v=20260620b"></script>
 </body>
 </html>
