@@ -238,7 +238,7 @@
  <h2 class="ch-title">A team of cosmonauts.</h2>
  </div>
  <div>
- <p class="ch-lede">Three principals carry every Astro Station project, supported by an extended crew.</p>
+ <p class="ch-lede">Two principals carry every Astro Station project, supported by an extended crew.</p>
  <div class="ch-body">
  <p>We use the word <strong>cosmonauts</strong> with intent. The work of building a home is a long mission: site survey to keys, sometimes thirty months in length, with a thousand small decisions made in flight. The cosmonaut metaphor reminds us how we operate: small senior crew, full command of the systems, accountable for every coordinate.</p>
  <p>We hire infrequently and carefully. The studio is intentionally narrow so the work stays personal.</p>
@@ -249,8 +249,8 @@
  <!-- Principals — standardized profile cards: photo, then name + title directly below -->
  <style>
     .crew-profiles{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:var(--x5) var(--x4);
-      max-width:var(--max);margin:var(--x6) auto 0;padding:0 var(--rail);
+      display:grid;grid-template-columns:repeat(2,1fr);gap:var(--x5) var(--x6);
+      max-width:880px;margin:var(--x6) auto 0;padding:0 var(--rail);
     }
     .profile{display:flex;flex-direction:column}
     .profile__photo{
@@ -276,8 +276,11 @@
       font-family:var(--sans);font-weight:300;font-size:.98rem;line-height:1.65;color:var(--ink-mid);
     }
     .profile__bio strong{font-weight:600;color:var(--ink)}
-    @media(max-width:980px){.crew-profiles{grid-template-columns:repeat(3,1fr);gap:var(--x4) var(--x3)}}
-    @media(max-width:720px){.crew-profiles{grid-template-columns:1fr;gap:var(--x5)}}
+    @media(max-width:980px){.crew-profiles{gap:var(--x4) var(--x4)}}
+    @media(max-width:560px){.crew-profiles{grid-template-columns:1fr;gap:var(--x5);max-width:420px}}
+    .crew-photo figcaption .crew-cap__name{display:block;color:var(--ink);font-weight:600}
+    .crew-photo figcaption .crew-cap__loc{display:block;margin-top:.6rem;letter-spacing:.32em;color:var(--ink-mute)}
+    .crew-photo figcaption .crew-cap__loc::before{content:"";display:block;width:26px;height:1px;background:var(--ink-line);margin:0 auto .7rem}
     .crew-photo{max-width:1100px;margin:var(--x7) auto 0;padding:0 var(--rail)}
     .crew-photo img{display:block;width:100%;height:auto;border:1px solid var(--ink-rule);background:#fff}
     .crew-photo figcaption{
@@ -290,7 +293,7 @@
  <article class="profile" id="david">
  <div class="profile__photo">
  <span class="profile__num">01</span>
- <img src="img/astronaut/gwagon.jpg" alt="David Castrillón — Astro Station cosmonaut">
+ <img src="img/team/david.jpg" alt="David Castrillón — Founder &amp; Principal, Astro Station">
  </div>
  <h3 class="profile__name">David Castrillón</h3>
  <div class="profile__role">Founder &amp; Principal</div>
@@ -300,28 +303,19 @@
  <article class="profile" id="maria">
  <div class="profile__photo">
  <span class="profile__num">02</span>
- <img src="img/astronaut/maria.jpg" alt="Maria Bernal — Astro Station cosmonaut">
+ <img src="img/team/maria.jpg" alt="Maria Bernal — Principal, Interior Design, Astro Station">
  </div>
  <h3 class="profile__name">Maria Bernal</h3>
  <div class="profile__role">Principal · Interior Design</div>
  <p class="profile__bio"><strong>Leads interior architecture, FF&amp;E and material specifications.</strong> Maria sets the studio's material register: the wood, stone, fabric, hardware and lighting palette that gives every Astro residence its tactile identity.</p>
  </article>
 
- <article class="profile" id="eu">
- <div class="profile__photo">
- <span class="profile__num">03</span>
- <img src="img/astronaut/eu.jpg" alt="Eu Correa — Astro Station cosmonaut">
- </div>
- <h3 class="profile__name">Eu Correa</h3>
- <div class="profile__role">Principal · Strategy</div>
- <p class="profile__bio"><strong>Carries the company's vision and strategic direction.</strong> Eu keeps the studio's standards, systems, and decision-making coherent: leadership, accountability, and the architecture of the studio itself sit on his desk.</p>
- </article>
  </div>
 
  <!-- Team photograph — immediately after the principals -->
  <figure class="crew-photo">
  <img src="img/brand/team-crew.jpg" alt="The Astro Station crew — portraits of the extended team" loading="lazy">
- <figcaption>The Astro Station crew · Miami</figcaption>
+ <figcaption><span class="crew-cap__name">The Astro Station Crew</span><span class="crew-cap__loc">Miami · Los Angeles</span></figcaption>
  </figure>
 </section>
 
