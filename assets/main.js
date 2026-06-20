@@ -386,13 +386,37 @@
     }
     function start(){ if(!timer) timer = setInterval(step, DUR); }
     function stop(){ if(timer){ clearInterval(timer); timer = null; } }
-    // only run while hero is on screen + tab visible
-    document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
-    if('IntersectionObserver' in window){
-      new IntersectionObserver(function(es){
-        es.forEach(function(e){ e.isIntersecting && !document.hidden ? start() : stop(); });
-      },{threshold:0.15}).observe(seq.closest('.home-hero') || seq);
-    } else { start(); }
+
+    // wire the on-screen + tab-visible rotation triggers
+    function engage(){
+      document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
+      if('IntersectionObserver' in window){
+        new IntersectionObserver(function(es){
+          es.forEach(function(e){ e.isIntersecting && !document.hidden ? start() : stop(); });
+        },{threshold:0.15}).observe(seq.closest('.home-hero') || seq);
+      } else { start(); }
+    }
+
+    // If the launch overlay is on top, hold on the astronaut (frame 0) underneath
+    // it — don't advance behind the overlay. The instant the overlay is removed,
+    // reset to frame 0 and restart its Ken Burns, so the astronaut is guaranteed to
+    // be the first image the visitor sees on reveal (never the house first).
+    var overlay = document.getElementById('as-launch');
+    if(overlay && 'MutationObserver' in window){
+      var mo = new MutationObserver(function(){
+        if(!document.getElementById('as-launch')){
+          mo.disconnect();
+          slides.forEach(function(s){ s.classList.remove('is-active','kb-alt'); });
+          void seq.offsetWidth;                       // reflow → Ken Burns restarts clean
+          i = 0; slides[0].classList.add('is-active');
+          if(capEl && slides[0].dataset.cap) capEl.textContent = slides[0].dataset.cap;
+          engage();
+        }
+      });
+      mo.observe(document.body, {childList:true, subtree:true});
+    } else {
+      engage();
+    }
 
     // subtle parallax on the sequence container (not the slides — preserves Ken Burns)
     var hero = seq.closest('.home-hero');

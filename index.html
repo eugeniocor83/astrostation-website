@@ -173,8 +173,25 @@
   #as-launch .asl-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
   #asl-hint{position:absolute;bottom:30px;right:30px;font-size:10px;letter-spacing:.18em;color:var(--mute);text-transform:uppercase;z-index:3}
   @media (max-width:600px){
-    #asl-stage{width:300px;height:300px}#asl-mark{width:166px;height:166px}#asl-count{font-size:118px}
-    #as-launch .asl-slug{font-size:9px}
+    /* keep the dial square and fully on-screen across phone sizes (portrait + short landscape) */
+    #asl-stage{width:min(72vw,52vh,300px);height:min(72vw,52vh,300px);margin:18px 0}
+    #asl-mark{width:min(40vw,29vh,166px);height:min(40vw,29vh,166px)}
+    #asl-count{font-size:min(28vw,20vh,118px)}
+    #asl-status{font-size:10px;letter-spacing:.3em;text-align:center;padding:0 18px}
+    #asl-sub{font-size:10px;letter-spacing:.3em;text-align:center;padding:0 18px}
+    /* HUD telemetry — smaller + pulled to safe-area corners so the two blocks never collide */
+    #as-launch .asl-slug{font-size:8px;letter-spacing:.14em;line-height:1.7}
+    #asl-slug-tl{top:calc(env(safe-area-inset-top,0px) + 18px);left:20px}
+    #asl-slug-tr{top:calc(env(safe-area-inset-top,0px) + 18px);right:20px}
+    #as-launch .asl-frame{width:26px;height:26px}
+    #as-launch .asl-frame.tl{top:calc(env(safe-area-inset-top,0px) + 14px);left:14px}
+    #as-launch .asl-frame.tr{top:calc(env(safe-area-inset-top,0px) + 14px);right:14px}
+    #as-launch .asl-frame.bl{bottom:calc(env(safe-area-inset-bottom,0px) + 14px);left:14px}
+    #as-launch .asl-frame.br{bottom:calc(env(safe-area-inset-bottom,0px) + 14px);right:14px}
+    /* bottom text: stack the hint ABOVE the buttons, both centered & inside the safe area — no overlap, nothing clipped by the browser bar */
+    #asl-ctrl{bottom:calc(env(safe-area-inset-bottom,0px) + 18px);gap:10px;width:100%;justify-content:center;padding:0 16px;box-sizing:border-box}
+    #as-launch .asl-btn{font-size:9px;letter-spacing:.18em;padding:9px 14px}
+    #asl-hint{left:50%;right:auto;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom,0px) + 58px);width:auto;max-width:92vw;text-align:center;font-size:9px;letter-spacing:.14em;white-space:nowrap}
   }
   /* reduced motion: don't show the overlay at all (JS also removes it) */
   @media (prefers-reduced-motion:reduce){ #as-launch{display:none!important} }
