@@ -95,7 +95,7 @@ def footer_block(depth=0):
     </div>
   </div>
 </footer>
-<script src="{p}assets/main.js"></script>'''
+<script src="{p}assets/main.js?v=20260620b"></script>'''
 
 
 # ─────────────────────────────────────────────────────────────
