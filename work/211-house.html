@@ -119,6 +119,27 @@
   @media(max-width:980px){.plan-grid{grid-template-columns:1fr 1fr}}
   @media(max-width:720px){.plan-grid{grid-template-columns:1fr}}
 
+  /* ── Portrait gallery: tall image full-height on the side, paired with
+     stacked horizontals; trio of matched-aspect renders underneath.
+     Aspect slots match native image ratios so nothing is awkwardly cropped. ── */
+  .pf{max-width:var(--max);margin:var(--x5) auto 0;padding:0 var(--rail)}
+  .pf-hero{display:grid;grid-template-columns:.46fr .54fr;gap:var(--x3);align-items:stretch}
+  .pf-hero figure{margin:0;overflow:hidden;background:var(--paper-soft)}
+  .pf-tall{position:relative}
+  .pf-tall img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .pf-stack{display:grid;grid-template-rows:1fr 1fr;gap:var(--x3)}
+  .pf-stack figure{margin:0;overflow:hidden;background:var(--paper-soft)}
+  .pf-stack img{width:100%;height:auto;display:block}
+  .pf-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--x3);margin-top:var(--x3)}
+  .pf-trio figure{margin:0;overflow:hidden;background:var(--paper-soft)}
+  .pf-trio img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+  @media(max-width:760px){
+    .pf-hero{grid-template-columns:1fr}
+    .pf-tall img{position:static;height:auto}
+    .pf-trio{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:460px){.pf-trio{grid-template-columns:1fr}}
+
   /* Prev/Next nav */
   .cs-nav{
     max-width:var(--max);margin:var(--x7) auto var(--x6);
@@ -191,40 +212,41 @@
 </section>
 
 
-<section class="cs-split">
- <figure class="cs-plan">
- <img src="../img/projects/211-house/plan-01.jpg?v=20260619" alt="211 — Floor Plan">
- <figcaption>Floor Plan · Level 01</figcaption>
- </figure>
- <figure class="cs-photo">
- <img src="../img/projects/211-house/02.jpg" alt="211 — Interior view">
- <figcaption>Restrained street face. Generous internal court.</figcaption>
- </figure>
+<!-- ── VISUALIZATION — the design, rendered (portrait gallery) ── -->
+<section class="cs-section" style="margin-bottom:var(--x4)">
+ <div class="cs-section__head">
+ <div class="cs-num">02 — Visualization</div>
+ <h3 class="cs-h">The design, rendered.</h3>
+ <p class="cs-body">Coral-stone walls, a recessed entry and a courtyard pool, studied in full photoreal renderings before a single footing was poured.</p>
+ </div>
 </section>
-
-
-<section class="cs-pair">
- <figure>
- <img src="../img/projects/211-house/03.jpg" alt="211 — view 03" loading="lazy">
- </figure>
- <figure>
- <img src="../img/projects/211-house/04.jpg" alt="211 — view 04" loading="lazy">
- </figure>
-</section>
-
-
-<section class="cs-bleed">
- <img src="../img/projects/211-house/05.jpg" alt="211 — atmospheric view" loading="lazy">
-</section>
+<div class="pf" data-lightbox>
+ <div class="pf-hero">
+ <figure class="pf-tall"><img src="../img/projects/211-house/05.jpg" alt="211 — street facade with light-ring" loading="lazy"></figure>
+ <div class="pf-stack">
+ <figure><img src="../img/projects/211-house/12.jpg" alt="211 — coral-stone facade, arched openings" loading="lazy"></figure>
+ <figure><img src="../img/projects/211-house/03.jpg" alt="211 — aerial study" loading="lazy"></figure>
+ </div>
+ </div>
+ <div class="pf-trio">
+ <figure><img src="../img/projects/211-house/14.jpg" alt="211 — curved glass great room over the pool" loading="lazy"></figure>
+ <figure><img src="../img/projects/211-house/08.jpg" alt="211 — living room interior" loading="lazy"></figure>
+ <figure><img src="../img/projects/211-house/11.jpg" alt="211 — courtyard pool" loading="lazy"></figure>
+ </div>
+</div>
 
 
 <section class="cs-section">
  <div class="cs-section__head">
- <div class="cs-num">02 — Drawings</div>
+ <div class="cs-num">03 — Drawings</div>
  <h3 class="cs-h">The architectural language.</h3>
  <p class="cs-body">Plans, sections and elevations produced in-house. The drawings carry the same restraint as the renderings: nothing decorative, nothing surplus.</p>
  </div>
  <div class="plan-grid">
+ <figure class="plan-card">
+ <img src="../img/projects/211-house/plan-01.jpg?v=20260619" alt="211 — Floor Plan · Level 01" loading="lazy">
+ <figcaption>Floor Plan · Level 01</figcaption>
+ </figure>
  <figure class="plan-card">
  <img src="../img/projects/211-house/plan-02.jpg?v=20260619" alt="211 — Floor Plan · Level 02" loading="lazy">
  <figcaption>Floor Plan · Level 02</figcaption>
@@ -249,25 +271,10 @@
 </section>
 
 
-<section class="cs-pair">
- <figure>
- <img src="../img/projects/211-house/06.jpg" alt="211 — view 06" loading="lazy">
- </figure>
- <figure>
- <img src="../img/projects/211-house/07.jpg" alt="211 — view 07" loading="lazy">
- </figure>
-</section>
-
-
-<section class="cs-bleed">
- <img src="../img/projects/211-house/08.jpg" alt="211 — closing view" loading="lazy">
-</section>
-
-
 <!-- ── ON SITE — CONSTRUCTION PROGRESS ─────────────────── -->
 <section class="cs-section" id="construction">
  <div class="cs-section__head">
- <div class="cs-num">03 — On Site</div>
+ <div class="cs-num">04 — On Site</div>
  <h3 class="cs-h">Under construction.</h3>
  <p class="cs-body">Active on site with Astro Cósmico. From the cleared lot in April 2026 to the circular timber frame topping out in June: the drawing becoming the built thing, documented as it happens.</p>
  </div>
