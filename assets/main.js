@@ -49,7 +49,8 @@
     return !im.closest('a') && !im.closest('.lb');
   });
   var hasGroups = document.querySelector('[data-gallery]');
-  if(!pageImgs.length && !hasGroups) return;
+  var hasAnchoredGal = document.querySelector('[data-lightbox] a, .pkg-gal a');
+  if(!pageImgs.length && !hasGroups && !hasAnchoredGal) return;
 
   var lb = document.createElement('div');
   lb.className = 'lb';
