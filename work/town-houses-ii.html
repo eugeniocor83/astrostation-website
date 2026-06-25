@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Town Houses — Astro Station</title>
-<meta name="description" content="Town Houses — Townhouse Composition. Several units, one composition. Boundaries dissolved." />
+<title>Town Houses II — Astro Station</title>
+<meta name="description" content="Town Houses II — Townhouse Composition. A planted, curved street facade where units read as one continuous garden volume." />
 <link rel="stylesheet" href="../assets/styles.css?v=20260620c">
 <style>
   /* ── Editorial case-study layout ── */
@@ -47,77 +47,9 @@
     .cs-intro{grid-template-columns:1fr;gap:var(--x4);padding:var(--x6) var(--rail) var(--x5)}
   }
 
-  /* Plan + photo split */
-  .cs-split{
-    display:grid;grid-template-columns:1fr 1fr;gap:var(--x4);
-    max-width:var(--max);margin:var(--x5) auto;padding:0 var(--rail);
-  }
-  .cs-split figure{margin:0;display:flex;flex-direction:column;gap:.8rem}
-  .cs-plan img{
-    width:100%;display:block;background:var(--paper);
-    border:1px solid var(--ink-rule);
-    aspect-ratio:1/1;object-fit:contain;padding:1.2rem;
-  }
-  .cs-photo img{
-    width:100%;display:block;background:var(--paper-soft);
-    aspect-ratio:1/1;object-fit:cover;
-  }
-  .cs-split figcaption{
-    font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;
-    text-transform:uppercase;color:var(--ink-mute);
-  }
-  @media(max-width:720px){.cs-split{grid-template-columns:1fr;gap:var(--x3)}}
-
-  /* Paired image grid */
-  .cs-pair{
-    display:grid;grid-template-columns:1fr 1fr;gap:var(--x3);
-    max-width:var(--max);margin:var(--x5) auto;padding:0 var(--rail);
-  }
-  .cs-pair figure{margin:0}
-  .cs-pair img{
-    width:100%;display:block;background:var(--paper-soft);
-    aspect-ratio:4/5;object-fit:cover;
-  }
-  @media(max-width:720px){.cs-pair{grid-template-columns:1fr;gap:var(--x3)}}
-
   /* Atmospheric full bleed */
   .cs-bleed{margin:var(--x5) 0;padding:0}
   .cs-bleed img{width:100%;height:auto;display:block;background:var(--paper-soft)}
-
-  /* Section header for drawings */
-  .cs-section{max-width:var(--max);margin:var(--x7) auto;padding:0 var(--rail)}
-  .cs-section__head{display:grid;grid-template-columns:1fr 1.4fr;gap:var(--x6);margin-bottom:var(--x5)}
-  .cs-section__head .cs-num{
-    font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;
-    text-transform:uppercase;color:var(--ink-mute);margin-bottom:1rem;
-    display:flex;align-items:center;gap:.85rem;
-  }
-  .cs-section__head .cs-num::before{content:"";width:32px;height:1px;background:var(--ink-mute)}
-  .cs-section__head .cs-h{
-    font-family:var(--display);font-weight:800;
-    font-size:clamp(2rem,3.6vw,3rem);text-transform:uppercase;
-    letter-spacing:-.012em;line-height:1;margin:0;
-  }
-  .cs-section__head .cs-body{
-    font-family:var(--sans);font-weight:300;font-size:1.02rem;line-height:1.65;
-    color:var(--ink-mid);max-width:54ch;align-self:end;
-  }
-  @media(max-width:980px){
-    .cs-section__head{grid-template-columns:1fr;gap:var(--x3)}
-  }
-
-  .plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--x4)}
-  .plan-card{margin:0;display:flex;flex-direction:column;gap:.8rem}
-  .plan-card img{
-    width:100%;display:block;background:var(--paper);
-    border:1px solid var(--ink-rule);aspect-ratio:1/1;object-fit:contain;padding:1.2rem;
-  }
-  .plan-card figcaption{
-    font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;
-    text-transform:uppercase;color:var(--ink-mute);
-  }
-  @media(max-width:980px){.plan-grid{grid-template-columns:1fr 1fr}}
-  @media(max-width:720px){.plan-grid{grid-template-columns:1fr}}
 
   /* Prev/Next nav */
   .cs-nav{
@@ -168,71 +100,32 @@
 
 <!-- HERO -->
 <section class="cs-hero">
- <img src="../img/projects/town-houses/01.jpg" alt="Town Houses — hero" loading="eager">
+ <img src="../img/projects/town-houses-ii/exterior-01.jpg" alt="Town Houses II — street elevation" loading="eager">
 </section>
 
 <!-- INTRO: title + concept + meta -->
 <section class="cs-intro">
  <div class="cs-intro__left">
  <div class="cs-typology">Townhouse Composition</div>
- <h1>Town Houses</h1>
+ <h1>Town Houses II</h1>
  </div>
  <div class="cs-intro__right">
  <div class="cs-num">01 — Concept</div>
- <p class="cs-concept">A small set of attached residences treated as one continuous architectural gesture. Shared materials, repeated openings, and a unified roofline mask the unit boundaries; the composition reads as a single street-long villa.</p>
+ <p class="cs-concept">A second townhouse study, conceived as a single planted volume along the street. A curved, recessed facade carries cascading greenery across every level, so the units dissolve into one continuous garden frontage rather than a row of separate doors.</p>
  <div class="cs-meta">
  <div class="cs-meta__row"><span>Type</span><span>Residential</span></div>
  <div class="cs-meta__row"><span>Status</span><span>Design Development</span></div>
  <div class="cs-meta__row"><span>Discipline</span><span>Design · Visualization</span></div>
- <div class="cs-meta__row"><span>Drawings</span><span>6 sheets</span></div>
- <div class="cs-meta__row"><span>Documentation</span><span>9 renderings</span></div>
+ <div class="cs-meta__row"><span>Documentation</span><span>2 renderings</span></div>
  </div>
  </div>
 </section>
 
 
-<section class="cs-pair">
- <figure>
- <img src="../img/projects/town-houses/03.jpg" alt="Town Houses — view 03" loading="lazy">
- </figure>
- <figure>
- <img src="../img/projects/town-houses/04.jpg" alt="Town Houses — view 04" loading="lazy">
- </figure>
+<!-- Full-bleed exterior render -->
+<section class="cs-bleed">
+ <img src="../img/projects/town-houses-ii/exterior-02.jpg" alt="Town Houses II — corner view" loading="lazy">
 </section>
-
-
-<section class="cs-section">
- <div class="cs-section__head">
- <div class="cs-num">02 — Drawings</div>
- <h3 class="cs-h">The architectural language.</h3>
- <p class="cs-body">Plans, sections and elevations produced in-house. The drawings carry the same restraint as the renderings: nothing decorative, nothing surplus.</p>
- </div>
- <div class="plan-grid">
- <figure class="plan-card">
- <img src="../img/projects/town-houses/plan-02.jpg?v=20260619" alt="Town Houses — Floor Plan · Level 02" loading="lazy">
- <figcaption>Floor Plan · Level 02</figcaption>
- </figure>
- <figure class="plan-card">
- <img src="../img/projects/town-houses/plan-03.jpg?v=20260619" alt="Town Houses — Section A" loading="lazy">
- <figcaption>Section A</figcaption>
- </figure>
- <figure class="plan-card">
- <img src="../img/projects/town-houses/plan-04.jpg?v=20260619" alt="Town Houses — Basement Plan" loading="lazy">
- <figcaption>Basement Plan</figcaption>
- </figure>
- <figure class="plan-card">
- <img src="../img/projects/town-houses/plan-05.jpg?v=20260619" alt="Town Houses — Principal Elevation" loading="lazy">
- <figcaption>Principal Elevation</figcaption>
- </figure>
- <figure class="plan-card">
- <img src="../img/projects/town-houses/plan-06.jpg?v=20260619" alt="Town Houses — Section C" loading="lazy">
- <figcaption>Section C</figcaption>
- </figure>
- </div>
-</section>
-
-
-
 
 
 
@@ -244,9 +137,9 @@
 </aside>
 
 <nav class="cs-nav">
- <a href="port-charlotte.html" class="cs-nav__link">← Port Charlotte</a>
+ <a href="town-houses.html" class="cs-nav__link">← Town Houses</a>
  <a href="../contact.html" class="btn">Inquire <span class="arr">→</span></a>
- <a href="town-houses-ii.html" class="cs-nav__link">Town Houses II →</a>
+ <a href="235-house.html" class="cs-nav__link">235 →</a>
 </nav>
 
 <footer class="foot">
