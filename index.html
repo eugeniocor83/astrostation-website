@@ -387,8 +387,49 @@
 </header>
 
 <!-- ════════════════════════════════════════════════════════════
-     02 — DEFINITION
+     02 — DEFINITION  (Studio × Model diptych)
 ═══════════════════════════════════════════════════════════════ -->
+<style>
+  /* ── The Practice — Studio × Model diptych refinement ── */
+  #definition{padding-bottom:var(--x6)}
+  #practice{padding-top:var(--x6)}
+
+  /* Studio: composed lower register — design philosophy */
+  .studio-foot{
+    margin-top:var(--x6);padding-top:var(--x4);
+    border-top:1px solid var(--ink-rule);
+    display:grid;grid-template-columns:1fr 1.5fr;gap:var(--x6);align-items:baseline;
+  }
+  .studio-foot__eyebrow{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--ink-mute);
+    display:flex;align-items:center;gap:.85rem;white-space:nowrap;
+  }
+  .studio-foot__eyebrow::before{content:"";width:32px;height:1px;background:var(--ink-mute)}
+  .studio-foot__line{
+    font-family:var(--display);font-weight:300;
+    font-size:clamp(1.25rem,2vw,1.75rem);line-height:1.32;
+    letter-spacing:-.01em;color:var(--ink);max-width:36ch;margin:0;
+  }
+  .studio-foot__line strong{font-weight:600;color:var(--ink)}
+  @media(max-width:720px){
+    .studio-foot{grid-template-columns:1fr;gap:var(--x2);margin-top:var(--x5)}
+  }
+
+  /* Connective node — one continuous practice, the handoff removed */
+  .diptych-link{display:flex;flex-direction:column;align-items:center;margin-top:var(--x6);user-select:none}
+  .diptych-link__seg{width:1px;height:46px;background:var(--ink-line)}
+  .diptych-link__seg--up{transform-origin:bottom}
+  .diptych-link__seg--dn{transform-origin:top}
+  .diptych-link__star{width:24px;height:24px;margin:14px 0;opacity:.9;display:block}
+  @media(max-width:720px){.diptych-link{margin-top:var(--x5)}.diptych-link__seg{height:38px}}
+
+  /* draw-in entrance, safely gated on the reveal system */
+  html.has-reveal .diptych-link[data-reveal] .diptych-link__seg{transform:scaleY(0)}
+  html.has-reveal .diptych-link[data-reveal] .diptych-link__star{opacity:0;transform:scale(.55)}
+  html.has-reveal .diptych-link[data-reveal].is-in .diptych-link__seg{transform:scaleY(1);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+  html.has-reveal .diptych-link[data-reveal].is-in .diptych-link__star{opacity:.9;transform:none;transition:opacity .7s ease .3s,transform .85s cubic-bezier(.2,.7,.2,1) .3s}
+</style>
 <section class="section" id="definition">
  <div class="wrap">
  <div class="col-2">
@@ -399,6 +440,17 @@
  <div>
  <p class="body" style="font-size:1.08rem">Astro Station is a studio of architects, designers, engineers and builders working as one. The architect who draws your home sits at the same table as the contractor who builds it, from first sketch to keys.</p>
  </div>
+ </div>
+
+ <div class="studio-foot">
+ <div class="studio-foot__eyebrow">Design Philosophy</div>
+ <p class="studio-foot__line">One hand draws it, details it, and builds it. <strong>Intent survives all the way to the keys.</strong></p>
+ </div>
+
+ <div class="diptych-link" aria-hidden="true">
+ <span class="diptych-link__seg diptych-link__seg--up"></span>
+ <img class="diptych-link__star" src="img/brand/star.png" alt="">
+ <span class="diptych-link__seg diptych-link__seg--dn"></span>
  </div>
  </div>
 </section>
