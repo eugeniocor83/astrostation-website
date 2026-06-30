@@ -132,6 +132,14 @@
     display:inline-flex;align-items:center;gap:.6rem;
   }
   .cs-nav__link:hover{color:var(--ink-mute)}
+
+  /* Justified rows (211 standard): full images, no crop; flex-grow = aspect ratio (inline) */
+  .jrow{display:flex;gap:var(--x3);max-width:var(--max);margin:0 auto var(--x3);padding:0 var(--rail);align-items:flex-start}
+  .jrow > figure{margin:0;min-width:0}
+  .jrow img{display:block;width:100%;height:auto;cursor:zoom-in}
+  .jrow a{display:block}
+  .dcap{margin-top:.55rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)}
+  @media(max-width:760px){.jrow{flex-wrap:wrap;gap:var(--x2)}.jrow > figure{flex:1 1 100% !important}}
 </style>
 <link rel="icon" type="image/png" href="/img/brand/star.png">
 <link rel="apple-touch-icon" href="/img/brand/star.png">
@@ -191,40 +199,41 @@
 </section>
 
 
-<section class="cs-split">
- <figure class="cs-plan">
- <img src="../img/projects/285-house/plan-01.jpg?v=20260619" alt="285 — Floor Plan">
- <figcaption>Floor Plan · Level 01</figcaption>
- </figure>
- <figure class="cs-photo">
- <img src="../img/projects/285-house/02.jpg" alt="285 — Interior view">
- <figcaption>Heavy above, recessed below, mass eroded by glass.</figcaption>
- </figure>
+<section class="cs-section">
+ <div class="cs-section__head">
+ <div class="cs-num">02 — Visualization</div>
+ <h3 class="cs-h">The design, rendered.</h3>
+ <p class="cs-body">Heavy upper volumes floating over recessed glass, studied in full photoreal renderings before a single footing was poured.</p>
+ </div>
 </section>
-
-
-<section class="cs-pair">
- <figure>
- <img src="../img/projects/285-house/03.jpg" alt="285 — view 03" loading="lazy">
- </figure>
- <figure>
- <img src="../img/projects/285-house/04.jpg" alt="285 — view 04" loading="lazy">
- </figure>
-</section>
-
-
-<section class="cs-bleed">
- <img src="../img/projects/285-house/05.jpg" alt="285 — atmospheric view" loading="lazy">
-</section>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.852 1 0"><img src="../img/projects/285-house/02.jpg" alt="285 — primary elevation" loading="lazy"></figure>
+ <figure style="flex:0.8 1 0"><img src="../img/projects/285-house/03.jpg" alt="285 — view 03" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:0.8 1 0"><img src="../img/projects/285-house/04.jpg" alt="285 — view 04" loading="lazy"></figure>
+ <figure style="flex:1.852 1 0"><img src="../img/projects/285-house/05.jpg" alt="285 — atmospheric view" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.852 1 0"><img src="../img/projects/285-house/06.jpg" alt="285 — view 06" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.852 1 0"><img src="../img/projects/285-house/07.jpg" alt="285 — view 07" loading="lazy"></figure>
+ <figure style="flex:0.8 1 0"><img src="../img/projects/285-house/08.jpg" alt="285 — closing view" loading="lazy"></figure>
+</div>
 
 
 <section class="cs-section">
  <div class="cs-section__head">
- <div class="cs-num">02 — Drawings</div>
+ <div class="cs-num">03 — Drawings</div>
  <h3 class="cs-h">The architectural language.</h3>
  <p class="cs-body">Plans, sections and elevations produced in-house. The drawings carry the same restraint as the renderings: nothing decorative, nothing surplus.</p>
  </div>
  <div class="plan-grid">
+ <figure class="plan-card">
+ <img src="../img/projects/285-house/plan-01.jpg?v=20260619" alt="285 — Floor Plan · Level 01" loading="lazy">
+ <figcaption>Floor Plan · Level 01</figcaption>
+ </figure>
  <figure class="plan-card">
  <img src="../img/projects/285-house/plan-02.jpg?v=20260619" alt="285 — Floor Plan · Level 02" loading="lazy">
  <figcaption>Floor Plan · Level 02</figcaption>
@@ -241,22 +250,26 @@
 </section>
 
 
-<section class="cs-pair">
- <figure>
- <img src="../img/projects/285-house/06.jpg" alt="285 — view 06" loading="lazy">
- </figure>
- <figure>
- <img src="../img/projects/285-house/07.jpg" alt="285 — view 07" loading="lazy">
- </figure>
+<!-- ── ON SITE — CONSTRUCTION PROGRESS ─────────────────── -->
+<section class="cs-section" id="construction">
+ <div class="cs-section__head">
+ <div class="cs-num">04 — On Site</div>
+ <h3 class="cs-h">Under construction.</h3>
+ <p class="cs-body">Active on site with Astro Cósmico in Coconut Grove. Concrete volumes rising from the slab through June 2026: the drawing becoming the built thing, documented as it happens.</p>
+ </div>
 </section>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.78 1 0"><img src="../img/projects/285-house/constr-04.jpg" alt="285 — concrete house under construction, elevated view, June 2026" loading="lazy"><figcaption class="dcap">On site · June 2026</figcaption></figure>
+ <figure style="flex:1.78 1 0"><img src="../img/projects/285-house/constr-05.jpg" alt="285 — roof, glazing and pool terrace under construction, June 2026" loading="lazy"><figcaption class="dcap">Roof &amp; terrace · June 2026</figcaption></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.78 1 0"><img src="../img/projects/285-house/constr-01.jpg" alt="285 — street elevation under construction, June 2026" loading="lazy"><figcaption class="dcap">Street elevation · June 2026</figcaption></figure>
+ <figure style="flex:1.78 1 0"><img src="../img/projects/285-house/constr-03.jpg" alt="285 — pool terrace and glazing under construction, June 2026" loading="lazy"><figcaption class="dcap">Pool terrace · June 2026</figcaption></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.78 1 0"><img src="../img/projects/285-house/constr-02.jpg" alt="285 — reinforcement and formwork seen from above, June 2026" loading="lazy"><figcaption class="dcap">From above · June 2026</figcaption></figure>
+</div>
 
-
-<section class="cs-bleed">
- <img src="../img/projects/285-house/08.jpg" alt="285 — closing view" loading="lazy">
-</section>
-
-
-<!-- Prev / Next -->
 
 <!-- ── GROUNDS · landscape / patio / pool ── -->
 <section class="cs-section" id="grounds">
@@ -265,14 +278,18 @@
  <h3 class="cs-h">Landscape, patio &amp; pool.</h3>
  <p class="cs-body">The exterior rooms: gardens, decks, water, and the threshold where architecture meets landscape. Designed and drawn in-house alongside the house itself.</p>
  </div>
- <div class="proj-grid" data-lightbox>
- <div class="proj large"><img src="../img/projects/285-house/grounds/g-01.jpg" alt="285 House — landscape, patio &amp; pool 01" loading="lazy"></div>
- <div class="proj medium"><img src="../img/projects/285-house/grounds/g-02.jpg" alt="285 House — landscape, patio &amp; pool 02" loading="lazy"></div>
- <div class="proj regular"><img src="../img/projects/285-house/grounds/g-03.jpg" alt="285 House — landscape, patio &amp; pool 03" loading="lazy"></div>
- <div class="proj regular"><img src="../img/projects/285-house/grounds/g-04.jpg" alt="285 House — landscape, patio &amp; pool 04" loading="lazy"></div>
- <div class="proj medium"><img src="../img/projects/285-house/grounds/g-05.jpg" alt="285 House — landscape, patio &amp; pool 05" loading="lazy"></div>
- </div>
 </section>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.852 1 0"><img src="../img/projects/285-house/grounds/g-01.jpg" alt="285 House — landscape, patio &amp; pool 01" loading="lazy"></figure>
+ <figure style="flex:1.852 1 0"><img src="../img/projects/285-house/grounds/g-02.jpg" alt="285 House — landscape, patio &amp; pool 02" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.852 1 0"><img src="../img/projects/285-house/grounds/g-03.jpg" alt="285 House — landscape, patio &amp; pool 03" loading="lazy"></figure>
+ <figure style="flex:1.852 1 0"><img src="../img/projects/285-house/grounds/g-04.jpg" alt="285 House — landscape, patio &amp; pool 04" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.852 1 0"><img src="../img/projects/285-house/grounds/g-05.jpg" alt="285 House — landscape, patio &amp; pool 05" loading="lazy"></figure>
+</div>
 
 <aside class="cs-ethos">
  <div class="cs-ethos__eyebrow">Astro Station</div>
