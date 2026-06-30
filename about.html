@@ -322,6 +322,38 @@
 
 
 <!-- ════════════════════════════════════════════════════════════
+     JOIN THE CREW — careers invitation (links to careers.html)
+═══════════════════════════════════════════════════════════════ -->
+<style>
+  .join-crew{position:relative;background:var(--ink);color:var(--paper);overflow:hidden}
+  .join-crew__media{position:absolute;inset:0;z-index:0}
+  .join-crew__media img{width:100%;height:100%;object-fit:cover;opacity:.34;filter:grayscale(100%) contrast(1.05)}
+  .join-crew__media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.78))}
+  .join-crew__inner{position:relative;z-index:1;max-width:var(--max);margin:0 auto;padding:var(--x10) var(--rail);text-align:center}
+  .join-crew__eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.62);display:inline-flex;align-items:center;gap:.7rem;margin-bottom:var(--x4)}
+  .join-crew__eyebrow .live{width:8px;height:8px;border-radius:50%;background:var(--paper);animation:pulse 2s infinite}
+  .join-crew__title{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,6vw,5.6rem);line-height:.97;letter-spacing:-.02em;text-transform:uppercase;margin:0 auto var(--x4);max-width:18ch}
+  .join-crew__sub{font-family:var(--sans);font-weight:300;font-size:clamp(1.15rem,1.9vw,1.55rem);line-height:1.5;color:rgba(255,255,255,.82);max-width:60ch;margin:0 auto var(--x3)}
+  .join-crew__note{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin:0 auto var(--x5);max-width:62ch;line-height:1.7}
+  .join-crew .btn--ghost{border:1px solid rgba(255,255,255,.4);color:var(--paper)}
+  .join-crew .btn--ghost:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+  @media(max-width:640px){.join-crew__inner{padding:var(--x8) var(--rail)}}
+</style>
+<section class="join-crew" id="join-crew">
+ <div class="join-crew__media" aria-hidden="true">
+ <img src="img/astronaut/cosmonaut-studio.jpg" alt="" loading="lazy">
+ </div>
+ <div class="join-crew__inner">
+ <div class="join-crew__eyebrow"><span class="live"></span> Careers · Join the Crew</div>
+ <h2 class="join-crew__title">Do you have what it takes to become an astronaut?</h2>
+ <p class="join-crew__sub">We hire infrequently and carefully — listening for the rare architects and designers who could fly a mission with us. We're not posting a job. We're opening an invitation.</p>
+ <p class="join-crew__note">Currently on our radar: licensed architects in California, with a focus on the Los Angeles region.</p>
+ <a class="btn btn--ghost" href="careers.html">Begin Your Mission <span class="arr">→</span></a>
+ </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════
      CHAPTER 05 — THE PRACTICE
 ═══════════════════════════════════════════════════════════════ -->
 <section class="chapter" id="practice">
@@ -433,7 +465,7 @@
  <h6>Studio</h6>
  <a href="about.html">About</a>
  <a href="journal.html">Journal</a>
- <a href="mailto:careers@astrostation.com">Careers</a>
+ <a href="careers.html">Careers</a>
  </div>
  <div class="foot__col">
  <h6>Services</h6>
