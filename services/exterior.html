@@ -106,6 +106,11 @@
     text-transform:uppercase;color:var(--ink);margin-bottom:.4rem;
   }
   @media(max-width:720px){.ba-pair{grid-template-columns:1fr;gap:var(--x2)}.ba-list{gap:var(--x5)}}
+  /* Justified proposed-render gallery (full images, no crop; flex = aspect ratio) */
+  .jrow{display:flex;gap:var(--x3);align-items:flex-start;margin-top:var(--x4)}
+  .jrow > figure{margin:0;min-width:0}
+  .jrow img{width:100%;height:auto;display:block;background:var(--paper-soft);cursor:zoom-in}
+  @media(max-width:720px){.jrow{flex-wrap:wrap;gap:var(--x2)}.jrow > figure{flex:1 1 100% !important}}
 </style>
 <section class="section section--cream" id="before-after">
  <div class="wrap">
@@ -163,6 +168,49 @@
  <figure class="ba-cell"><img src="../img/exterior/refacing/07-after.jpg" alt="Staircase — after" loading="lazy"><figcaption class="ba-tag ba-tag--after">After</figcaption></figure>
  </div>
  </div>
+ </div>
+ </div>
+</section>
+
+<!-- ── ADAMS · UPCOMING RE-FACING ─────────────────────── -->
+<section class="section" id="adams">
+ <div class="wrap">
+ <div class="section-num">03 — Adams Residence</div>
+ <h2 class="h2 serif">Existing → Proposed.</h2>
+ <p class="lede" style="max-width:54ch;margin-top:var(--x3)">An upcoming re-facing of a white modern Miami home. Warm travertine, timber and bronze proposed over the existing stucco — same footprint, a wholly new character. Existing condition on the left; the proposed design on the right.</p>
+
+ <div class="ba-list">
+ <div>
+ <div class="ba-room">Street Façade</div>
+ <div class="ba-pair">
+ <figure class="ba-cell"><img src="../img/exterior/adams/01-before.jpg" alt="Adams — street façade, existing condition" loading="lazy"><figcaption class="ba-tag">Existing</figcaption></figure>
+ <figure class="ba-cell"><img src="../img/exterior/adams/01-after.jpg" alt="Adams — street façade, proposed re-facing" loading="lazy"><figcaption class="ba-tag ba-tag--after">Proposed</figcaption></figure>
+ </div>
+ </div>
+ <div>
+ <div class="ba-room">Corner Approach</div>
+ <div class="ba-pair">
+ <figure class="ba-cell"><img src="../img/exterior/adams/02-before.jpg" alt="Adams — corner approach, existing condition" loading="lazy"><figcaption class="ba-tag">Existing</figcaption></figure>
+ <figure class="ba-cell"><img src="../img/exterior/adams/02-after.jpg" alt="Adams — corner approach, proposed re-facing" loading="lazy"><figcaption class="ba-tag ba-tag--after">Proposed</figcaption></figure>
+ </div>
+ </div>
+ <div>
+ <div class="ba-room">Side Elevation</div>
+ <div class="ba-pair">
+ <figure class="ba-cell"><img src="../img/exterior/adams/03-before.jpg" alt="Adams — side elevation, existing condition" loading="lazy"><figcaption class="ba-tag">Existing</figcaption></figure>
+ <figure class="ba-cell"><img src="../img/exterior/adams/03-after.jpg" alt="Adams — side elevation, proposed re-facing" loading="lazy"><figcaption class="ba-tag ba-tag--after">Proposed</figcaption></figure>
+ </div>
+ </div>
+ </div>
+
+ <div class="ba-room" style="margin-top:var(--x6)">The proposed design</div>
+ <div class="jrow" data-lightbox>
+ <figure style="flex:1.78 1 0"><img src="../img/exterior/adams/g1.jpg" alt="Adams — proposed rear elevation and pool" loading="lazy"></figure>
+ <figure style="flex:0.8 1 0"><img src="../img/exterior/adams/g2.jpg" alt="Adams — proposed glass corner detail" loading="lazy"></figure>
+ </div>
+ <div class="jrow" data-lightbox>
+ <figure style="flex:1.78 1 0"><img src="../img/exterior/adams/g3.jpg" alt="Adams — proposed pool terrace and covered patio" loading="lazy"></figure>
+ <figure style="flex:0.8 1 0"><img src="../img/exterior/adams/g4.jpg" alt="Adams — proposed timber and stone detail" loading="lazy"></figure>
  </div>
  </div>
 </section>
