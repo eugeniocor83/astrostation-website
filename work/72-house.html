@@ -119,6 +119,18 @@
   @media(max-width:980px){.plan-grid{grid-template-columns:1fr 1fr}}
   @media(max-width:720px){.plan-grid{grid-template-columns:1fr}}
 
+    /* ── Justified photo rows: each image keeps its TRUE proportions; items in a
+     row share one height and fill the width exactly (flex-grow = aspect ratio,
+     set inline). No crop, no gaps, no white space. ── */
+  .jrow{display:flex;gap:var(--x3);max-width:var(--max);margin:0 auto var(--x3);
+    padding:0 var(--rail);align-items:flex-start}
+  .jrow > figure{margin:0;min-width:0}
+  .jrow img{display:block;width:100%;height:auto;cursor:zoom-in}
+  @media(max-width:760px){
+    .jrow{flex-wrap:wrap;gap:var(--x2)}
+    .jrow > figure{flex:1 1 100% !important}
+  }
+
   /* Prev/Next nav */
   .cs-nav{
     max-width:var(--max);margin:var(--x7) auto var(--x6);
@@ -182,7 +194,7 @@
  <p class="cs-concept">A compact urban-lot house that turns its private life inward. Tall, slender openings allow privacy from the street while a roof terrace recovers the views. The interior is a sequence of double-height moments interrupted by intimate, low-ceiling alcoves.</p>
  <div class="cs-meta">
  <div class="cs-meta__row"><span>Type</span><span>Residential</span></div>
- <div class="cs-meta__row"><span>Status</span><span>Design & Documented</span></div>
+ <div class="cs-meta__row"><span>Status</span><span>Built</span></div>
  <div class="cs-meta__row"><span>Discipline</span><span>Design · Visualization</span></div>
  <div class="cs-meta__row"><span>Drawings</span><span>3 sheets</span></div>
  <div class="cs-meta__row"><span>Documentation</span><span>8 renderings</span></div>
@@ -258,19 +270,66 @@
  <div class="cs-section__head">
  <div class="cs-num">03 — Completed</div>
  <h3 class="cs-h">The built work.</h3>
- <p class="cs-body">Built and installed, the rendering made real. <a class="arr-link" data-gallery="../img/featured/72/p-01.jpg|../img/featured/72/p-02.jpg|../img/featured/72/p-03.jpg|../img/featured/72/p-04.jpg|../img/featured/72/p-05.jpg|../img/featured/72/p-06.jpg|../img/featured/72/p-07.jpg|../img/featured/72/p-08.jpg|../img/featured/72/p-09.jpg|../img/featured/72/p-10.jpg|../img/featured/72/p-11.jpg|../img/featured/72/p-12.jpg|../img/featured/72/p-13.jpg|../img/featured/72/p-14.jpg|../img/featured/72/p-15.jpg|../img/featured/72/p-16.jpg|../img/featured/72/p-17.jpg|../img/featured/72/p-18.jpg|../img/featured/72/p-19.jpg|../img/featured/72/p-20.jpg|../img/featured/72/p-21.jpg|../img/featured/72/p-22.jpg" data-gcap="72 · Photographs" style="display:inline-flex;cursor:zoom-in">View all 22 project images →</a></p>
- </div>
- <div class="proj-grid">
- <div class="proj large"><img src="../img/featured/72/p-01.jpg" alt="72 — completed work, photograph 01" loading="lazy"></div>
- <div class="proj medium"><img src="../img/featured/72/p-05.jpg" alt="72 — completed work, photograph 02" loading="lazy"></div>
- <div class="proj regular"><img src="../img/featured/72/p-12.jpg" alt="72 — completed work, photograph 03" loading="lazy"></div>
- <div class="proj regular"><img src="../img/featured/72/p-06.jpg" alt="72 — completed work, photograph 04" loading="lazy"></div>
- <div class="proj medium"><img src="../img/featured/72/p-08.jpg" alt="72 — completed work, photograph 05" loading="lazy"></div>
- <div class="proj regular"><img src="../img/featured/72/p-17.jpg" alt="72 — completed work, photograph 06" loading="lazy"></div>
- <div class="proj regular"><img src="../img/featured/72/p-11.jpg" alt="72 — completed work, photograph 07" loading="lazy"></div>
- <div class="proj large"><img src="../img/featured/72/p-21.jpg" alt="72 — completed work, photograph 08" loading="lazy"></div>
+ <p class="cs-body">Built and installed, the rendering made real. <a class="arr-link" data-gallery="../img/featured/72/p-01.jpg|../img/featured/72/p-02.jpg|../img/featured/72/p-03.jpg|../img/featured/72/p-04.jpg|../img/featured/72/p-05.jpg|../img/featured/72/p-06.jpg|../img/featured/72/p-07.jpg|../img/featured/72/p-08.jpg|../img/featured/72/p-09.jpg|../img/featured/72/p-10.jpg|../img/featured/72/p-11.jpg|../img/featured/72/p-12.jpg|../img/featured/72/p-13.jpg|../img/featured/72/p-14.jpg|../img/featured/72/p-15.jpg|../img/featured/72/p-16.jpg|../img/featured/72/p-17.jpg|../img/featured/72/p-18.jpg|../img/featured/72/p-19.jpg|../img/featured/72/p-20.jpg|../img/featured/72/p-21.jpg|../img/featured/72/p-22.jpg|../img/featured/72/p-23.jpg|../img/featured/72/p-24.jpg|../img/featured/72/p-25.jpg|../img/featured/72/p-26.jpg|../img/featured/72/p-27.jpg|../img/featured/72/p-28.jpg|../img/featured/72/p-29.jpg|../img/featured/72/p-30.jpg" data-gcap="72 · Photographs" style="display:inline-flex;cursor:zoom-in">View all 30 project images →</a></p>
  </div>
 </section>
+
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-01.jpg" alt="72 — front gate at dusk" loading="lazy"></figure>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-02.jpg" alt="72 — entry walk" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-03.jpg" alt="72 — street façade planting" loading="lazy"></figure>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-04.jpg" alt="72 — courtyard" loading="lazy"></figure>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-05.jpg" alt="72 — courtyard corner" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-06.jpg" alt="72 — pool and pergola at dusk" loading="lazy"></figure>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-07.jpg" alt="72 — pool and façade" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-08.jpg" alt="72 — great room" loading="lazy"></figure>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-09.jpg" alt="72 — living room wood screen" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-10.jpg" alt="72 — display shelving and lounge" loading="lazy"></figure>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-11.jpg" alt="72 — lounge shelving" loading="lazy"></figure>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-12.jpg" alt="72 — media wall" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-13.jpg" alt="72 — kitchen and lounge" loading="lazy"></figure>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-14.jpg" alt="72 — kitchen island" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-15.jpg" alt="72 — dining room" loading="lazy"></figure>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-16.jpg" alt="72 — hallway with ceramic art" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-17.jpg" alt="72 — bedroom" loading="lazy"></figure>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-18.jpg" alt="72 — bedroom by the garden" loading="lazy"></figure>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-19.jpg" alt="72 — primary bedroom" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-20.jpg" alt="72 — primary bedroom sitting corner" loading="lazy"></figure>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-21.jpg" alt="72 — wardrobe and dresser" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-22.jpg" alt="72 — dressing corridor" loading="lazy"></figure>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-23.jpg" alt="72 — walk-in closet" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:0.667 1 0"><img src="../img/featured/72/p-24.jpg" alt="72 — bath vanity" loading="lazy"></figure>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-25.jpg" alt="72 — double vanity" loading="lazy"></figure>
+ <figure style="flex:0.667 1 0"><img src="../img/featured/72/p-26.jpg" alt="72 — shower with garden window" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.5 1 0"><img src="../img/featured/72/p-27.jpg" alt="72 — freestanding tub" loading="lazy"></figure>
+ <figure style="flex:1.498 1 0"><img src="../img/featured/72/p-28.jpg" alt="72 — pool pergola and outdoor dining" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.522 1 0"><img src="../img/featured/72/p-29.jpg" alt="72 — outdoor kitchen and pool" loading="lazy"></figure>
+ <figure style="flex:1.511 1 0"><img src="../img/featured/72/p-30.jpg" alt="72 — lap pool and garden" loading="lazy"></figure>
+</div>
 
 
 <!-- Prev / Next -->
