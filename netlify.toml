@@ -3,6 +3,12 @@
 [build]
   publish = "."
 
+# Serverless functions — submission-created fires on every verified
+# Netlify Forms submission and sends the branded confirmation +
+# internal notification emails via Resend (see netlify/functions/).
+[functions]
+  directory = "netlify/functions"
+
 # Imagery — cache a day, then revalidate (so a replaced file at the same path refreshes).
 # Versioned URLs (e.g. ?v=YYYYMMDD) are used to force-bust changed images instantly.
 [[headers]]
@@ -30,6 +36,14 @@
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
 
 # ── Redirects & clean URLs ──────────────────────────────
+
+# Never serve function source code as static files (publish = ".")
+[[redirects]]
+  from = "/netlify/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
 [[redirects]]
   from = "/studio.html"
   to = "/about.html"
