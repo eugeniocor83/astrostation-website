@@ -45,7 +45,7 @@
  <h1 class="hero__title">A growing archive.</h1>
  <div class="hero__foot">
  <p class="hero__sub">A measured selection from the studio: residences, townhouses, apartments and hospitality, drawn and rendered in-house. New work is added quietly, project by project.</p>
- <span class="scroll-cue"><span class="dot"></span> 21 homes · 2 townhouses · 1 apartment · 12 hospitality · 1 commercial</span>
+ <span class="scroll-cue"><span class="dot"></span> 23 homes · 2 townhouses · 1 apartment · 12 hospitality · 1 commercial</span>
  </div>
  </div>
 </header>
@@ -146,7 +146,7 @@
  <div class="section-num">★ Featured Homes</div>
  <h2 class="h2 serif">From rendering to reality.</h2>
  </div>
- <p class="lede" style="max-width:42ch">Four homes shown the way we deliver them, the rendering we drew beside the finished work it became.</p>
+ <p class="lede" style="max-width:42ch">Five homes shown the way we deliver them: the rendering we drew beside the finished work it became — and the newest, documented in photography alone.</p>
  </div>
 
  <style>
@@ -164,7 +164,10 @@
       .rp-tag::before{content:"";width:24px;height:1px;background:var(--ink-mute)}
       .rp-tag--built{color:var(--ink);font-weight:600}
       .rp-tag--built::before{background:var(--ink)}
-      @media(max-width:720px){.rp-pair{grid-template-columns:1fr;gap:var(--x2)}.rp-list{gap:var(--x5)}}
+      /* Built-only variant: no rendering exists — one cinematic full-width photograph */
+      .rp-solo figure{margin:0;display:flex;flex-direction:column;gap:.7rem}
+      .rp-solo img{width:100%;display:block;aspect-ratio:21/9;object-fit:cover;object-position:center 62%;background:var(--paper-soft)}
+      @media(max-width:720px){.rp-pair{grid-template-columns:1fr;gap:var(--x2)}.rp-list{gap:var(--x5)}.rp-solo img{aspect-ratio:3/2}}
     </style>
 
  <div class="rp-list" data-lightbox>
@@ -206,6 +209,15 @@
  <div class="rp-pair">
  <figure data-gallery="img/featured/easterlin/r-00.jpg?v=20260704|img/featured/easterlin/r-01.jpg|img/featured/easterlin/r-02.jpg|img/featured/easterlin/r-03.jpg|img/featured/easterlin/r-04.jpg|img/featured/easterlin/r-05.jpg|img/featured/easterlin/r-06.jpg|img/featured/easterlin/r-07.jpg|img/featured/easterlin/r-08.jpg|img/featured/easterlin/r-09.jpg|img/featured/easterlin/r-10.jpg|img/featured/easterlin/r-11.jpg|img/featured/easterlin/r-12.jpg|img/featured/easterlin/r-13.jpg|img/featured/easterlin/r-14.jpg|img/featured/easterlin/r-15.jpg|img/featured/easterlin/r-16.jpg|img/featured/easterlin/r-17.jpg|img/featured/easterlin/r-18.jpg|img/featured/easterlin/r-19.jpg" data-gcap="Easterling · Rendering"><img src="img/featured/easterlin-render.jpg?v=20260704" alt="Easterling — front exterior rendering" loading="lazy"><figcaption class="rp-tag">Rendering · view all 20</figcaption></figure>
  <figure data-gallery="img/featured/easterlin/p-00.jpg?v=20260704|img/featured/easterlin/p-01.jpg|img/featured/easterlin/p-02.jpg|img/featured/easterlin/p-03.jpg|img/featured/easterlin/p-04.jpg|img/featured/easterlin/p-05.jpg|img/featured/easterlin/p-06.jpg|img/featured/easterlin/p-07.jpg|img/featured/easterlin/p-08.jpg|img/featured/easterlin/p-09.jpg|img/featured/easterlin/p-10.jpg|img/featured/easterlin/p-11.jpg|img/featured/easterlin/p-12.jpg|img/featured/easterlin/p-13.jpg|img/featured/easterlin/p-14.jpg|img/featured/easterlin/p-15.jpg" data-gcap="Easterling · Completed"><img src="img/featured/easterlin-photo.jpg?v=20260704" alt="Easterling — completed front exterior photograph" loading="lazy"><figcaption class="rp-tag rp-tag--built">Completed · view all 16</figcaption></figure>
+ </div>
+ </div>
+ <div>
+ <div class="rp-head">
+ <a class="rp-name" href="work/118-house.html">118 →</a>
+ <span class="rp-geo">Built</span>
+ </div>
+ <div class="rp-solo">
+ <figure data-gallery="img/featured/118/p-01.jpg|img/featured/118/p-02.jpg|img/featured/118/p-03.jpg|img/featured/118/p-04.jpg" data-gcap="118 · Completed"><img src="img/featured/118-photo.jpg" alt="118 — completed residence at dusk, photographed on site" loading="lazy"><figcaption class="rp-tag rp-tag--built">Completed · Photographed on site · view all 4</figcaption></figure>
  </div>
  </div>
  </div>
@@ -352,11 +364,23 @@
  <img class="live-fr" data-src="img/projects/235-house/02.jpg" alt="" loading="lazy">
  <div class="proj__cap"><span class="name">235 <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
  </a>
+ <a class="proj regular" href="work/118-house.html" data-tags="homes" data-live>
+ <img src="img/projects/118-house/card.jpg" alt="118" loading="lazy">
+ <img class="live-fr" data-src="img/projects/118-house/01.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/118-house/04.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">118 <span class="status-tag status-tag--built">Built</span></span><span class="geo"></span></div>
+ </a>
  <a class="proj regular" href="work/84-house.html" data-tags="homes" data-live>
  <img src="img/projects/84-house/card.jpg" alt="84" loading="lazy">
  <img class="live-fr" data-src="img/projects/84-house/03.jpg" alt="" loading="lazy">
  <img class="live-fr" data-src="img/projects/84-house/02.jpg" alt="" loading="lazy">
  <div class="proj__cap"><span class="name">84 <span class="status-tag">Design Development</span></span><span class="geo"></span></div>
+ </a>
+ <a class="proj regular" href="work/84-xo.html" data-tags="homes" data-live>
+ <img src="img/projects/84-xo/card.jpg" alt="84.XO" loading="lazy">
+ <img class="live-fr" data-src="img/projects/84-xo/04.jpg" alt="" loading="lazy">
+ <img class="live-fr" data-src="img/projects/84-xo/01.jpg" alt="" loading="lazy">
+ <div class="proj__cap"><span class="name">84.XO <span class="status-tag">Design Complete</span></span><span class="geo"></span></div>
  </a>
  <!-- Townhouses -->
  <a class="proj regular" href="work/town-houses.html" data-tags="townhouses" data-live>
@@ -397,13 +421,13 @@
  <img src="img/projects/healing-forest/card.jpg" alt="Healing Forest" loading="lazy">
  <img class="live-fr" data-src="img/projects/healing-forest/05.jpg" alt="" loading="lazy">
  <img class="live-fr" data-src="img/projects/healing-forest/01.jpg" alt="" loading="lazy">
- <div class="proj__cap"><span class="name">Healing Forest <span class="status-tag">Wellness Retreat</span></span><span class="geo"></span></div>
+ <div class="proj__cap"><span class="name">Healing Forest <span class="status-tag status-tag--built">Built</span></span><span class="geo"></span></div>
  </a>
  <a class="proj medium" href="work/el-cielo-ny.html" data-live>
  <img src="img/projects/el-cielo-ny/card.jpg" alt="El Cielo · New York" loading="lazy">
  <img class="live-fr" data-src="img/projects/el-cielo-ny/09.jpg" alt="" loading="lazy">
  <img class="live-fr" data-src="img/projects/el-cielo-ny/02.jpg" alt="" loading="lazy">
- <div class="proj__cap"><span class="name">El Cielo · New York <span class="status-tag">Design & Documented</span></span><span class="geo"></span></div>
+ <div class="proj__cap"><span class="name">El Cielo · New York <span class="status-tag status-tag--built">Built</span></span><span class="geo"></span></div>
  </a>
  <a class="proj large" href="work/the-river.html" data-live>
  <img src="img/projects/the-river/card.jpg" alt="Beautiful by the River" loading="lazy">
