@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Española — Astro Station</title>
-<meta name="description" content="Española — Hispanic-Heritage Residence. Hispanic tradition, abstracted into curved openings and warm plaster." />
+<meta name="description" content="Española — Private Residence. Hispanic-Caribbean tradition abstracted into curved openings, warm plaster and a green terraced skin. Under construction in Coconut Grove." />
 <link rel="stylesheet" href="../assets/styles.css?v=20260620c">
 <style>
   /* ── Editorial case-study layout ── */
@@ -47,43 +47,6 @@
     .cs-intro{grid-template-columns:1fr;gap:var(--x4);padding:var(--x6) var(--rail) var(--x5)}
   }
 
-  /* Plan + photo split */
-  .cs-split{
-    display:grid;grid-template-columns:1fr 1fr;gap:var(--x4);
-    max-width:var(--max);margin:var(--x5) auto;padding:0 var(--rail);
-  }
-  .cs-split figure{margin:0;display:flex;flex-direction:column;gap:.8rem}
-  .cs-plan img{
-    width:100%;display:block;background:var(--paper);
-    border:1px solid var(--ink-rule);
-    aspect-ratio:1/1;object-fit:contain;padding:1.2rem;
-  }
-  .cs-photo img{
-    width:100%;display:block;background:var(--paper-soft);
-    aspect-ratio:1/1;object-fit:cover;
-  }
-  .cs-split figcaption{
-    font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;
-    text-transform:uppercase;color:var(--ink-mute);
-  }
-  @media(max-width:720px){.cs-split{grid-template-columns:1fr;gap:var(--x3)}}
-
-  /* Paired image grid */
-  .cs-pair{
-    display:grid;grid-template-columns:1fr 1fr;gap:var(--x3);
-    max-width:var(--max);margin:var(--x5) auto;padding:0 var(--rail);
-  }
-  .cs-pair figure{margin:0}
-  .cs-pair img{
-    width:100%;display:block;background:var(--paper-soft);
-    aspect-ratio:5/4;object-fit:cover;
-  }
-  @media(max-width:720px){.cs-pair{grid-template-columns:1fr;gap:var(--x3)}}
-
-  /* Atmospheric full bleed */
-  .cs-bleed{margin:var(--x5) 0;padding:0}
-  .cs-bleed img{width:100%;height:auto;display:block;background:var(--paper-soft)}
-
   /* Section header for drawings */
   .cs-section{max-width:var(--max);margin:var(--x7) auto;padding:0 var(--rail)}
   .cs-section__head{display:grid;grid-template-columns:1fr 1.4fr;gap:var(--x6);margin-bottom:var(--x5)}
@@ -106,18 +69,26 @@
     .cs-section__head{grid-template-columns:1fr;gap:var(--x3)}
   }
 
-  .plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--x4)}
-  .plan-card{margin:0;display:flex;flex-direction:column;gap:.8rem}
-  .plan-card img{
-    width:100%;display:block;background:var(--paper);
-    border:1px solid var(--ink-rule);aspect-ratio:1/1;object-fit:contain;padding:1.2rem;
+  /* ── Justified rows: each image/drawing keeps its true proportions; items in a
+     row share one height and fill the width exactly (flex-grow = aspect ratio,
+     set inline). No crop, no gaps, no frames, no background blocks. ── */
+  .jrow{display:flex;gap:var(--x3);max-width:var(--max);margin:0 auto var(--x3);
+    padding:0 var(--rail);align-items:flex-start}
+  .jrow > figure{margin:0;min-width:0}
+  .jrow img{display:block;width:100%;height:auto}
+  .jrow a{display:block}
+  .dcap{margin-top:.55rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--ink-mute)}
+  .dcap .dl{color:var(--ink);opacity:.55;transition:opacity .2s}
+  .jrow figure:hover .dcap .dl{opacity:1}
+  .dwg-extra{max-width:var(--max);margin:.4rem auto 0;padding:0 var(--rail);
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
+  .dwg-extra a{color:var(--ink);border-bottom:1px solid var(--ink-rule);padding-bottom:1px}
+  .dwg-extra a:hover{border-color:var(--ink)}
+  @media(max-width:760px){
+    .jrow{flex-wrap:wrap;gap:var(--x2)}
+    .jrow > figure{flex:1 1 100% !important}
   }
-  .plan-card figcaption{
-    font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;
-    text-transform:uppercase;color:var(--ink-mute);
-  }
-  @media(max-width:980px){.plan-grid{grid-template-columns:1fr 1fr}}
-  @media(max-width:720px){.plan-grid{grid-template-columns:1fr}}
 
   /* Prev/Next nav */
   .cs-nav{
@@ -168,86 +139,104 @@
 
 <!-- HERO -->
 <section class="cs-hero">
- <img src="../img/projects/espanola-house/01.jpg" alt="Española — hero" loading="eager">
+ <img src="../img/projects/espanola-house/render-1.jpg" alt="Española — street elevation rendering, curved plaster volumes over a coral-toned garden wall" loading="eager">
 </section>
 
 <!-- INTRO: title + concept + meta -->
 <section class="cs-intro">
  <div class="cs-intro__left">
- <div class="cs-typology">Hispanic-Heritage Residence</div>
+ <div class="cs-typology">Private Residence</div>
  <h1>Española</h1>
  </div>
  <div class="cs-intro__right">
  <div class="cs-num">01 — Concept</div>
- <p class="cs-concept">A residence that quietly references the Hispanic-Caribbean residential tradition without imitating it. Arches and breeze blocks are substituted with continuous curved openings; clay tile is replaced by warm-toned plaster.</p>
+ <p class="cs-concept">A residence that quietly references the Hispanic-Caribbean tradition without imitating it. Arches and breeze blocks give way to continuous curved openings; clay tile is replaced by warm-toned plaster and a green, terraced skin that folds the garden up into the house.</p>
  <div class="cs-meta">
  <div class="cs-meta__row"><span>Type</span><span>Residential</span></div>
  <div class="cs-meta__row"><span>Status</span><span>Under Construction</span></div>
  <div class="cs-meta__row"><span>Discipline</span><span>Design · Visualization</span></div>
- <div class="cs-meta__row"><span>Drawings</span><span>4 sheets</span></div>
- <div class="cs-meta__row"><span>Documentation</span><span>6 renderings</span></div>
+ <div class="cs-meta__row"><span>Drawings</span><span>16 sheets · PDF</span></div>
+ <div class="cs-meta__row"><span>Documentation</span><span>Renderings · site photography</span></div>
  </div>
  </div>
 </section>
 
 
-<section class="cs-split">
- <figure class="cs-plan">
- <img src="../img/projects/espanola-house/plan-01.jpg?v=20260720" alt="Española — Floor Plan">
- <figcaption>Floor Plan · Level 01</figcaption>
- </figure>
- <figure class="cs-photo">
- <img src="../img/projects/espanola-house/02.jpg" alt="Española — Interior view">
- <figcaption>Hispanic tradition, abstracted into curved openings and warm plaster.</figcaption>
- </figure>
+<!-- ── VISUALIZATION — the design, rendered ── -->
+<section class="cs-section" style="margin-bottom:var(--x4)">
+ <div class="cs-section__head">
+ <div class="cs-num">02 — Visualization</div>
+ <h3 class="cs-h">The design, rendered.</h3>
+ <p class="cs-body">Curved plaster volumes, continuous glass openings and a green, terraced skin — studied in full photoreal renderings before the first footing was poured.</p>
+ </div>
 </section>
+<div class="jrow" data-lightbox>
+ <figure style="flex:0.8 1 0"><img src="../img/projects/espanola-house/01.jpg" alt="Española — curved glass and timber upper volume in the garden canopy" loading="lazy"></figure>
+ <figure style="flex:0.8 1 0"><img src="../img/projects/espanola-house/06.jpg" alt="Española — planted terraces spilling over the lower volume" loading="lazy"></figure>
+ <figure style="flex:0.8 1 0"><img src="../img/projects/espanola-house/04.jpg" alt="Española — rear elevation framed by the tree canopy" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.78 1 0"><img src="../img/projects/espanola-house/05.jpg" alt="Española — courtyard pool, deck and shaded loggia" loading="lazy"></figure>
+ <figure style="flex:0.56 1 0"><img src="../img/projects/espanola-house/02.jpg" alt="Española — street approach through the garden gate" loading="lazy"></figure>
+</div>
 
 
-<section class="cs-pair">
- <figure>
- <img src="../img/projects/espanola-house/03.jpg" alt="Española — view 03" loading="lazy">
- </figure>
- <figure>
- <img src="../img/projects/espanola-house/04.jpg" alt="Española — view 04" loading="lazy">
- </figure>
-</section>
-
-
-<section class="cs-bleed">
- <img src="../img/projects/espanola-house/05.jpg" alt="Española — atmospheric view" loading="lazy">
-</section>
-
-
+<!-- ── DRAWINGS — the architectural language ── -->
 <section class="cs-section">
  <div class="cs-section__head">
- <div class="cs-num">02 — Drawings</div>
+ <div class="cs-num">03 — Drawings</div>
  <h3 class="cs-h">The architectural language.</h3>
- <p class="cs-body">Plans, sections and elevations produced in-house. The drawings carry the same restraint as the renderings: nothing decorative, nothing surplus.</p>
- </div>
- <div class="plan-grid">
- <figure class="plan-card">
- <img src="../img/projects/espanola-house/plan-02.jpg?v=20260720" alt="Española — Floor Plan · Level 02" loading="lazy">
- <figcaption>Floor Plan · Level 02</figcaption>
- </figure>
- <figure class="plan-card">
- <img src="../img/projects/espanola-house/plan-03.jpg?v=20260619" alt="Española — Section A" loading="lazy">
- <figcaption>Section A</figcaption>
- </figure>
- <figure class="plan-card">
- <img src="../img/projects/espanola-house/plan-04.jpg?v=20260619" alt="Española — Section B" loading="lazy">
- <figcaption>Section B</figcaption>
- </figure>
+ <p class="cs-body">Plans, sections, elevations and the 3D, produced in-house. Click any sheet to open the full drawing as a PDF.</p>
  </div>
 </section>
+ <div class="jrow">
+ <figure style="flex:1.384 1 0"><a href="../img/projects/espanola-house/drawings/3d.pdf" target="_blank" rel="noopener"><img src="../img/projects/espanola-house/drawings/thumbs/3d.jpg" alt="Española — 3D axonometric" loading="lazy"></a><figcaption class="dcap">Axonometric · 3D<span class="dl"> — open PDF ↗</span></figcaption></figure>
+ </div>
+ <div class="jrow">
+ <figure style="flex:1.937 1 0"><a href="../img/projects/espanola-house/drawings/level-1.pdf" target="_blank" rel="noopener"><img src="../img/projects/espanola-house/drawings/thumbs/level-1.jpg" alt="Española — Floor Plan, Level 01" loading="lazy"></a><figcaption class="dcap">Floor Plan · Level 01<span class="dl"> — PDF ↗</span></figcaption></figure>
+ <figure style="flex:2.139 1 0"><a href="../img/projects/espanola-house/drawings/level-2.pdf" target="_blank" rel="noopener"><img src="../img/projects/espanola-house/drawings/thumbs/level-2.jpg" alt="Española — Floor Plan, Level 02" loading="lazy"></a><figcaption class="dcap">Floor Plan · Level 02<span class="dl"> — PDF ↗</span></figcaption></figure>
+ </div>
+ <div class="jrow">
+ <figure style="flex:1.975 1 0"><a href="../img/projects/espanola-house/drawings/roof.pdf" target="_blank" rel="noopener"><img src="../img/projects/espanola-house/drawings/thumbs/roof.jpg" alt="Española — Roof Plan" loading="lazy"></a><figcaption class="dcap">Roof Plan<span class="dl"> — PDF ↗</span></figcaption></figure>
+ </div>
+ <div class="jrow">
+ <figure style="flex:2.977 1 0"><a href="../img/projects/espanola-house/drawings/elevation-1.pdf" target="_blank" rel="noopener"><img src="../img/projects/espanola-house/drawings/thumbs/elevation-1.jpg" alt="Española — Elevation 01" loading="lazy"></a><figcaption class="dcap">Elevation 01<span class="dl"> — PDF ↗</span></figcaption></figure>
+ <figure style="flex:2.212 1 0"><a href="../img/projects/espanola-house/drawings/elevation-2.pdf" target="_blank" rel="noopener"><img src="../img/projects/espanola-house/drawings/thumbs/elevation-2.jpg" alt="Española — Elevation 02" loading="lazy"></a><figcaption class="dcap">Elevation 02<span class="dl"> — PDF ↗</span></figcaption></figure>
+ </div>
+ <div class="jrow">
+ <figure style="flex:3.046 1 0"><a href="../img/projects/espanola-house/drawings/elevation-3.pdf" target="_blank" rel="noopener"><img src="../img/projects/espanola-house/drawings/thumbs/elevation-3.jpg" alt="Española — Elevation 03" loading="lazy"></a><figcaption class="dcap">Elevation 03<span class="dl"> — PDF ↗</span></figcaption></figure>
+ <figure style="flex:1.93 1 0"><a href="../img/projects/espanola-house/drawings/elevation-4.pdf" target="_blank" rel="noopener"><img src="../img/projects/espanola-house/drawings/thumbs/elevation-4.jpg" alt="Española — Elevation 04" loading="lazy"></a><figcaption class="dcap">Elevation 04<span class="dl"> — PDF ↗</span></figcaption></figure>
+ </div>
+ <div class="jrow">
+ <figure style="flex:3.413 1 0"><a href="../img/projects/espanola-house/drawings/section-a.pdf" target="_blank" rel="noopener"><img src="../img/projects/espanola-house/drawings/thumbs/section-a.jpg" alt="Española — Section A" loading="lazy"></a><figcaption class="dcap">Section A<span class="dl"> — PDF ↗</span></figcaption></figure>
+ <figure style="flex:2.665 1 0"><a href="../img/projects/espanola-house/drawings/section-b.pdf" target="_blank" rel="noopener"><img src="../img/projects/espanola-house/drawings/thumbs/section-b.jpg" alt="Española — Section B" loading="lazy"></a><figcaption class="dcap">Section B<span class="dl"> — PDF ↗</span></figcaption></figure>
+ </div>
+ <div class="jrow">
+ <figure style="flex:2.571 1 0"><a href="../img/projects/espanola-house/drawings/section-c.pdf" target="_blank" rel="noopener"><img src="../img/projects/espanola-house/drawings/thumbs/section-c.jpg" alt="Española — Section C" loading="lazy"></a><figcaption class="dcap">Section C<span class="dl"> — PDF ↗</span></figcaption></figure>
+ <figure style="flex:2.139 1 0"><a href="../img/projects/espanola-house/drawings/section-d.pdf" target="_blank" rel="noopener"><img src="../img/projects/espanola-house/drawings/thumbs/section-d.jpg" alt="Española — Section D" loading="lazy"></a><figcaption class="dcap">Section D<span class="dl"> — PDF ↗</span></figcaption></figure>
+ </div>
+ <p class="dwg-extra">Wall section details — <a href="../img/projects/espanola-house/drawings/wall-section-a.pdf" target="_blank" rel="noopener">A ↗</a> · <a href="../img/projects/espanola-house/drawings/wall-section-b.pdf" target="_blank" rel="noopener">B ↗</a> · <a href="../img/projects/espanola-house/drawings/wall-section-c.pdf" target="_blank" rel="noopener">C ↗</a> · <a href="../img/projects/espanola-house/drawings/wall-section-d.pdf" target="_blank" rel="noopener">D ↗</a></p>
 
 
-
-<section class="cs-bleed">
- <img src="../img/projects/espanola-house/06.jpg" alt="Española — closing view" loading="lazy">
+<!-- ── ON SITE — CONSTRUCTION PROGRESS ─────────────────── -->
+<section class="cs-section" id="construction">
+ <div class="cs-section__head">
+ <div class="cs-num">04 — On Site</div>
+ <h3 class="cs-h">Under construction.</h3>
+ <p class="cs-body">Active on site with Astro Cósmico. The curved foundation and pool forms taking shape in Coconut Grove — the drawing becoming the built thing, documented as it happens.</p>
+ </div>
 </section>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.333 1 0"><img src="../img/projects/espanola-house/constr-street.jpg" alt="Española — the site from the street, behind the safety fence, July 2026" loading="lazy"><figcaption class="dcap">On the ground · July 2026</figcaption></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.5 1 0"><img src="../img/projects/espanola-house/constr-aerial-1-bw.jpg" alt="Española — curved foundation and formwork seen from above, July 2026" loading="lazy"><figcaption class="dcap">Foundation &amp; formwork · July 2026</figcaption></figure>
+ <figure style="flex:1.5 1 0"><img src="../img/projects/espanola-house/constr-aerial-3-bw.jpg" alt="Española — the curved plan emerging among the palms, aerial, July 2026" loading="lazy"><figcaption class="dcap">The curved plan, from above · July 2026</figcaption></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.5 1 0"><img src="../img/projects/espanola-house/constr-aerial-today.jpg" alt="Española — the full foundation with pool forms, aerial, July 2026" loading="lazy"><figcaption class="dcap">On site today · July 2026</figcaption></figure>
+</div>
 
-
-<!-- Prev / Next -->
 
 <!-- ── GROUNDS · landscape / patio / pool ── -->
 <section class="cs-section" id="grounds">
@@ -256,11 +245,14 @@
  <h3 class="cs-h">Landscape, patio &amp; pool.</h3>
  <p class="cs-body">The exterior rooms: gardens, decks, water, and the threshold where architecture meets landscape. Designed and drawn in-house alongside the house itself.</p>
  </div>
- <div class="proj-grid" data-lightbox>
- <div class="proj large"><img src="../img/projects/espanola-house/grounds/g-01.jpg" alt="Espanola — landscape, patio &amp; pool 01" loading="lazy"></div>
- <div class="proj medium"><img src="../img/projects/espanola-house/grounds/g-02.jpg" alt="Espanola — landscape, patio &amp; pool 02" loading="lazy"></div>
- </div>
 </section>
+<div class="jrow" data-lightbox>
+ <figure style="flex:0.8 1 0"><img src="../img/projects/espanola-house/grounds/g-01.jpg" alt="Española — planted terrace and curved glass at dusk" loading="lazy"></figure>
+ <figure style="flex:1.778 1 0"><img src="../img/projects/espanola-house/render-2.jpg" alt="Española — courtyard pool, deck and outdoor kitchen under the loggia" loading="lazy"></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.778 1 0"><img src="../img/projects/espanola-house/grounds/g-02.jpg" alt="Española — garden, pool and shaded terrace, aerial" loading="lazy"></figure>
+</div>
 
 <aside class="cs-ethos">
  <div class="cs-ethos__eyebrow">Astro Station</div>
@@ -269,7 +261,7 @@
 </aside>
 
 <nav class="cs-nav">
- <a href="temple-house.html" class="cs-nav__link">← Temple</a>
+ <a href="tigertail-ct.html" class="cs-nav__link">← Tigertail Court</a>
  <a href="../contact.html" class="btn">Inquire <span class="arr">→</span></a>
  <a href="hannaford.html" class="cs-nav__link">Hannaford →</a>
 </nav>
