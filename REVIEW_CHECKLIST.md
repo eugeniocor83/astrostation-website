@@ -67,7 +67,7 @@ These are known and already on the punch list — no need to flag:
 - Web font swap to licensed Mattone 150 + Core Sans A
 - Calendar booking widget (Cal.com integration pending)
 - Inquiry form → CRM wiring
-- Domain cutover to astrostation.co
+- Domain cutover to astrostation.com
 
 ---
 

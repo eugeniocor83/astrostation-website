@@ -104,7 +104,7 @@ Or, manually edit `img/projects/manifest.json` and re-run `build_work_pages.py`.
 - [ ] **CMS migration:** Webflow build (recommended) — see `Astro_Station_Developer_Handoff_Brief.pdf` in project root
 - [ ] **Calendar wiring:** "Schedule a Consultation" buttons need a Cal.com / HubSpot calendar embed
 - [ ] **CRM wiring:** `/contact` form needs a real endpoint (HubSpot / Pipedrive)
-- [ ] **Domain cutover:** astrostation.co currently shows the placeholder splash — point to this static site or new Webflow build
+- [ ] **Domain cutover:** astrostation.com currently shows the placeholder splash — point to this static site or new Webflow build
 - [ ] **Project metadata:** Many projects are Concept/Render only; add real Status, Year, Location, Client when available
 - [ ] **Mattone 150 + Core Sans A:** Once licensed for web, swap `--display` and `--sans` CSS variables (single change in `styles.css`)
 

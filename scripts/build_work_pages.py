@@ -84,7 +84,7 @@ def footer_block(depth=0):
       <div class="foot__col">
         <h6>Contact</h6>
         <a href="tel:+17869091565">+1 786 909 1565</a>
-        <a href="mailto:info@astrostation.co">info@astrostation.co</a>
+        <a href="mailto:info@astrostation.com">info@astrostation.com</a>
         <a href="https://instagram.com/astrostation">Instagram</a>
         <a href="https://linkedin.com/company/astrostation">LinkedIn</a>
       </div>
