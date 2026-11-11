@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>306 — Astro Station</title>
+<meta name="description" content="306 — Private Residence, Los Angeles. A single-storey house transformed rather than replaced: exterior re-facing in black timber and rebuilt interiors. Under construction." />
+<link rel="stylesheet" href="../assets/styles.css?v=20260620c">
+<style>
+  /* ── Editorial case-study layout ── */
+  .cs-hero{width:100%;display:block;margin:0;padding:0}
+  .cs-hero img{width:100%;height:auto;display:block;background:var(--paper-soft)}
+
+  .cs-intro{
+    max-width:var(--max);margin:0 auto;
+    padding:var(--x8) var(--rail) var(--x6);
+    display:grid;grid-template-columns:1fr 1.4fr;gap:var(--x6);
+  }
+  .cs-intro__left .cs-typology{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--ink-mute);margin-bottom:1.2rem;
+  }
+  .cs-intro__left h1{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(2.8rem,5.6vw,5rem);
+    line-height:.95;letter-spacing:-.02em;text-transform:uppercase;
+    color:var(--ink);margin:0;
+  }
+  .cs-intro__right .cs-num{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--ink-mute);margin-bottom:1rem;
+    display:flex;align-items:center;gap:.85rem;
+  }
+  .cs-intro__right .cs-num::before{content:"";width:32px;height:1px;background:var(--ink-mute)}
+  .cs-intro__right .cs-concept{
+    font-family:var(--sans);font-weight:300;
+    font-size:clamp(1.15rem,1.55vw,1.4rem);line-height:1.55;color:var(--ink);
+    max-width:60ch;
+  }
+  .cs-intro__right .cs-meta{margin-top:var(--x4);border-top:1px solid var(--ink-rule)}
+  .cs-intro__right .cs-meta__row{
+    display:flex;justify-content:space-between;padding:.95rem 0;border-bottom:1px solid var(--ink-rule);
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--ink);
+  }
+  .cs-intro__right .cs-meta__row span:first-child{color:var(--ink-mute);text-transform:uppercase;letter-spacing:.18em;font-size:.66rem}
+  @media(max-width:980px){
+    .cs-intro{grid-template-columns:1fr;gap:var(--x4);padding:var(--x6) var(--rail) var(--x5)}
+  }
+
+  /* Section header for drawings */
+  .cs-section{max-width:var(--max);margin:var(--x7) auto;padding:0 var(--rail)}
+  .cs-section__head{display:grid;grid-template-columns:1fr 1.4fr;gap:var(--x6);margin-bottom:var(--x5)}
+  .cs-section__head .cs-num{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--ink-mute);margin-bottom:1rem;
+    display:flex;align-items:center;gap:.85rem;
+  }
+  .cs-section__head .cs-num::before{content:"";width:32px;height:1px;background:var(--ink-mute)}
+  .cs-section__head .cs-h{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(2rem,3.6vw,3rem);text-transform:uppercase;
+    letter-spacing:-.012em;line-height:1;margin:0;
+  }
+  .cs-section__head .cs-body{
+    font-family:var(--sans);font-weight:300;font-size:1.02rem;line-height:1.65;
+    color:var(--ink-mid);max-width:54ch;align-self:end;
+  }
+  @media(max-width:980px){
+    .cs-section__head{grid-template-columns:1fr;gap:var(--x3)}
+  }
+
+  /* ── Justified rows: each image/drawing keeps its true proportions; items in a
+     row share one height and fill the width exactly (flex-grow = aspect ratio,
+     set inline). No crop, no gaps, no frames, no background blocks. ── */
+  .jrow{display:flex;gap:var(--x3);max-width:var(--max);margin:0 auto var(--x3);
+    padding:0 var(--rail);align-items:flex-start}
+  .jrow > figure{margin:0;min-width:0}
+  .jrow img{display:block;width:100%;height:auto}
+  .jrow a{display:block}
+  .dcap{margin-top:.55rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--ink-mute)}
+  .dcap .dl{color:var(--ink);opacity:.55;transition:opacity .2s}
+  .jrow figure:hover .dcap .dl{opacity:1}
+  .dwg-extra{max-width:var(--max);margin:.4rem auto 0;padding:0 var(--rail);
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
+  .dwg-extra a{color:var(--ink);border-bottom:1px solid var(--ink-rule);padding-bottom:1px}
+  .dwg-extra a:hover{border-color:var(--ink)}
+  @media(max-width:760px){
+    .jrow{flex-wrap:wrap;gap:var(--x2)}
+    .jrow > figure{flex:1 1 100% !important}
+  }
+
+  /* Prev/Next nav */
+  .cs-nav{
+    max-width:var(--max);margin:var(--x7) auto var(--x6);
+    padding:var(--x4) var(--rail);
+    border-top:1px solid var(--ink-rule);
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;
+  }
+  .cs-nav__link{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--ink);
+    display:inline-flex;align-items:center;gap:.6rem;
+  }
+  .cs-nav__link:hover{color:var(--ink-mute)}
+
+  /* Existing → Proposed pairs (same pattern as services/exterior.html) */
+  .ba-list{display:grid;gap:var(--x6);max-width:var(--max);margin:0 auto;padding:0 var(--rail)}
+  .ba-pair{display:grid;grid-template-columns:1fr 1fr;gap:var(--x3)}
+  .ba-cell{margin:0;display:flex;flex-direction:column;gap:.8rem}
+  .ba-cell img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:var(--paper-soft);cursor:zoom-in}
+  .ba-tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);display:flex;align-items:center;gap:.7rem}
+  .ba-tag::before{content:"";width:24px;height:1px;background:var(--ink-mute)}
+  .ba-tag--after{color:var(--ink);font-weight:600}
+  .ba-tag--after::before{background:var(--ink)}
+  .ba-room{font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.9rem}
+  .cs-room{max-width:var(--max);margin:var(--x6) auto var(--x3);padding:0 var(--rail)}
+  .cs-room .ba-room{margin-bottom:0}
+  .dcap--now{color:var(--ink)}
+  .dcap--prop{color:var(--ink);font-weight:600}
+  @media(max-width:720px){.ba-pair{grid-template-columns:1fr;gap:var(--x2)}.ba-list{gap:var(--x5)}}
+</style>
+<link rel="icon" type="image/png" href="/img/brand/star.png">
+<link rel="apple-touch-icon" href="/img/brand/star.png">
+</head>
+<body>
+<nav class="nav">
+ <a class="nav__brand" href="../index.html">
+ <img src="../img/brand/wordmark.png" alt="Astro Station" class="nav__logo">
+ </a>
+ <div class="nav__menu">
+ <a href="../about.html">About</a>
+ <a href="../work.html" class="active">Work</a>
+ <div class="has-sub">
+ <a href="../services.html">Services <span class="caret">▾</span></a>
+ <div class="nav__sub">
+ <a href="../services/architecture.html"><span>01 — Architecture</span><span class="num">01</span></a>
+ <a href="../services/interiors.html"><span>02 — Interior Design</span><span class="num">02</span></a>
+ <a href="../services/millwork.html"><span>03 — Millwork · Dragon</span><span class="num">03</span></a>
+ <a href="../services/built.html" class="is-built"><span>04 — Construction <img class="brand-star" src="../img/brand/star.png" alt="Astro"> Cósmico</span><span class="num">04</span></a>
+ <a href="../services/landscape.html"><span>05 — Landscape &amp; Pool</span><span class="num">05</span></a>
+ <a href="../services/exterior.html"><span>06 — Exterior Re-facing</span><span class="num">06</span></a>
+ <a href="../services/rendering.html"><span>07 — Visualization</span><span class="num">07</span></a>
+ </div>
+ </div>
+ <a href="../journal.html">Journal</a>
+ <a href="../contact.html">Contact</a>
+ </div>
+ <div class="nav__util">
+ <span class="nav__clock" id="clock">Miami · Los Angeles</span>
+ <a class="btn" href="../contact.html">Start the Process <span class="arr">→</span></a>
+ <button class="nav__hamburger" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')"><span></span><span></span><span></span></button>
+ </div>
+</nav>
+
+<!-- HERO -->
+<section class="cs-hero">
+ <img src="../img/projects/306/hero.jpg?v=20261111" alt="306 — proposed street elevation, rendering: black vertical timber, dark roof and central chimney behind an olive garden" loading="eager">
+</section>
+
+<!-- INTRO: title + concept + meta -->
+<section class="cs-intro">
+ <div class="cs-intro__left">
+ <div class="cs-typology">Private Residence · Los Angeles</div>
+ <h1>306</h1>
+ </div>
+ <div class="cs-intro__right">
+ <div class="cs-num">01 — Concept</div>
+ <p class="cs-concept">A single-storey house in Los Angeles, transformed rather than replaced. The footprint and the long, low roofline stay; the pale siding and white brick give way to black vertical timber, a dark roof and deep-set openings. Inside, the house is being rebuilt room by room in warm timber, veined stone and woven wall finishes.</p>
+ <div class="cs-meta">
+ <div class="cs-meta__row"><span>Type</span><span>Residential · Renovation</span></div>
+ <div class="cs-meta__row"><span>Status</span><span>Under Construction</span></div>
+ <div class="cs-meta__row"><span>Location</span><span>Los Angeles</span></div>
+ <div class="cs-meta__row"><span>Scope</span><span>Exterior re-facing · Interiors</span></div>
+ <div class="cs-meta__row"><span>Documentation</span><span>Renderings · site photography</span></div>
+ </div>
+ </div>
+</section>
+
+
+<!-- ── EXTERIOR — existing → proposed ── -->
+<section class="cs-section" id="exterior" style="margin-bottom:var(--x4)">
+ <div class="cs-section__head">
+ <div class="cs-num">02 — Exterior</div>
+ <h3 class="cs-h">Existing → Proposed.</h3>
+ <p class="cs-body">The same house, re-faced. Existing condition on the left; the proposed design, shown as renderings, on the right. The exterior work has not yet been completed.</p>
+ </div>
+</section>
+<div class="ba-list" data-lightbox>
+ <div>
+ <div class="ba-room">Street Façade</div>
+ <div class="ba-pair">
+ <figure class="ba-cell"><img src="../img/projects/306/ext-front-existing.jpg" alt="306 — street façade, existing condition" loading="lazy"><figcaption class="ba-tag">Existing</figcaption></figure>
+ <figure class="ba-cell"><img src="../img/projects/306/ext-front-proposed.jpg" alt="306 — street façade, proposed re-facing, rendering" loading="lazy"><figcaption class="ba-tag ba-tag--after">Proposed</figcaption></figure>
+ </div>
+ </div>
+ <div>
+ <div class="ba-room">Garden Façade</div>
+ <div class="ba-pair">
+ <figure class="ba-cell"><img src="../img/projects/306/ext-rear-existing.jpg" alt="306 — garden façade, existing condition" loading="lazy"><figcaption class="ba-tag">Existing</figcaption></figure>
+ <figure class="ba-cell"><img src="../img/projects/306/ext-rear-proposed.jpg" alt="306 — garden façade with covered dining terrace, proposed, rendering" loading="lazy"><figcaption class="ba-tag ba-tag--after">Proposed</figcaption></figure>
+ </div>
+ </div>
+</div>
+<div style="height:var(--x5)"></div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.78 1 0"><img src="../img/projects/306/ext-terrace-proposed.jpg" alt="306 — garden terrace at the gable end, proposed, rendering" loading="lazy"><figcaption class="dcap dcap--prop">Proposed · rendering</figcaption></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:2.83 1 0"><img src="../img/projects/306/axon-1.jpg" alt="306 — façade study, axonometric from the garden" loading="lazy"><figcaption class="dcap">Façade study · axonometric</figcaption></figure>
+ <figure style="flex:2.83 1 0"><img src="../img/projects/306/axon-2.jpg" alt="306 — façade study, axonometric from the street" loading="lazy"><figcaption class="dcap">Façade study · axonometric</figcaption></figure>
+</div>
+
+
+<!-- ── INTERIORS — existing / on site / proposed, room by room ── -->
+<section class="cs-section" id="construction" style="margin-bottom:var(--x2)">
+ <div class="cs-section__head">
+ <div class="cs-num">03 — Interiors · On Site</div>
+ <h3 class="cs-h">Room by room.</h3>
+ <p class="cs-body">Each room in three states: as it was, as it stands on site today, and as it is designed to finish. Photographs show real conditions; anything marked Proposed is a rendering.</p>
+ </div>
+</section>
+<div class="cs-room"><div class="ba-room">Foyer</div></div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.778 1 0"><img src="../img/projects/306/foyer-existing.jpg" alt="306 — foyer, existing condition" loading="lazy"><figcaption class="dcap">Existing</figcaption></figure>
+ <figure style="flex:0.75 1 0"><img src="../img/projects/306/foyer-progress.jpg" alt="306 — entry opened up and shored, on site, November 2026" loading="lazy"><figcaption class="dcap dcap--now">On site · November 2026</figcaption></figure>
+ <figure style="flex:0.889 1 0"><img src="../img/projects/306/foyer-proposed.jpg" alt="306 — foyer with illuminated timber niche, proposed, rendering" loading="lazy"><figcaption class="dcap dcap--prop">Proposed · rendering</figcaption></figure>
+</div>
+
+<div class="cs-room"><div class="ba-room">Primary Bedroom</div></div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.778 1 0"><img src="../img/projects/306/bed-existing.jpg" alt="306 — primary bedroom, existing condition" loading="lazy"><figcaption class="dcap">Existing</figcaption></figure>
+ <figure style="flex:0.75 1 0"><img src="../img/projects/306/bed-progress-1.jpg" alt="306 — primary bedroom stripped to framing, on site" loading="lazy"><figcaption class="dcap dcap--now">On site · framing</figcaption></figure>
+ <figure style="flex:0.75 1 0"><img src="../img/projects/306/bed-progress-2.jpg" alt="306 — primary bedroom with new drywall, on site, November 2026" loading="lazy"><figcaption class="dcap dcap--now">On site · November 2026</figcaption></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.778 1 0"><img src="../img/projects/306/bed-proposed-1.jpg" alt="306 — primary bedroom opening to the garden court, proposed, rendering" loading="lazy"><figcaption class="dcap dcap--prop">Proposed · rendering</figcaption></figure>
+ <figure style="flex:1.778 1 0"><img src="../img/projects/306/bed-proposed-2.jpg" alt="306 — primary bedroom, woven wall and pendant lights, proposed, rendering" loading="lazy"><figcaption class="dcap dcap--prop">Proposed · rendering</figcaption></figure>
+</div>
+
+<div class="cs-room"><div class="ba-room">Primary Bath &amp; Dressing</div></div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.778 1 0"><img src="../img/projects/306/bath-existing.jpg" alt="306 — primary bathroom, existing condition" loading="lazy"><figcaption class="dcap">Existing</figcaption></figure>
+ <figure style="flex:1.333 1 0"><img src="../img/projects/306/bath-progress.jpg" alt="306 — primary bath with new skylight opening, on site, November 2026" loading="lazy"><figcaption class="dcap dcap--now">On site · November 2026</figcaption></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:0.889 1 0"><img src="../img/projects/306/bath-proposed-1.jpg" alt="306 — stone shower under the skylight, proposed, rendering" loading="lazy"><figcaption class="dcap dcap--prop">Proposed · rendering</figcaption></figure>
+ <figure style="flex:1.778 1 0"><img src="../img/projects/306/bath-proposed-2.jpg" alt="306 — vanity and dressing room, proposed, rendering" loading="lazy"><figcaption class="dcap dcap--prop">Proposed · rendering</figcaption></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.778 1 0"><img src="../img/projects/306/bath-proposed-3.jpg" alt="306 — dressing room joinery, proposed, rendering" loading="lazy"><figcaption class="dcap dcap--prop">Proposed · rendering</figcaption></figure>
+ <figure style="flex:1.778 1 0"><img src="../img/projects/306/bath-proposed-4.jpg" alt="306 — freestanding double vanity, proposed, rendering" loading="lazy"><figcaption class="dcap dcap--prop">Proposed · rendering</figcaption></figure>
+</div>
+
+<div class="cs-room"><div class="ba-room">Playroom</div></div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.778 1 0"><img src="../img/projects/306/play-existing.jpg" alt="306 — bedroom before conversion to a playroom, existing condition" loading="lazy"><figcaption class="dcap">Existing</figcaption></figure>
+ <figure style="flex:0.75 1 0"><img src="../img/projects/306/play-progress.jpg" alt="306 — playroom with new drywall, on site, November 2026" loading="lazy"><figcaption class="dcap dcap--now">On site · November 2026</figcaption></figure>
+ <figure style="flex:0.8 1 0"><img src="../img/projects/306/play-proposed-2.jpg" alt="306 — playroom climbing wall and window seat, proposed, rendering" loading="lazy"><figcaption class="dcap dcap--prop">Proposed · rendering</figcaption></figure>
+</div>
+<div class="jrow" data-lightbox>
+ <figure style="flex:1.778 1 0"><img src="../img/projects/306/play-proposed-1.jpg" alt="306 — playroom with fold-down bed and swing, proposed, rendering" loading="lazy"><figcaption class="dcap dcap--prop">Proposed · rendering</figcaption></figure>
+ <figure style="flex:1.778 1 0"><img src="../img/projects/306/play-proposed-3.jpg" alt="306 — playroom climbing wall, proposed, rendering" loading="lazy"><figcaption class="dcap dcap--prop">Proposed · rendering</figcaption></figure>
+</div>
+
+
+<aside class="cs-ethos">
+ <div class="cs-ethos__eyebrow">Astro Station</div>
+ <p class="cs-ethos__line">Architecture, interiors, millwork and construction, <strong>drawn and built under one roof</strong>, as one continuous practice.</p>
+ <div class="cs-ethos__tag"><span class="cs-ethos__t1">Conceived outside the box</span> <span class="cs-ethos__dot">·</span> <span class="cs-ethos__tags">Futurist · Liquid · Melted</span></div>
+</aside>
+
+<nav class="cs-nav">
+ <a href="../work.html" class="cs-nav__link">← All work</a>
+ <a href="../contact.html" class="btn">Inquire <span class="arr">→</span></a>
+ <a href="211-house.html" class="cs-nav__link">211 →</a>
+</nav>
+
+<footer class="foot">
+ <div class="wrap">
+ <div class="foot__top">
+ <div class="foot__brand">
+ <img src="../img/brand/wordmark.png" alt="Astro Station" style="height:36px;width:auto;display:block;margin-bottom:.6rem">
+ <div class="desc">Architecture · Interiors · Millwork · Construction</div>
+ <p>Bespoke homes designed and delivered as one.</p>
+ </div>
+ <div class="foot__col">
+ <h6>Studio</h6>
+ <a href="../about.html">About</a>
+ <a href="../journal.html">Journal</a>
+ <a href="../careers.html">Careers</a>
+ </div>
+ <div class="foot__col">
+ <h6>Services</h6>
+ <a href="../services/architecture.html">Architecture</a>
+ <a href="../services/interiors.html">Interior Design</a>
+ <a href="../services/millwork.html">Millwork · Dragon</a>
+ <a href="../services/built.html">Construction · Astro Cósmico</a>
+ <a href="../services/landscape.html">Landscape &amp; Pool</a>
+ <a href="../services/exterior.html">Exterior Re-facing</a>
+ <a href="../services/rendering.html">Visualization</a>
+ </div>
+ <div class="foot__col">
+ <h6>Work</h6>
+ <a href="../work.html#featured">Featured</a>
+ <a href="../work.html#residential">Residential</a>
+ <a href="../work.html#hospitality">Hospitality</a>
+ <a href="../work.html#commercial">Commercial</a>
+ </div>
+ <div class="foot__col">
+ <h6>Contact</h6>
+ <a href="tel:+17869091565">+1 786 909 1565</a>
+ <a href="mailto:info@astrostation.com">info@astrostation.com</a>
+ <a href="https://www.instagram.com/astrostation.co/" target="_blank" rel="noopener">Instagram</a>
+ <a href="https://linkedin.com/company/astrostation" target="_blank" rel="noopener">LinkedIn</a>
+ </div>
+ </div>
+ <div class="foot__bottom">
+ <span>© Astro Station 2026 · All rights reserved</span>
+ <nav class="foot__legal" aria-label="Legal"><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms &amp; Disclaimer</a><a href="#" data-cookie-prefs>Cookie Preferences</a></nav>
+ <span>Miami · Los Angeles</span>
+ </div>
+ </div>
+</footer>
+<script src="../assets/main.js?v=20260620f"></script>
+</body>
+</html>
